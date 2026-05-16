@@ -1,0 +1,38 @@
+# ==============================
+# Node / Tailwind CSS
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==============================
+# Jekyll / Ruby
+# ==============================
+_site/
+.bundle/
+vendor/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata/
+
+# ==============================
+# System / Editor
+# ==============================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ==============================
+# Logs / Temp
+# ==============================
+*.log
+*.tmp
+*.temp
