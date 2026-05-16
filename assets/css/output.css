@@ -1170,6 +1170,10 @@
   .not-italic {
     font-style: normal;
   }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   .opacity-30 {
     opacity: 30%;
   }
