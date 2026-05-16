@@ -335,6 +335,9 @@
   .min-h-\[60dvh\] {
     min-height: 60dvh;
   }
+  .min-h-\[70dvh\] {
+    min-height: 70dvh;
+  }
   .min-h-\[80dvh\] {
     min-height: 80dvh;
   }
@@ -433,6 +436,9 @@
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
   }
   .items-center {
     align-items: center;
@@ -596,6 +602,9 @@
   .border-\[\#3D5B34\]\/20 {
     border-color: color-mix(in oklab, #3D5B34 20%, transparent);
   }
+  .border-\[\#3D5B34\]\/30 {
+    border-color: color-mix(in oklab, #3D5B34 30%, transparent);
+  }
   .border-white {
     border-color: var(--color-white);
   }
@@ -627,6 +636,12 @@
     border-color: color-mix(in srgb, #fff 25%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-white) 25%, transparent);
+    }
+  }
+  .border-white\/30 {
+    border-color: color-mix(in srgb, #fff 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-white) 30%, transparent);
     }
   }
   .bg-\[\#3D5B34\] {
@@ -695,6 +710,18 @@
       background-color: color-mix(in oklab, var(--color-white) 15%, transparent);
     }
   }
+  .bg-white\/20 {
+    background-color: color-mix(in srgb, #fff 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+    }
+  }
+  .bg-white\/30 {
+    background-color: color-mix(in srgb, #fff 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-white) 30%, transparent);
+    }
+  }
   .bg-white\/35 {
     background-color: color-mix(in srgb, #fff 35%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -713,12 +740,20 @@
       background-color: color-mix(in oklab, var(--color-white) 75%, transparent);
     }
   }
+  .bg-gradient-to-br {
+    --tw-gradient-position: to bottom right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
   .bg-gradient-to-r {
     --tw-gradient-position: to right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
   .bg-\[radial-gradient\(circle_at_center\,transparent_28\%\,rgba\(0\,0\,0\,0\.35\)_65\%\,rgba\(0\,0\,0\,0\.9\)_100\%\)\] {
     background-image: radial-gradient(circle at center,transparent 28%,rgba(0,0,0,0.35) 65%,rgba(0,0,0,0.9) 100%);
+  }
+  .from-\[\#3D5B34\]\/5 {
+    --tw-gradient-from: color-mix(in oklab, #3D5B34 5%, transparent);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .from-black\/70 {
     --tw-gradient-from: color-mix(in srgb, #000 70%, transparent);
@@ -798,6 +833,9 @@
   }
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
   }
   .py-24 {
     padding-block: calc(var(--spacing) * 24);
@@ -895,6 +933,9 @@
   }
   .text-\[5rem\] {
     font-size: 5rem;
+  }
+  .text-\[6rem\] {
+    font-size: 6rem;
   }
   .text-\[7px\] {
     font-size: 7px;
@@ -1045,6 +1086,12 @@
   .text-\[\#3D5B34\] {
     color: #3D5B34;
   }
+  .text-\[\#3D5B34\]\/60 {
+    color: color-mix(in oklab, #3D5B34 60%, transparent);
+  }
+  .text-\[\#3D5B34\]\/70 {
+    color: color-mix(in oklab, #3D5B34 70%, transparent);
+  }
   .text-\[\#3D5B34\]\/80 {
     color: color-mix(in oklab, #3D5B34 80%, transparent);
   }
@@ -1119,6 +1166,9 @@
   }
   .italic {
     font-style: italic;
+  }
+  .not-italic {
+    font-style: normal;
   }
   .opacity-30 {
     opacity: 30%;
@@ -1269,6 +1319,20 @@
       }
     }
   }
+  .hover\:text-\[\#3D5B34\] {
+    &:hover {
+      @media (hover: hover) {
+        color: #3D5B34;
+      }
+    }
+  }
+  .hover\:text-black {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-black);
+      }
+    }
+  }
   .hover\:text-white {
     &:hover {
       @media (hover: hover) {
@@ -1390,6 +1454,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .sm\:flex-row {
+    @media (width >= 40rem) {
+      flex-direction: row;
+    }
+  }
   .sm\:gap-3 {
     @media (width >= 40rem) {
       gap: calc(var(--spacing) * 3);
@@ -1398,6 +1467,11 @@
   .sm\:gap-4 {
     @media (width >= 40rem) {
       gap: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:gap-5 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 5);
     }
   }
   .sm\:gap-7 {
@@ -1543,9 +1617,19 @@
       font-size: 4rem;
     }
   }
+  .sm\:text-\[5rem\] {
+    @media (width >= 40rem) {
+      font-size: 5rem;
+    }
+  }
   .sm\:text-\[8px\] {
     @media (width >= 40rem) {
       font-size: 8px;
+    }
+  }
+  .sm\:text-\[8rem\] {
+    @media (width >= 40rem) {
+      font-size: 8rem;
     }
   }
   .sm\:text-\[9px\] {
@@ -1656,6 +1740,11 @@
   .md\:min-h-\[90dvh\] {
     @media (width >= 48rem) {
       min-height: 90dvh;
+    }
+  }
+  .md\:min-h-screen {
+    @media (width >= 48rem) {
+      min-height: 100vh;
     }
   }
   .md\:w-2 {
@@ -2007,6 +2096,11 @@
       font-size: 10px;
     }
   }
+  .md\:text-\[10rem\] {
+    @media (width >= 48rem) {
+      font-size: 10rem;
+    }
+  }
   .md\:text-\[11px\] {
     @media (width >= 48rem) {
       font-size: 11px;
@@ -2220,6 +2314,11 @@
   .lg\:text-\[12px\] {
     @media (width >= 64rem) {
       font-size: 12px;
+    }
+  }
+  .lg\:text-\[12rem\] {
+    @media (width >= 64rem) {
+      font-size: 12rem;
     }
   }
   .lg\:text-\[17px\] {
