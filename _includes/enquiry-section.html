@@ -1,0 +1,135 @@
+<!-- _includes/enquiry-section.html -->
+{% assign section = include.section %}
+
+<section class="bg-black section text-white">
+  <!-- Fixed max-width container -->
+  <div
+    class="mx-auto w-full max-w-7xl px-5 text-center sm:px-6 md:px-8 lg:px-10"
+  >
+    <div class="mx-auto max-w-xl lg:max-w-2xl">
+      <!-- Eyebrow -->
+      <span
+        class="font-title text-[9px] uppercase tracking-[0.25em] text-[#A8C08E] sm:text-[10px] md:text-[11px]"
+      >
+        {{ section.eyebrow }}
+      </span>
+
+      <!-- Title -->
+      <h2
+        class="mt-4 font-title text-[2rem] font-semibold uppercase leading-[0.9] tracking-[-0.06em] md:mt-6 md:text-[3.5rem]"
+      >
+        {{ section.title }}
+      </h2>
+
+      <!-- Description -->
+      <div
+        class="mt-4 space-y-3 text-sm leading-[1.7] text-white/60 md:mt-6 md:text-base"
+      >
+        {% for item in section.description %}
+        <p>{{ item }}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Form -->
+      <div
+        class="mx-auto mt-10 bg-[#141414] p-5 sm:mt-12 sm:p-6 md:mt-14 md:p-8 lg:mt-16 lg:p-10"
+      >
+        <form class="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10">
+          <div class="grid gap-6 sm:gap-7 md:grid-cols-2 md:gap-8">
+            <div class="text-left">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                placeholder="Your name"
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8C08E] transition-colors md:mt-3 md:pb-3 md:text-sm"
+              />
+            </div>
+
+            <div class="text-left">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+              >
+                Location
+              </label>
+              <select
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8C08E] transition-colors md:mt-3 md:pb-3 md:text-sm"
+              >
+                <option class="bg-black">Select</option>
+                <option class="bg-black">Bali</option>
+                <option class="bg-black">Lombok</option>
+                <option class="bg-black">Jakarta</option>
+                <option class="bg-black">Elsewhere in Indonesia</option>
+                <option class="bg-black">
+                  Outside Indonesia / Join Waitlist
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="your@email.com"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8C08E] transition-colors md:mt-3 md:pb-3 md:text-sm"
+            />
+          </div>
+
+          <div class="text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+            >
+              WhatsApp
+            </label>
+            <input
+              type="text"
+              placeholder="+62 xxx xxxx xxxx"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8C08E] transition-colors md:mt-3 md:pb-3 md:text-sm"
+            />
+          </div>
+
+          <div class="text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+            >
+              Intended Use
+            </label>
+            <select
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-xs text-white outline-none focus:border-[#A8C08E] transition-colors md:mt-3 md:pb-3 md:text-sm"
+            >
+              <option class="bg-black">Select</option>
+              <option class="bg-black">Private Residence</option>
+              <option class="bg-black">Private Gym</option>
+              <option class="bg-black">Yacht</option>
+              <option class="bg-black">Hospitality / Resort</option>
+              <option class="bg-black">Wellness Operator</option>
+              <option class="bg-black">Other</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full border border-white bg-white py-3 font-title text-[10px] font-semibold uppercase tracking-[0.28em] text-black transition duration-300 hover:bg-transparent hover:text-white sm:py-3.5 sm:text-xs md:py-4 md:text-sm cursor-pointer"
+          >
+            Submit Enquiry
+          </button>
+        </form>
+
+        <p
+          class="mx-auto mt-5 max-w-md text-xs leading-6 text-white/30 sm:mt-6 md:mt-7"
+        >
+          A Kaido advisor will reach out within 24 hours to discuss your Phantom
+          and the order process privately.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

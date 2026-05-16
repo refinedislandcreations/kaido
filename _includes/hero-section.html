@@ -1,0 +1,72 @@
+<!-- _includes/hero-section.html -->
+{% assign section = include.section %}
+
+<section
+  class="relative min-h-[40dvh] md:min-h-[85dvh] overflow-hidden bg-black text-white"
+>
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <img
+      src="{{ section.background_image }}"
+      alt="{{ section.title }}"
+      class="h-full w-full object-cover"
+    />
+
+    <div class="absolute inset-0 bg-black/45"></div>
+  </div>
+
+  <div class="relative z-10 flex min-h-[40dvh] md:min-h-[85dvh] items-center">
+    <!-- Fixed max-width to prevent excessive width on large screens -->
+    <div
+      class="mx-auto w-full max-w-7xl px-5 pt-32 pb-24 sm:px-6 md:px-8 lg:px-10"
+    >
+      <div class="max-w-2xl lg:max-w-3xl">
+        <!-- Eyebrow -->
+        <div
+          class="mb-3 flex items-center gap-2 sm:mb-4 sm:gap-3 md:mb-6 md:gap-4"
+        >
+          <span
+            class="font-title text-[9px] uppercase tracking-[0.25em] text-[#A8C08E] sm:text-[10px] md:text-[11px]"
+          >
+            {{ section.eyebrow }}
+          </span>
+
+          <div class="h-px w-10 bg-[#A8C08E]/40 sm:w-12 md:w-16"></div>
+        </div>
+
+        <!-- Title -->
+        <h1
+          class="font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem]"
+        >
+          {{ section.title }}
+        </h1>
+
+        <!-- Subtitle -->
+        <div
+          class="mt-4 text-lg font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-2xl"
+        >
+          {{ section.subtitle }}
+        </div>
+
+        <!-- Description -->
+        <div
+          class="mt-6 text-sm leading-[1.7] text-white/80 sm:mt-8 md:text-base md:mt-10 max-w-xl"
+        >
+          {% for item in section.description %}
+          <p>{{ item }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Button -->
+        <div class="mt-8 sm:mt-10 md:mt-12">
+          <a
+            href="{{ section.button_url }}"
+            class="inline-flex items-center justify-center border border-white px-6 py-3 font-title text-[10px] font-medium uppercase tracking-[0.1em] bg-white text-black transition duration-300 hover:bg-transparent hover:text-white sm:px-8 sm:py-4 md:text-xs md:px-10 md:py-5"
+          >
+            {{ section.button_text }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

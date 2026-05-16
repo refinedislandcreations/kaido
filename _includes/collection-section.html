@@ -1,0 +1,65 @@
+<!-- _includes/collection-section.html -->
+{% assign section = include.section %}
+
+<section class="relative section overflow-hidden bg-[#ECE9E1] text-[#3D5B34]">
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <img
+      src="{{ section.background_image }}"
+      alt="{{ section.title }}"
+      class="h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#ECE9E1]/70"></div>
+  </div>
+
+  <div class="relative z-10 flex items-center">
+    <!-- Fixed max-width container -->
+    <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10">
+      <div class="max-w-xl lg:max-w-2xl">
+        <span
+          class="font-title text-[9px] uppercase tracking-[0.25em] sm:text-[10px] md:text-[11px]"
+        >
+          {{ section.eyebrow }}
+        </span>
+
+        <h2
+          class="mt-4 font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:mt-6 md:text-[6rem]"
+        >
+          {{ section.title }}
+        </h2>
+
+        <div
+          class="mt-4 space-y-2 text-lg font-bold uppercase leading-tight sm:mt-5 sm:space-y-2.5 md:mt-6 md:text-2xl"
+        >
+          {% for item in section.subtitle %}
+          <p>{{ item }}</p>
+          {% endfor %}
+        </div>
+
+        <div
+          class="mt-6 h-px w-10 bg-[#3D5B34]/30 sm:mt-7 sm:w-16 md:mt-8"
+        ></div>
+
+        <div
+          class="mt-6 space-y-4 text-sm leading-[1.7] text-[#3D5B34]/80 sm:mt-7 sm:space-y-5 sm:text-base md:mt-8 md:text-base lg:text-lg"
+        >
+          {% for item in section.description %}
+          <p>{{ item }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="mt-8 sm:mt-10 md:mt-12">
+          <a
+            href="{{ section.button_url }}"
+            class="inline-flex items-center gap-3 border border-[#3D5B34]/20 px-6 py-3 font-title text-[10px] font-medium uppercase tracking-[0.1em] transition duration-300 md:px-8 md:py-4 md:text-xs"
+          >
+            <span
+              class="h-1.5 w-1.5 rounded-full bg-[#3D5B34] sm:h-2 sm:w-2"
+            ></span>
+            {{ section.button_text }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

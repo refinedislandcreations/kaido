@@ -1,0 +1,103 @@
+<!-- _includes/specification-section.html -->
+{% assign section = include.section %}
+
+<section class="bg-black section text-white">
+  <!-- Fixed max-width container -->
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10">
+    <div
+      class="mx-auto grid gap-12 sm:gap-16 md:grid-cols-2 md:gap-20 lg:gap-24"
+    >
+      <!-- Left -->
+      <div>
+        <span
+          class="font-title text-[9px] uppercase tracking-[0.25em] text-[#A8C08E] sm:text-[10px] md:text-[11px]"
+        >
+          {{ section.eyebrow }}
+        </span>
+
+        <h2
+          class="mt-4 font-title text-[2.5rem] font-bold leading-[0.9] tracking-[-0.06em] sm:mt-5 sm:text-[3rem] md:mt-6 md:text-[4rem] lg:text-[5rem]"
+        >
+          {{ section.title }}
+        </h2>
+
+        <div
+          class="mt-4 space-y-2 text-sm font-semibold text-[#A8C08E] sm:mt-5 sm:space-y-2.5 md:text-base md:mt-6"
+        >
+          {% for item in section.subtitle %}
+          <p>{{ item }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="mt-6 h-px w-full bg-white/10 sm:mt-7 md:mt-8"></div>
+
+        <div
+          class="mt-6 space-y-4 text-sm leading-[1.7] text-white/65 sm:mt-7 sm:space-y-5 md:mt-8 md:text-base"
+        >
+          {% for item in section.description %}
+          <p>{{ item }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="space-y-12 sm:space-y-14 md:space-y-16 lg:space-y-20">
+        <!-- Specifications -->
+        <div>
+          <h3
+            class="font-title font-semibold text-[9px] uppercase tracking-[0.3em] text-[#A8C08E] sm:text-[10px] md:text-[11px]"
+          >
+            Specification
+          </h3>
+
+          <div class="mt-5 border-t border-white/10 sm:mt-6 md:mt-7">
+            {% for item in section.specifications %}
+            <div
+              class="flex items-center justify-between border-b border-white/10 py-2 md:py-4"
+            >
+              <span
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+              >
+                {{ item.label }}
+              </span>
+              <span
+                class="text-right font-semibold text-xs text-white/90 md:text-sm"
+              >
+                {{ item.value }}
+              </span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Order -->
+        <div>
+          <h3
+            class="font-title font-semibold text-[9px] uppercase tracking-[0.3em] text-[#A8C08E] sm:text-[10px] md:text-[11px]"
+          >
+            Order & Delivery
+          </h3>
+
+          <div class="mt-5 border-t border-white/10 sm:mt-6 md:mt-7">
+            {% for item in section.order %}
+            <div
+              class="flex items-center justify-between border-b border-white/10 py-2 md:py-4"
+            >
+              <span
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/40 sm:text-[9px] md:text-xs"
+              >
+                {{ item.label }}
+              </span>
+              <span
+                class="text-right font-semibold text-xs text-white/90 md:text-sm"
+              >
+                {{ item.value }}
+              </span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
