@@ -3,7 +3,7 @@ layout: coming-soon
 title: Coming Soon | Kaido
 ---
 
-<section class="relative h-dvh overflow-hidden bg-black">
+<section class="relative min-h-screen overflow-hidden bg-black text-white">
   <!-- Background -->
   <div class="absolute inset-0">
     <img
@@ -12,53 +12,46 @@ title: Coming Soon | Kaido
       class="h-full w-full object-cover"
     />
 
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="absolute inset-0 bg-black/45"></div>
 
-    <!-- Vignette -->
     <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_28%,rgba(0,0,0,0.35)_65%,rgba(0,0,0,0.9)_100%)]"
+      class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
     ></div>
   </div>
-  <!-- Hero -->
-  <div class="relative z-20 flex h-dvh items-center justify-center px-6">
-    <div class="max-w-[760px] text-center">
-      <!-- Eyebrow -->
-      <div
-        class="mb-5 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md"
-      >
-        <span
-          class="font-title text-[10px] font-semibold uppercase tracking-[0.24em] text-white/70 md:text-xs"
-        >
-          New Experience in Progress
-        </span>
-      </div>
 
-      <!-- Title -->
-      <h1
-        class="font-title text-[4rem] font-extrabold leading-[0.9] tracking-[-0.06em] text-white md:text-[7rem]"
-      >
-        Coming Soon
-      </h1>
+  <div class="relative z-10 flex min-h-screen items-center justify-center">
+    <div
+      class="mx-auto w-full max-w-7xl px-5 text-center sm:px-6 md:px-8 lg:px-10"
+    >
+      <div class="mx-auto max-w-2xl lg:max-w-3xl">
+        <!-- Eyebrow with line -->
+        <div class="mb-6 flex items-center justify-center gap-4">
+          <div class="h-px w-12 bg-white/30 md:w-16"></div>
+          <span
+            class="font-title text-[10px] uppercase tracking-[0.3em] text-white/60 md:text-[11px]"
+          >
+            New Experience in Progress
+          </span>
+          <div class="h-px w-12 bg-white/30 md:w-16"></div>
+        </div>
 
-      <!-- CTA -->
-      <div class="mt-10">
-        <a
-          href="#"
-          class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-title text-sm font-bold uppercase tracking-[0.14em] text-black transition duration-300 hover:-translate-y-[2px] hover:opacity-90"
+        <!-- Title -->
+        <h1
+          class="font-title text-[4rem] font-bold leading-[0.9] tracking-[-0.06em] sm:text-[5rem] md:text-[7rem]"
         >
-          Stay Updated
-        </a>
+          Coming Soon
+        </h1>
+
+        <!-- Button -->
+        <div class="mt-10 md:mt-12">
+          <a
+            href="#"
+            class="inline-flex items-center justify-center border border-white/30 bg-white px-8 py-4 font-title text-xs font-semibold uppercase tracking-[0.28em] text-black transition duration-300 hover:bg-transparent hover:text-white md:px-10 md:py-5 md:text-sm"
+          >
+            Stay Updated
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="absolute bottom-0 left-0 z-20 w-full pb-8 text-center">
-    <span
-      class="font-title text-[10px] uppercase tracking-[0.22em] text-white/40 md:text-xs"
-    >
-      A permanent standard in recovery
-    </span>
   </div>
 </section>
