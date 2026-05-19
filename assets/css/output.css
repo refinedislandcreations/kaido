@@ -299,6 +299,9 @@
   .min-h-\[70dvh\] {
     min-height: 70dvh;
   }
+  .min-h-dvh {
+    min-height: 100dvh;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -578,9 +581,6 @@
   }
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
-  }
-  .pt-20 {
-    padding-top: calc(var(--spacing) * 20);
   }
   .pt-28 {
     padding-top: calc(var(--spacing) * 28);
@@ -972,11 +972,6 @@
       padding-block: calc(var(--spacing) * 4);
     }
   }
-  .sm\:pt-24 {
-    @media (width >= 40rem) {
-      padding-top: calc(var(--spacing) * 24);
-    }
-  }
   .sm\:text-base {
     @media (width >= 40rem) {
       font-size: var(--text-base);
@@ -1201,26 +1196,6 @@
   .md\:py-10 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 10);
-    }
-  }
-  .md\:pt-28 {
-    @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 28);
-    }
-  }
-  .md\:pt-32 {
-    @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 32);
-    }
-  }
-  .md\:pt-36 {
-    @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 36);
-    }
-  }
-  .md\:pt-42 {
-    @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 42);
     }
   }
   .md\:pt-48 {
