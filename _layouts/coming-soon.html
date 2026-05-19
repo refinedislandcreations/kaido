@@ -57,6 +57,7 @@
   </head>
 
   <body class="bg-black text-white antialiased">
-    {{ content }}
+    {% include site-header.html %}
+    <main>{{ content }}</main>
   </body>
 </html>
