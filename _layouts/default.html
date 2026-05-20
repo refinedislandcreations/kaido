@@ -15,6 +15,50 @@
       content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
     />
 
+    <!-- Canonical Tag -->
+    <link
+      rel="canonical"
+      href="{% if page.url == '/' %}{{ site.url }}/{% else %}{{ site.url }}{{ page.url }}{% endif %}"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"
+    />
+    <meta
+      property="og:description"
+      content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta
+      property="og:url"
+      content="{% if page.url == '/' %}{{ site.url }}/{% else %}{{ site.url }}{{ page.url }}{% endif %}"
+    />
+    <meta
+      property="og:image"
+      content="{% if page.og_image %}{{ page.og_image }}{% else %}{{ site.url }}/assets/images/phantom-hero.png{% endif %}"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kaido_recovery" />
+    <meta
+      name="twitter:title"
+      content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"
+    />
+    <meta
+      name="twitter:description"
+      content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta
+      name="twitter:image"
+      content="{% if page.og_image %}{{ page.og_image }}{% else %}{{ site.url }}/assets/images/phantom-hero.png{% endif %}"
+    />
+
     <!-- Favicon -->
     <link
       rel="apple-touch-icon"
@@ -41,6 +85,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
@@ -58,11 +103,30 @@
       rel="stylesheet"
       href="{{ '/assets/css/output.css' | relative_url }}"
     />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url }}",
+        "logo": "{{ site.url }}/assets/images/logo-2.png",
+        "description": "{{ site.description }}",
+        "sameAs": ["https://instagram.com/kaido.recovery"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Support",
+          "email": "info@kaido.recovery"
+        }
+      }
+    </script>
   </head>
 
   <body>
+    <a href="#main" class="skip-to-main">Skip to main content</a>
     {% include site-header.html %}
-    <main>{{ content }}</main>
+    <main id="main">{{ content }}</main>
     {% include site-footer.html %}
   </body>
 </html>

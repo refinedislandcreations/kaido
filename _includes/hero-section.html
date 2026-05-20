@@ -8,7 +8,8 @@
   <div class="absolute inset-0">
     <img
       src="{{ section.background_image }}"
-      alt="{{ section.title }}"
+      alt="Hero background - {{ section.title }}"
+      role="presentation"
       class="h-full w-full object-cover"
     />
 
@@ -62,6 +63,7 @@
           <a
             href="{{ section.button_url }}"
             class="inline-flex items-center justify-center border border-white px-6 py-3 font-title text-[10px] font-medium uppercase tracking-[0.1em] bg-white text-black transition duration-300 hover:bg-transparent hover:text-white sm:px-8 sm:py-4 md:text-xs md:px-10 md:py-5"
+            aria-label="{{ section.button_text }} - {{ section.title }}"
           >
             {{ section.button_text }}
           </a>

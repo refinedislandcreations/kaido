@@ -1,0 +1,109 @@
+# CloudCannon CMS Configuration for Kaido
+
+_inputs:
+  title:
+    type: text
+    label: Page Title
+  description:
+    type: textarea
+    label: Meta Description
+  og_image:
+    type: image
+    label: Social Preview Image
+  background_image:
+    type: image
+    label: Background Image
+  button_text:
+    type: text
+    label: Button Text
+  button_url:
+    type: text
+    label: Button URL
+  eyebrow:
+    type: text
+    label: Section Eyebrow
+  subtitle:
+    type: object
+    label: Subtitle
+  value:
+    type: text
+  label:
+    type: text
+
+_structures:
+  stat_item:
+    values:
+      - label: label
+        input:
+          type: text
+      - label: value
+        input:
+          type: text
+
+  spec_item:
+    values:
+      - label: label
+        input:
+          type: text
+      - label: value
+        input:
+          type: text
+
+collections_config:
+  data:
+    path: _data
+    icon: "badge"
+
+collection_groups:
+  - heading: Pages
+    collections:
+      - pages
+      - posts
+
+paths:
+  dam: assets/images
+  uploads: assets/images/uploads
+
+_outputs:
+  subtitle: html
+  description: html
+
+_array_structures:
+  items:
+    values:
+      - label: Label
+        input:
+          key: label
+          type: text
+      - label: Value
+        input:
+          key: value
+          type: text
+
+  descriptions:
+    values:
+      - input:
+          type: textarea
+          key: "0"
+
+  specifications:
+    values:
+      - label: Label
+        input:
+          key: label
+          type: text
+      - label: Value
+        input:
+          key: value
+          type: text
+
+  order:
+    values:
+      - label: Label
+        input:
+          key: label
+          type: text
+      - label: Value
+        input:
+          key: value
+          type: text

@@ -1,3 +1,13 @@
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-title: "" # the name of your site, e.g. ACME Corp.
+url: "https://kaido-recovery.com"
+baseurl: ""
+title: "Kaido - Premium Recovery Instruments"
+description: "Handmade aircraft-grade recovery instruments designed for permanence. The Phantom collection featuring luxury cold plunge therapy systems."
+logo: "https://kaido-recovery.com/assets/images/logo-2.png"
+author: "Kaido"
+locale: "en_US"
+twitter:
+  username: "@kaido_recovery"
+og:
+  image: "https://kaido-recovery.com/assets/images/phantom-hero.png"
+  image_width: 1200
+  image_height: 630
