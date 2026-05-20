@@ -46,3 +46,27 @@ body {
     padding: 32px 0; /* small mobile */
   }
 }
+
+/* Custom select arrow (uses assets/images/arrow.svg rotated 180deg) */
+.select-with-arrow {
+  position: relative;
+}
+.select-with-arrow select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 2.25rem; /* space for the arrow */
+}
+.select-with-arrow::after {
+  content: "";
+  position: absolute;
+  top: 75%;
+  right: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-image: url("../images/arrow.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translateY(-50%) rotate(180deg);
+  pointer-events: none;
+}
