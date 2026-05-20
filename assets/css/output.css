@@ -274,6 +274,9 @@
   .-mt-18 {
     margin-top: calc(var(--spacing) * -18);
   }
+  .-mt-20 {
+    margin-top: calc(var(--spacing) * -20);
+  }
   .-mt-24 {
     margin-top: calc(var(--spacing) * -24);
   }
