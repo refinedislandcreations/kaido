@@ -9,7 +9,10 @@
       alt="{{ section.title }}"
       class="h-full w-full object-cover"
     />
-    <div class="absolute inset-0 bg-[#ECE9E1]/70"></div>
+
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,transparent_10%,rgba(236,233,225,0.45)_25%,rgba(236,233,225,0.78)_52%,rgba(236,233,225,0.96)_100%)]"
+    ></div>
   </div>
 
   <div class="relative z-10 flex items-center">
@@ -51,11 +54,12 @@
         <div class="mt-8 sm:mt-10 md:mt-12">
           <a
             href="{{ section.button_url }}"
-            class="inline-flex items-center gap-3 border border-[#3D5B34]/20 px-6 py-3 font-title text-[10px] font-medium uppercase tracking-[0.1em] transition duration-300 md:px-8 md:py-4 md:text-xs"
+            class="group inline-flex items-center gap-3 border border-[#3D5B34]/20 px-6 py-3 font-title text-[10px] font-medium uppercase tracking-[0.1em] transition duration-300 md:px-8 md:py-4 md:text-xs"
           >
             <span
-              class="h-1.5 w-1.5 rounded-full bg-[#3D5B34] sm:h-2 sm:w-2"
+              class="h-1.5 w-1.5 rounded-full bg-[#3D5B34] opacity-40 scale-75 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 sm:h-2 sm:w-2"
             ></span>
+
             {{ section.button_text }}
           </a>
         </div>
