@@ -304,20 +304,11 @@
   .inline-flex {
     display: inline-flex;
   }
-  .h-1 {
-    height: calc(var(--spacing) * 1);
-  }
   .h-1\.5 {
     height: calc(var(--spacing) * 1.5);
   }
   .h-2 {
     height: calc(var(--spacing) * 2);
-  }
-  .h-3 {
-    height: calc(var(--spacing) * 3);
-  }
-  .h-\[3\.25rem\] {
-    height: 3.25rem;
   }
   .h-\[calc\(var\(--spacing\)\*10\)\] {
     height: calc(var(--spacing) * 10);
@@ -334,23 +325,17 @@
   .min-h-\[70dvh\] {
     min-height: 70dvh;
   }
-  .min-h-dvh {
+  .min-h-\[100dvh\] {
     min-height: 100dvh;
   }
   .min-h-screen {
     min-height: 100vh;
-  }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
   }
   .w-1\.5 {
     width: calc(var(--spacing) * 1.5);
   }
   .w-2 {
     width: calc(var(--spacing) * 2);
-  }
-  .w-3 {
-    width: calc(var(--spacing) * 3);
   }
   .w-10 {
     width: calc(var(--spacing) * 10);
@@ -484,9 +469,6 @@
   .border-\[\#3D5B34\]\/20 {
     border-color: color-mix(in oklab, #3D5B34 20%, transparent);
   }
-  .border-\[\#A8CD97\]\/40 {
-    border-color: color-mix(in oklab, #A8CD97 40%, transparent);
-  }
   .border-white {
     border-color: var(--color-white);
   }
@@ -506,12 +488,6 @@
     border-color: color-mix(in srgb, #fff 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-white) 30%, transparent);
-    }
-  }
-  .border-white\/40 {
-    border-color: color-mix(in srgb, #fff 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-white) 40%, transparent);
     }
   }
   .border-white\/80 {
@@ -618,9 +594,6 @@
   .object-cover {
     object-fit: cover;
   }
-  .object-\[50\%_40\%\] {
-    object-position: 50% 40%;
-  }
   .object-center {
     object-position: center;
   }
@@ -635,9 +608,6 @@
   }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
-  }
-  .px-8 {
-    padding-inline: calc(var(--spacing) * 8);
   }
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
@@ -659,9 +629,6 @@
   }
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
-  }
-  .pt-28 {
-    padding-top: calc(var(--spacing) * 28);
   }
   .pt-32 {
     padding-top: calc(var(--spacing) * 32);
@@ -802,9 +769,6 @@
   .text-\[\#A8C08E\] {
     color: #A8C08E;
   }
-  .text-\[\#A8CD97\] {
-    color: #A8CD97;
-  }
   .text-black {
     color: var(--color-black);
   }
@@ -918,24 +882,10 @@
       }
     }
   }
-  .hover\:border-\[\#A8CD97\] {
-    &:hover {
-      @media (hover: hover) {
-        border-color: #A8CD97;
-      }
-    }
-  }
   .hover\:border-white {
     &:hover {
       @media (hover: hover) {
         border-color: var(--color-white);
-      }
-    }
-  }
-  .hover\:bg-\[\#A8CD97\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: #A8CD97;
       }
     }
   }
@@ -1279,21 +1229,6 @@
       display: flex;
     }
   }
-  .md\:h-2 {
-    @media (width >= 48rem) {
-      height: calc(var(--spacing) * 2);
-    }
-  }
-  .md\:h-4 {
-    @media (width >= 48rem) {
-      height: calc(var(--spacing) * 4);
-    }
-  }
-  .md\:h-24 {
-    @media (width >= 48rem) {
-      height: calc(var(--spacing) * 24);
-    }
-  }
   .md\:min-h-\[85dvh\] {
     @media (width >= 48rem) {
       min-height: 85dvh;
@@ -1302,16 +1237,6 @@
   .md\:min-h-screen {
     @media (width >= 48rem) {
       min-height: 100vh;
-    }
-  }
-  .md\:w-2 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 2);
-    }
-  }
-  .md\:w-4 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 4);
     }
   }
   .md\:w-16 {
@@ -1382,64 +1307,9 @@
       }
     }
   }
-  .md\:object-\[-20vh_center\] {
-    @media (width >= 48rem) {
-      object-position: -20vh center;
-    }
-  }
-  .md\:object-\[-40vh_center\] {
-    @media (width >= 48rem) {
-      object-position: -40vh center;
-    }
-  }
-  .md\:object-\[40\%_50\%\] {
-    @media (width >= 48rem) {
-      object-position: 40% 50%;
-    }
-  }
-  .md\:object-\[50\%_30\%\] {
-    @media (width >= 48rem) {
-      object-position: 50% 30%;
-    }
-  }
-  .md\:object-\[50\%_40\%\] {
-    @media (width >= 48rem) {
-      object-position: 50% 40%;
-    }
-  }
-  .md\:object-\[50\%_50\%\] {
-    @media (width >= 48rem) {
-      object-position: 50% 50%;
-    }
-  }
-  .md\:object-\[50\%_60\%\] {
-    @media (width >= 48rem) {
-      object-position: 50% 60%;
-    }
-  }
-  .md\:object-\[50\%_70\%\] {
-    @media (width >= 48rem) {
-      object-position: 50% 70%;
-    }
-  }
   .md\:object-\[55\%_50\%\] {
     @media (width >= 48rem) {
       object-position: 55% 50%;
-    }
-  }
-  .md\:object-\[60\%_50\%\] {
-    @media (width >= 48rem) {
-      object-position: 60% 50%;
-    }
-  }
-  .md\:object-\[65\%_50\%\] {
-    @media (width >= 48rem) {
-      object-position: 65% 50%;
-    }
-  }
-  .md\:object-\[600\%_50\%\] {
-    @media (width >= 48rem) {
-      object-position: 600% 50%;
     }
   }
   .md\:p-8 {
@@ -1460,16 +1330,6 @@
   .md\:px-10 {
     @media (width >= 48rem) {
       padding-inline: calc(var(--spacing) * 10);
-    }
-  }
-  .md\:px-12 {
-    @media (width >= 48rem) {
-      padding-inline: calc(var(--spacing) * 12);
-    }
-  }
-  .md\:px-16 {
-    @media (width >= 48rem) {
-      padding-inline: calc(var(--spacing) * 16);
     }
   }
   .md\:py-4 {
@@ -1495,11 +1355,6 @@
   .md\:py-10 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 10);
-    }
-  }
-  .md\:pt-48 {
-    @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 48);
     }
   }
   .md\:pb-3 {
