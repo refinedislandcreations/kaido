@@ -128,5 +128,20 @@
     {% include site-header.html %}
     <main id="main">{{ content }}</main>
     {% include site-footer.html %}
+
+    <script>
+      (function () {
+        const header = document.querySelector("[data-site-header]");
+
+        if (!header) return;
+
+        const updateHeaderState = () => {
+          header.classList.toggle("is-scrolled", window.scrollY > 0);
+        };
+
+        updateHeaderState();
+        window.addEventListener("scroll", updateHeaderState, { passive: true });
+      })();
+    </script>
   </body>
 </html>
