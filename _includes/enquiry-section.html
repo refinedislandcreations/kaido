@@ -35,47 +35,45 @@
         class="mx-auto mt-6 bg-[#141414] p-4 sm:mt-6 sm:p-4 md:mt-6 md:p-5 lg:mt-8 lg:p-6"
       >
         <form class="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10">
+          <!-- First + Last Name -->
           <div class="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6">
             <div class="text-left">
               <label
                 class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
               >
-                Name
+                First Name
               </label>
+
               <input
                 type="text"
-                placeholder="Your name"
+                placeholder="First name"
                 class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
               />
             </div>
 
-            <div class="text-left select-with-arrow">
+            <div class="text-left">
               <label
                 class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
               >
-                Location
+                Last Name
               </label>
-              <select
+
+              <input
+                type="text"
+                placeholder="Last name"
                 class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
-              >
-                <option class="bg-black">Select</option>
-                <option class="bg-black">Bali</option>
-                <option class="bg-black">Lombok</option>
-                <option class="bg-black">Jakarta</option>
-                <option class="bg-black">Elsewhere in Indonesia</option>
-                <option class="bg-black">
-                  Outside Indonesia / Join Waitlist
-                </option>
-              </select>
+              />
             </div>
           </div>
 
+          <!-- Email -->
           <div class="text-left">
             <label
               class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
             >
               Email
             </label>
+
             <input
               type="email"
               placeholder="your@email.com"
@@ -83,12 +81,14 @@
             />
           </div>
 
+          <!-- Phone / WhatsApp -->
           <div class="text-left">
             <label
               class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
             >
-              WhatsApp
+              Phone / WhatsApp
             </label>
+
             <input
               type="text"
               placeholder="+62 xxx xxxx xxxx"
@@ -96,24 +96,92 @@
             />
           </div>
 
+          <!-- Location -->
+          <div class="text-left select-with-arrow">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+            >
+              Location
+            </label>
+
+            <select
+              id="locationSelect"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
+            >
+              <option class="bg-black" value="">Select</option>
+              <option class="bg-black" value="Bali">Bali</option>
+              <option class="bg-black" value="Lombok">Lombok</option>
+              <option class="bg-black" value="Jakarta">Jakarta</option>
+              <option class="bg-black" value="Elsewhere in Indonesia">
+                Elsewhere in Indonesia
+              </option>
+              <option class="bg-black" value="Outside Indonesia">
+                Outside Indonesia
+              </option>
+            </select>
+          </div>
+
+          <!-- Outside Indonesia (Conditional) -->
+          <div id="outsideIndonesiaField" class="hidden text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+            >
+              Please Specify
+            </label>
+
+            <input
+              type="text"
+              placeholder="Country / Region"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
+            />
+          </div>
+
+          <!-- Intended Use -->
           <div class="text-left select-with-arrow">
             <label
               class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
             >
               Intended Use
             </label>
+
             <select
+              id="intendedUseSelect"
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             >
-              <option class="bg-black">Select</option>
-              <option class="bg-black">Private Residence</option>
-              <option class="bg-black">Private Gym</option>
-              <option class="bg-black">Yacht</option>
-              <option class="bg-black">Hospitality / Resort</option>
-              <option class="bg-black">Wellness Operator</option>
-              <option class="bg-black">Other</option>
+              <option class="bg-black" value="">Select</option>
+              <option class="bg-black" value="Private Residence">
+                Private Residence
+              </option>
+              <option class="bg-black" value="Gym">Gym</option>
+              <option class="bg-black" value="Hospitality/Resort">
+                Hospitality / Resort
+              </option>
+              <option class="bg-black" value="Wellness Operator">
+                Wellness Operator
+              </option>
+              <option class="bg-black" value="Luxury Yacht">
+                Luxury Yacht
+              </option>
+              <option class="bg-black" value="Other">Other</option>
             </select>
           </div>
+
+          <!-- Other Intended Use (Conditional) -->
+          <div id="otherUseField" class="hidden text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+            >
+              Please Specify
+            </label>
+
+            <input
+              type="text"
+              placeholder="Tell us more"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
+            />
+          </div>
+
+          <!-- Submit -->
           <button
             type="submit"
             class="w-full border border-white bg-white py-2 font-title text-[10px] font-semibold uppercase tracking-[0.18em] text-black transition duration-300 hover:bg-transparent hover:text-white sm:py-2.5 sm:text-xs md:py-3 md:text-sm cursor-pointer"
@@ -132,3 +200,29 @@
     </div>
   </div>
 </section>
+
+<script>
+  const locationSelect = document.getElementById("locationSelect");
+  const outsideIndonesiaField = document.getElementById(
+    "outsideIndonesiaField",
+  );
+
+  const intendedUseSelect = document.getElementById("intendedUseSelect");
+  const otherUseField = document.getElementById("otherUseField");
+
+  locationSelect.addEventListener("change", function () {
+    if (this.value === "Outside Indonesia") {
+      outsideIndonesiaField.classList.remove("hidden");
+    } else {
+      outsideIndonesiaField.classList.add("hidden");
+    }
+  });
+
+  intendedUseSelect.addEventListener("change", function () {
+    if (this.value === "Other") {
+      otherUseField.classList.remove("hidden");
+    } else {
+      otherUseField.classList.add("hidden");
+    }
+  });
+</script>
