@@ -143,5 +143,24 @@
         window.addEventListener("scroll", updateHeaderState, { passive: true });
       })();
     </script>
+    <script>
+      // Register the service worker for caching and offline support
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register('{{ "/sw.js" | relative_url }}')
+            .then(function (registration) {
+              // Registration successful
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope,
+              );
+            })
+            .catch(function (err) {
+              console.warn("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
