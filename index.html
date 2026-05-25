@@ -261,11 +261,64 @@ og_image: "/assets/images/phantom-hero.png"
     });
 
     if (form && thanks) {
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
+
+        const firstName =
+          (modal.querySelector("#waitlist-first-name") || {}).value || "";
+        const email =
+          (modal.querySelector("#waitlist-email") || {}).value || "";
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert("Please enter a valid email address.");
+          modal.querySelector("#waitlist-email") &&
+            modal.querySelector("#waitlist-email").focus();
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.setAttribute("aria-busy", "true");
+          submitBtn.textContent = "Sending...";
+        }
+
+        // HubSpot form submission (programmatic)
+        const HUBSPOT_PORTAL_ID = "242242619";
+        const HUBSPOT_FORM_GUID = "d917ed7f-f0be-4392-b081-f5012f1edb17";
+
+        const body = {
+          fields: [
+            { name: "firstname", value: firstName },
+            { name: "email", value: email },
+          ],
+          context: { pageUri: window.location.href, pageName: document.title },
+        };
+
+        try {
+          const res = await fetch(
+            `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(body),
+            },
+          );
+          console.log("Waitlist: HubSpot response", res && res.status);
+          // proceed to show thanks regardless of response (you can change to res.ok if preferred)
+        } catch (err) {
+          console.error("Waitlist: HubSpot submit error", err);
+        }
+
+        // show local UI
         form.classList.add("hidden");
         thanks.classList.remove("hidden");
         modal.setAttribute("aria-hidden", "false");
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.removeAttribute("aria-busy");
+          submitBtn.textContent = "Submit";
+        }
       });
     }
   })();
