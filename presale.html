@@ -11,7 +11,7 @@ hero_section:
   description:
     - "An ice bath measured in decades, not seasons. Handmade to order in SS316 marine-grade stainless steel, finished with a fully recycled charcoal black lid and step. <em>Cold doesn't age. Neither should the instruments built around it.</em>"
   button_text: "Enquire"
-  button_url: "#"
+  button_url: "/presale.html#enquiry"
   background_image: "/assets/images/phantom-hero.png"
 
 stats_section:
@@ -74,5 +74,8 @@ enquiry_section:
 {% include hero-section.html section=page.hero_section %} {% include
 stats-section.html stats=page.stats_section %} {% include
 specification-section.html section=page.spec_section %} {% include
-collection-section.html section=page.collection_section %} {% include
-enquiry-section.html section=page.enquiry_section %}
+collection-section.html section=page.collection_section %}
+
+<div id="enquiry">
+  {% include enquiry-section.html section=page.enquiry_section %}
+</div>
