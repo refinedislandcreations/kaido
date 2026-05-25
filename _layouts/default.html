@@ -15,7 +15,6 @@
       content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
     />
 
-    <!-- Canonical Tag -->
     <link
       rel="canonical"
       href="{% if page.url == '/' %}{{ site.url }}/{% else %}{{ site.url }}{{ page.url }}{% endif %}"
@@ -162,5 +161,7 @@
         });
       }
     </script>
+    <script src="{{ '/assets/js/gsap.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/animations.js' | relative_url }}"></script>
   </body>
 </html>

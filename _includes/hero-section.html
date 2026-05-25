@@ -24,7 +24,7 @@
       <div class="max-w-2xl lg:max-w-3xl">
         <!-- Eyebrow -->
         <div
-          class="mb-3 flex items-center gap-2 sm:mb-4 sm:gap-3 md:mb-6 md:gap-4"
+          class="hero-eyebrow mb-3 flex items-center gap-2 sm:mb-4 sm:gap-3 md:mb-6 md:gap-4"
         >
           <span
             class="font-title text-[9px] uppercase tracking-[0.25em] text-[#A8CD97] sm:text-[10px] md:text-[11px]"
@@ -37,21 +37,21 @@
 
         <!-- Title -->
         <h1
-          class="font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem]"
+          class="hero-title font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem]"
         >
           {{ section.title }}
         </h1>
 
         <!-- Subtitle -->
         <div
-          class="mt-4 text-lg font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-2xl"
+          class="hero-subtitle mt-4 text-lg font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-2xl"
         >
           {{ section.subtitle }}
         </div>
 
         <!-- Description -->
         <div
-          class="mt-6 text-sm leading-[1.7] text-white/80 sm:mt-8 md:text-base md:mt-10 max-w-xl"
+          class="hero-description mt-6 text-sm leading-[1.7] text-white/80 sm:mt-8 md:text-base md:mt-10 max-w-xl"
         >
           {% for item in section.description %}
           <p>{{ item }}</p>
@@ -59,7 +59,7 @@
         </div>
 
         <!-- Button -->
-        <div class="mt-8 sm:mt-10 md:mt-12">
+        <div class="hero-button mt-8 sm:mt-10 md:mt-12">
           <!-- Button -->
           <div class="mt-8 sm:mt-10 md:mt-12">
             <a
@@ -90,3 +90,32 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Set initial states (hidden) - slightly subtler translate
+    gsap.set(".hero-eyebrow", { opacity: 0, y: 10 });
+    gsap.set(".hero-title", { opacity: 0, y: 10 });
+    gsap.set(".hero-subtitle", { opacity: 0, y: 10 });
+    gsap.set(".hero-description", { opacity: 0, y: 10 });
+    gsap.set(".hero-button", { opacity: 0, y: 10 });
+
+    // Create timeline with softer easing, longer durations and gentle overlaps
+    const heroTl = gsap.timeline({
+      defaults: {
+        duration: 0.55,
+        ease: "power3.out",
+      },
+      onComplete: () => {
+        window.dispatchEvent(new CustomEvent("heroAnimationComplete"));
+      },
+    });
+
+    heroTl
+      .to(".hero-eyebrow", { opacity: 1, y: 0, duration: 0.45 })
+      .to(".hero-title", { opacity: 1, y: 0 }, "-=0.35")
+      .to(".hero-subtitle", { opacity: 1, y: 0 }, "-=0.32")
+      .to(".hero-description", { opacity: 1, y: 0 }, "-=0.28")
+      .to(".hero-button", { opacity: 1, y: 0 }, "-=0.25");
+  });
+</script>
