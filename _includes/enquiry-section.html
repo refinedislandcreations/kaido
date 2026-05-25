@@ -34,7 +34,12 @@
       <div
         class="mx-auto mt-6 bg-[#141414] p-4 sm:mt-6 sm:p-4 md:mt-6 md:p-5 lg:mt-8 lg:p-6"
       >
-        <form class="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10">
+        <form
+          class="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10"
+          data-region="na2"
+          data-form-id="ff30bcc6-46b5-49d4-8670-92bb1eded1ab"
+          data-portal-id="242242619"
+        >
           <!-- First + Last Name -->
           <div class="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6">
             <div class="text-left">
@@ -201,6 +206,60 @@
   </div>
 </section>
 
+<!-- Enquiry Thank-you Modal -->
+<div
+  id="enquiry-thanks-modal"
+  data-enquiry-modal
+  class="waitlist-modal"
+  aria-hidden="true"
+>
+  <div class="waitlist-modal__panel w-full">
+    <div class="mx-auto max-w-2xl bg-black p-4 sm:p-5 md:p-6 lg:p-7">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span
+            class="font-title text-[9px] uppercase tracking-[0.25em] text-[#A8CD97] sm:text-[10px] md:text-[11px]"
+            >Thank you</span
+          >
+          <h2
+            id="enquiry-thanks-title"
+            class="mt-3 font-title text-[1.35rem] font-semibold uppercase leading-[0.95] tracking-[-0.04em] md:text-[2rem]"
+          >
+            Submission received
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          data-enquiry-close
+          class="text-sm text-white/50 transition-colors hover:text-white focus:outline-none focus:text-white"
+          aria-label="Close thank you"
+        >
+          Close
+        </button>
+      </div>
+
+      <div
+        data-enquiry-thanks
+        class="mt-6 border border-white/10 bg-[#141414] p-5 text-center md:mt-7 md:p-6"
+      >
+        >
+        <h3
+          class="mt-3 font-title text-[1.15rem] font-semibold uppercase tracking-[-0.04em] md:text-[1.5rem]"
+        >
+          We'll be in touch within 24 hours.
+        </h3>
+        <p
+          class="mx-auto mt-3 max-w-md text-xs leading-6 text-white/60 md:text-sm"
+        >
+          A Kaido advisor will reach out to discuss your Phantom and the order
+          process privately.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   const locationSelect = document.getElementById("locationSelect");
   const outsideIndonesiaField = document.getElementById(
@@ -225,4 +284,192 @@
       otherUseField.classList.add("hidden");
     }
   });
+</script>
+<script>
+  // --- HubSpot programmatic submission for custom form ---
+  (function () {
+    const HUBSPOT_PORTAL_ID = "242242619";
+    const HUBSPOT_FORM_GUID = "ff30bcc6-46b5-49d4-8670-92bb1eded1ab";
+
+    const form = document.querySelector(
+      'form[data-form-id="ff30bcc6-46b5-49d4-8670-92bb1eded1ab"]',
+    );
+    if (!form) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const firstNameInput =
+      form.querySelector('[data-hs-name="firstname"]') ||
+      form.querySelector('input[placeholder="First name"]');
+    const lastNameInput =
+      form.querySelector('[data-hs-name="lastname"]') ||
+      form.querySelector('input[placeholder="Last name"]');
+    const emailInput =
+      form.querySelector('[data-hs-name="email"]') ||
+      form.querySelector('input[type="email"]');
+    const phoneInput =
+      form.querySelector('[data-hs-name="phone"]') ||
+      Array.from(form.querySelectorAll('input[type="text"]')).find(
+        (i) => i.placeholder && i.placeholder.startsWith("+"),
+      ) ||
+      null;
+    const locationSelect =
+      form.querySelector('[data-hs-name="location"]') ||
+      form.querySelector("#locationSelect");
+    const outsideCountryInput =
+      form.querySelector('[data-hs-name="country"]') ||
+      form.querySelector("#outsideIndonesiaField input");
+    const intendedUseSelect =
+      form.querySelector('[data-hs-name="intended_use"]') ||
+      form.querySelector("#intendedUseSelect");
+    const otherUseInput =
+      form.querySelector('[data-hs-name="other_use"]') ||
+      form.querySelector("#otherUseField input");
+
+    function setLoading(isLoading) {
+      if (!submitBtn) return;
+      submitBtn.disabled = isLoading;
+      submitBtn.setAttribute("aria-busy", isLoading ? "true" : "false");
+      submitBtn.textContent = isLoading ? "Sending..." : "Submit Enquiry";
+    }
+
+    function validate() {
+      const errors = [];
+      if (!firstNameInput || !firstNameInput.value.trim()) {
+        errors.push("Please enter your first name.");
+      }
+      if (!emailInput || !emailInput.value.trim()) {
+        errors.push("Please enter your email.");
+      } else {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!re.test(emailInput.value.trim())) {
+          errors.push("Please enter a valid email address.");
+        }
+      }
+
+      // render inline error box
+      let errorBox = form.querySelector(".enquiry-error-box");
+      if (!errorBox) {
+        errorBox = document.createElement("div");
+        errorBox.className = "enquiry-error-box mb-4 text-sm text-red-400";
+        form.insertBefore(errorBox, form.firstChild);
+      }
+      if (errors.length) {
+        errorBox.textContent = errors.join(" ");
+        return false;
+      }
+      errorBox.textContent = "";
+      return true;
+    }
+
+    const submitHandler = async (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      const fields = [];
+      if (firstNameInput && firstNameInput.value)
+        fields.push({ name: "firstname", value: firstNameInput.value });
+      if (lastNameInput && lastNameInput.value)
+        fields.push({ name: "lastname", value: lastNameInput.value });
+      if (emailInput && emailInput.value)
+        fields.push({ name: "email", value: emailInput.value });
+      if (phoneInput && phoneInput.value)
+        fields.push({ name: "phone", value: phoneInput.value });
+      if (locationSelect && locationSelect.value)
+        fields.push({ name: "location", value: locationSelect.value });
+      if (outsideCountryInput && outsideCountryInput.value)
+        fields.push({ name: "country", value: outsideCountryInput.value });
+      if (intendedUseSelect && intendedUseSelect.value)
+        fields.push({ name: "intended_use", value: intendedUseSelect.value });
+      if (otherUseInput && otherUseInput.value)
+        fields.push({ name: "other_use", value: otherUseInput.value });
+
+      const body = {
+        fields,
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title,
+        },
+      };
+
+      try {
+        console.log("Enquiry: submitting to HubSpot", body);
+        setLoading(true);
+
+        const res = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          },
+        );
+
+        console.log(
+          "Enquiry: HubSpot response",
+          res && res.status,
+          res && res.statusText,
+        );
+
+        // show modal on success; also show modal on non-OK for visibility while debugging
+        form.classList.add("hidden");
+        const modal = document.getElementById("enquiry-thanks-modal");
+        if (modal) {
+          console.log("Enquiry: showing modal", modal);
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        } else {
+          console.warn(
+            "Enquiry: modal not found, falling back to inline message",
+          );
+          const wrapper = document.createElement("div");
+          wrapper.className = "text-center p-6";
+          wrapper.innerHTML =
+            '<p class="font-semibold">Thank you — we&rsquo;ll be in touch within 24 hours.</p>';
+          form.parentNode.replaceChild(wrapper, form);
+        }
+
+        if (!res.ok) {
+          console.warn("Enquiry: HubSpot returned non-OK response", res.status);
+        }
+      } catch (err) {
+        console.error("HubSpot submission error", err);
+        // still show modal so the user sees feedback; inform about offline error in console
+        form.classList.add("hidden");
+        const modal = document.getElementById("enquiry-thanks-modal");
+        if (modal) {
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+        setLoading(false);
+      }
+    };
+
+    form.addEventListener("submit", submitHandler);
+
+    // Modal close handling for enquiry-thanks-modal
+    const modal = document.getElementById("enquiry-thanks-modal");
+    if (modal) {
+      const closeBtn = modal.querySelector("[data-enquiry-close]");
+      const closeModal = () => {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        // reset and show form again
+        try {
+          form.reset();
+        } catch (e) {}
+        if (form.classList.contains("hidden")) form.classList.remove("hidden");
+      };
+      if (closeBtn) closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open"))
+          closeModal();
+      });
+    }
+  })();
 </script>
