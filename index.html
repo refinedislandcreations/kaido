@@ -154,7 +154,8 @@ og_image: "/assets/images/phantom-hero.png"
             </label>
             <input
               id="waitlist-first-name"
-              name="first_name"
+              name="firstname"
+              data-hs-name="firstname"
               type="text"
               autocomplete="given-name"
               required
@@ -173,6 +174,7 @@ og_image: "/assets/images/phantom-hero.png"
             <input
               id="waitlist-email"
               name="email"
+              data-hs-name="email"
               type="email"
               autocomplete="email"
               required
@@ -180,6 +182,25 @@ og_image: "/assets/images/phantom-hero.png"
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors"
             />
           </div>
+        </div>
+
+        <div class="text-left">
+          <label
+            for="waitlist-phone"
+            class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 md:text-xs"
+          >
+            Phone / WhatsApp
+          </label>
+          <input
+            id="waitlist-phone"
+            name="phone"
+            data-hs-name="phone"
+            type="tel"
+            autocomplete="tel"
+            required
+            placeholder="+62 xxx xxxx xxxx"
+            class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors"
+          />
         </div>
 
         <button
@@ -226,6 +247,27 @@ og_image: "/assets/images/phantom-hero.png"
     const form = modal.querySelector("[data-waitlist-form]");
     const thanks = modal.querySelector("[data-waitlist-thanks]");
     const firstNameInput = modal.querySelector("#waitlist-first-name");
+    const emailInput = modal.querySelector("#waitlist-email");
+    const phoneInput = modal.querySelector("#waitlist-phone");
+    const submitBtn = form && form.querySelector('button[type="submit"]');
+
+    function showError(message) {
+      if (!form) return;
+      let errorBox = form.querySelector(".waitlist-error-box");
+      if (!errorBox) {
+        errorBox = document.createElement("div");
+        errorBox.className = "waitlist-error-box text-sm text-red-400";
+        form.insertBefore(errorBox, form.firstChild);
+      }
+      errorBox.textContent = message;
+    }
+
+    function setLoading(isLoading) {
+      if (!submitBtn) return;
+      submitBtn.disabled = isLoading;
+      submitBtn.setAttribute("aria-busy", isLoading ? "true" : "false");
+      submitBtn.textContent = isLoading ? "Sending..." : "Submit";
+    }
 
     const openModal = () => {
       modal.classList.add("is-open");
@@ -233,13 +275,18 @@ og_image: "/assets/images/phantom-hero.png"
       document.body.style.overflow = "hidden";
       if (form) form.classList.remove("hidden");
       if (thanks) thanks.classList.add("hidden");
+      showError("");
       requestAnimationFrame(() => firstNameInput && firstNameInput.focus());
     };
 
     const closeModal = () => {
+      if (modal.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+      openButton.focus();
     };
 
     openButton.addEventListener("click", openModal);
@@ -264,23 +311,27 @@ og_image: "/assets/images/phantom-hero.png"
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const firstName =
-          (modal.querySelector("#waitlist-first-name") || {}).value || "";
-        const email =
-          (modal.querySelector("#waitlist-email") || {}).value || "";
+        const firstName = (firstNameInput || {}).value || "";
+        const email = (emailInput || {}).value || "";
+        const phone = (phoneInput || {}).value || "";
+        if (!firstName.trim()) {
+          showError("Please enter your first name.");
+          if (firstNameInput) firstNameInput.focus();
+          return;
+        }
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          alert("Please enter a valid email address.");
-          modal.querySelector("#waitlist-email") &&
-            modal.querySelector("#waitlist-email").focus();
+          showError("Please enter a valid email address.");
+          if (emailInput) emailInput.focus();
+          return;
+        }
+        if (!phone.trim()) {
+          showError("Please enter your phone or WhatsApp number.");
+          if (phoneInput) phoneInput.focus();
           return;
         }
 
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.setAttribute("aria-busy", "true");
-          submitBtn.textContent = "Sending...";
-        }
+        showError("");
+        setLoading(true);
 
         // HubSpot form submission (programmatic)
         const HUBSPOT_PORTAL_ID = "242242619";
@@ -290,7 +341,9 @@ og_image: "/assets/images/phantom-hero.png"
           fields: [
             { name: "firstname", value: firstName },
             { name: "email", value: email },
+            { name: "phone", value: phone },
           ],
+          submittedAt: Date.now().toString(),
           context: { pageUri: window.location.href, pageName: document.title },
         };
 
@@ -303,21 +356,31 @@ og_image: "/assets/images/phantom-hero.png"
               body: JSON.stringify(body),
             },
           );
-          console.log("Waitlist: HubSpot response", res && res.status);
-          // proceed to show thanks regardless of response (you can change to res.ok if preferred)
+          console.log(
+            "Waitlist: HubSpot response",
+            res && res.status,
+            res && res.statusText,
+          );
+
+          if (!res.ok) {
+            const errorText = await res.text();
+            console.error("Waitlist: HubSpot returned non-OK response", {
+              status: res.status,
+              body: errorText,
+            });
+            throw new Error("HubSpot rejected the waitlist submission.");
+          }
+
+          form.classList.add("hidden");
+          thanks.classList.remove("hidden");
+          modal.setAttribute("aria-hidden", "false");
         } catch (err) {
           console.error("Waitlist: HubSpot submit error", err);
-        }
-
-        // show local UI
-        form.classList.add("hidden");
-        thanks.classList.remove("hidden");
-        modal.setAttribute("aria-hidden", "false");
-
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.removeAttribute("aria-busy");
-          submitBtn.textContent = "Submit";
+          showError(
+            "Sorry, the waitlist submission could not be sent. Please try again or contact us directly.",
+          );
+        } finally {
+          setLoading(false);
         }
       });
     }
