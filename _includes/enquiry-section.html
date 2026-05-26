@@ -53,6 +53,7 @@
                 type="text"
                 name="firstname"
                 data-hs-name="firstname"
+                required
                 placeholder="First name"
                 class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
               />
@@ -69,6 +70,7 @@
                 type="text"
                 name="lastname"
                 data-hs-name="lastname"
+                required
                 placeholder="Last name"
                 class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
               />
@@ -87,6 +89,7 @@
               type="email"
               name="email"
               data-hs-name="email"
+              required
               placeholder="your@email.com"
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             />
@@ -104,6 +107,7 @@
               type="text"
               name="hs_whatsapp_phone_number"
               data-hs-name="hs_whatsapp_phone_number"
+              required
               placeholder="+62 xxx xxxx xxxx"
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             />
@@ -121,6 +125,7 @@
               id="locationSelect"
               name="location"
               data-hs-name="location"
+              required
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             >
               <option class="bg-black" value="">Select</option>
@@ -136,23 +141,6 @@
             </select>
           </div>
 
-          <!-- Outside Indonesia (Conditional) -->
-          <div id="outsideIndonesiaField" class="hidden text-left">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Please Specify
-            </label>
-
-            <input
-              type="text"
-              name="country"
-              data-hs-name="country"
-              placeholder="Country / Region"
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
-            />
-          </div>
-
           <!-- Intended Use -->
           <div class="text-left select-with-arrow">
             <label
@@ -165,6 +153,7 @@
               id="intendedUseSelect"
               name="intended_use"
               data-hs-name="intended_use"
+              required
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             >
               <option class="bg-black" value="">Select</option>
@@ -181,25 +170,7 @@
               <option class="bg-black" value="Luxury Yacht">
                 Luxury Yacht
               </option>
-              <option class="bg-black" value="Other">Other</option>
             </select>
-          </div>
-
-          <!-- Other Intended Use (Conditional) -->
-          <div id="otherUseField" class="hidden text-left">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Please Specify
-            </label>
-
-            <input
-              type="text"
-              name="other_use"
-              data-hs-name="other_use"
-              placeholder="Tell us more"
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
-            />
           </div>
 
           <!-- Submit -->
@@ -276,31 +247,6 @@
 </div>
 
 <script>
-  const locationSelect = document.getElementById("locationSelect");
-  const outsideIndonesiaField = document.getElementById(
-    "outsideIndonesiaField",
-  );
-
-  const intendedUseSelect = document.getElementById("intendedUseSelect");
-  const otherUseField = document.getElementById("otherUseField");
-
-  locationSelect.addEventListener("change", function () {
-    if (this.value === "Outside Indonesia") {
-      outsideIndonesiaField.classList.remove("hidden");
-    } else {
-      outsideIndonesiaField.classList.add("hidden");
-    }
-  });
-
-  intendedUseSelect.addEventListener("change", function () {
-    if (this.value === "Other") {
-      otherUseField.classList.remove("hidden");
-    } else {
-      otherUseField.classList.add("hidden");
-    }
-  });
-</script>
-<script>
   // --- HubSpot programmatic submission for custom form ---
   (function () {
     const HUBSPOT_PORTAL_ID = "242242619";
@@ -330,9 +276,6 @@
     const locationSelect =
       form.querySelector('[data-hs-name="location"]') ||
       form.querySelector("#locationSelect");
-    const outsideCountryInput =
-      form.querySelector('[data-hs-name="country"]') ||
-      form.querySelector("#outsideIndonesiaField input");
     const intendedUseSelect =
       form.querySelector('[data-hs-name="intended_use"]') ||
       form.querySelector("#intendedUseSelect");
@@ -379,6 +322,9 @@
       if (!firstNameInput || !firstNameInput.value.trim()) {
         errors.push("Please enter your first name.");
       }
+      if (!lastNameInput || !lastNameInput.value.trim()) {
+        errors.push("Please enter your last name.");
+      }
       if (!emailInput || !emailInput.value.trim()) {
         errors.push("Please enter your email.");
       } else {
@@ -386,6 +332,15 @@
         if (!re.test(emailInput.value.trim())) {
           errors.push("Please enter a valid email address.");
         }
+      }
+      if (!phoneInput || !phoneInput.value.trim()) {
+        errors.push("Please enter your phone or WhatsApp number.");
+      }
+      if (!locationSelect || !locationSelect.value) {
+        errors.push("Please select your location.");
+      }
+      if (!intendedUseSelect || !intendedUseSelect.value) {
+        errors.push("Please select your intended use.");
       }
 
       if (errors.length) {
