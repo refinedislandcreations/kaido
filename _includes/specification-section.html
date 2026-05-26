@@ -89,7 +89,7 @@
                 {{ item.label }}
               </span>
               <span
-                class="text-right font-semibold text-xs text-white/90 md:text-sm"
+                class="text-right font-semibold text-xs md:text-sm {% if item.value == '$8,995 USD' %}text-[#A8CD97]{% else %}text-white/90{% endif %}"
               >
                 {{ item.value }}
               </span>

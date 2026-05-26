@@ -37,6 +37,19 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
 }
 
+.site-header__social-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+@media (min-width: 768px) {
+  .site-header__social-icon {
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
 .waitlist-modal {
   position: fixed;
   inset: 0;
