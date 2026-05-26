@@ -102,8 +102,8 @@
 
             <input
               type="text"
-              name="phone"
-              data-hs-name="phone"
+              name="hs_whatsapp_phone_number"
+              data-hs-name="hs_whatsapp_phone_number"
               placeholder="+62 xxx xxxx xxxx"
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             />
@@ -168,7 +168,7 @@
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             >
               <option class="bg-black" value="">Select</option>
-              <option class="bg-black" value="Private Residence">
+              <option class="bg-black" value="Private">
                 Private Residence
               </option>
               <option class="bg-black" value="Gym">Gym</option>
@@ -322,7 +322,7 @@
       form.querySelector('[data-hs-name="email"]') ||
       form.querySelector('input[type="email"]');
     const phoneInput =
-      form.querySelector('[data-hs-name="phone"]') ||
+      form.querySelector('[data-hs-name="hs_whatsapp_phone_number"]') ||
       Array.from(form.querySelectorAll('input[type="text"]')).find(
         (i) => i.placeholder && i.placeholder.startsWith("+"),
       ) ||
@@ -336,9 +336,6 @@
     const intendedUseSelect =
       form.querySelector('[data-hs-name="intended_use"]') ||
       form.querySelector("#intendedUseSelect");
-    const otherUseInput =
-      form.querySelector('[data-hs-name="other_use"]') ||
-      form.querySelector("#otherUseField input");
 
     function setLoading(isLoading) {
       if (!submitBtn) return;
@@ -411,15 +408,14 @@
       if (emailInput && emailInput.value)
         fields.push({ name: "email", value: emailInput.value });
       if (phoneInput && phoneInput.value)
-        fields.push({ name: "phone", value: phoneInput.value });
+        fields.push({
+          name: "hs_whatsapp_phone_number",
+          value: phoneInput.value,
+        });
       if (locationSelect && locationSelect.value)
         fields.push({ name: "location", value: locationSelect.value });
-      if (outsideCountryInput && outsideCountryInput.value)
-        fields.push({ name: "country", value: outsideCountryInput.value });
       if (intendedUseSelect && intendedUseSelect.value)
         fields.push({ name: "intended_use", value: intendedUseSelect.value });
-      if (otherUseInput && otherUseInput.value)
-        fields.push({ name: "other_use", value: otherUseInput.value });
 
       const body = {
         fields,
