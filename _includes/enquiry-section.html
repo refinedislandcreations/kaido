@@ -345,6 +345,36 @@
       return hubspotOptionValues[fieldName]?.[selectedValue] || selectedValue;
     }
 
+    function getLocationSubmissionValue() {
+      if (
+        locationSelect &&
+        locationSelect.value === "Outside Indonesia" &&
+        outsideCountryInput &&
+        outsideCountryInput.value.trim()
+      ) {
+        return outsideCountryInput.value.trim();
+      }
+
+      return locationSelect
+        ? getHubSpotOptionValue("location", locationSelect.value)
+        : "";
+    }
+
+    function getIntendedUseSubmissionValue() {
+      if (
+        intendedUseSelect &&
+        intendedUseSelect.value === "Other" &&
+        otherUseInput &&
+        otherUseInput.value.trim()
+      ) {
+        return otherUseInput.value.trim();
+      }
+
+      return intendedUseSelect
+        ? getHubSpotOptionValue("intended_use", intendedUseSelect.value)
+        : "";
+    }
+
     function toggleConditionalFields() {
       const isOutsideIndonesia =
         locationSelect && locationSelect.value === "Outside Indonesia";
@@ -481,7 +511,7 @@
       if (locationSelect && locationSelect.value)
         fields.push({
           name: "location",
-          value: getHubSpotOptionValue("location", locationSelect.value),
+          value: getLocationSubmissionValue(),
         });
       if (
         locationSelect &&
@@ -494,10 +524,7 @@
       if (intendedUseSelect && intendedUseSelect.value)
         fields.push({
           name: "intended_use",
-          value: getHubSpotOptionValue(
-            "intended_use",
-            intendedUseSelect.value,
-          ),
+          value: getIntendedUseSubmissionValue(),
         });
       if (
         intendedUseSelect &&
