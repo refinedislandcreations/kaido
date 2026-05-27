@@ -141,6 +141,23 @@
             </select>
           </div>
 
+          <!-- Outside Indonesia (Conditional) -->
+          <div id="outsideIndonesiaField" class="hidden text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+            >
+              Please Specify
+            </label>
+
+            <input
+              type="text"
+              name="country"
+              data-hs-name="country"
+              placeholder="Country / Region"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
+            />
+          </div>
+
           <!-- Intended Use -->
           <div class="text-left select-with-arrow">
             <label
@@ -157,7 +174,7 @@
               class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
             >
               <option class="bg-black" value="">Select</option>
-              <option class="bg-black" value="Private">
+              <option class="bg-black" value="Private Residence">
                 Private Residence
               </option>
               <option class="bg-black" value="Gym">Gym</option>
@@ -170,7 +187,25 @@
               <option class="bg-black" value="Luxury Yacht">
                 Luxury Yacht
               </option>
+              <option class="bg-black" value="Other">Other</option>
             </select>
+          </div>
+
+          <!-- Other Intended Use (Conditional) -->
+          <div id="otherUseField" class="hidden text-left">
+            <label
+              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+            >
+              Please Specify
+            </label>
+
+            <input
+              type="text"
+              name="other_use"
+              data-hs-name="other_use"
+              placeholder="Tell us more"
+              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors md:mt-3 md:pb-2 md:text-sm"
+            />
           </div>
 
           <!-- Submit -->
@@ -276,9 +311,69 @@
     const locationSelect =
       form.querySelector('[data-hs-name="location"]') ||
       form.querySelector("#locationSelect");
+    const outsideCountryInput =
+      form.querySelector('[data-hs-name="country"]') ||
+      form.querySelector("#outsideIndonesiaField input");
+    const outsideCountryField = form.querySelector("#outsideIndonesiaField");
     const intendedUseSelect =
       form.querySelector('[data-hs-name="intended_use"]') ||
       form.querySelector("#intendedUseSelect");
+    const otherUseInput =
+      form.querySelector('[data-hs-name="other_use"]') ||
+      form.querySelector("#otherUseField input");
+    const otherUseField = form.querySelector("#otherUseField");
+
+    const hubspotOptionValues = {
+      location: {
+        Bali: "Bali",
+        Lombok: "Lombok",
+        Jakarta: "Jakarta",
+        "Elsewhere in Indonesia": "Elsewhere in Indonesia",
+        "Outside Indonesia": "Outside Indonesia",
+      },
+      intended_use: {
+        "Private Residence": "Private",
+        Gym: "Gym",
+        "Hospitality/Resort": "Hospitality/Resort",
+        "Wellness Operator": "Wellness Operator",
+        "Luxury Yacht": "Luxury Yacht",
+        Other: "Other",
+      },
+    };
+
+    function getHubSpotOptionValue(fieldName, selectedValue) {
+      return hubspotOptionValues[fieldName]?.[selectedValue] || selectedValue;
+    }
+
+    function toggleConditionalFields() {
+      const isOutsideIndonesia =
+        locationSelect && locationSelect.value === "Outside Indonesia";
+      const isOtherUse = intendedUseSelect && intendedUseSelect.value === "Other";
+
+      if (outsideCountryField) {
+        outsideCountryField.classList.toggle("hidden", !isOutsideIndonesia);
+      }
+      if (outsideCountryInput) {
+        outsideCountryInput.required = isOutsideIndonesia;
+        if (!isOutsideIndonesia) outsideCountryInput.value = "";
+      }
+
+      if (otherUseField) {
+        otherUseField.classList.toggle("hidden", !isOtherUse);
+      }
+      if (otherUseInput) {
+        otherUseInput.required = isOtherUse;
+        if (!isOtherUse) otherUseInput.value = "";
+      }
+    }
+
+    if (locationSelect) {
+      locationSelect.addEventListener("change", toggleConditionalFields);
+    }
+    if (intendedUseSelect) {
+      intendedUseSelect.addEventListener("change", toggleConditionalFields);
+    }
+    toggleConditionalFields();
 
     function setLoading(isLoading) {
       if (!submitBtn) return;
@@ -342,6 +437,20 @@
       if (!intendedUseSelect || !intendedUseSelect.value) {
         errors.push("Please select your intended use.");
       }
+      if (
+        locationSelect &&
+        locationSelect.value === "Outside Indonesia" &&
+        (!outsideCountryInput || !outsideCountryInput.value.trim())
+      ) {
+        errors.push("Please specify your country or region.");
+      }
+      if (
+        intendedUseSelect &&
+        intendedUseSelect.value === "Other" &&
+        (!otherUseInput || !otherUseInput.value.trim())
+      ) {
+        errors.push("Please specify your intended use.");
+      }
 
       if (errors.length) {
         showError(errors.join(" "));
@@ -367,10 +476,37 @@
           name: "hs_whatsapp_phone_number",
           value: phoneInput.value,
         });
+      if (phoneInput && phoneInput.value)
+        fields.push({ name: "phone", value: phoneInput.value });
       if (locationSelect && locationSelect.value)
-        fields.push({ name: "location", value: locationSelect.value });
+        fields.push({
+          name: "location",
+          value: getHubSpotOptionValue("location", locationSelect.value),
+        });
+      if (
+        locationSelect &&
+        locationSelect.value === "Outside Indonesia" &&
+        outsideCountryInput &&
+        outsideCountryInput.value
+      ) {
+        fields.push({ name: "country", value: outsideCountryInput.value });
+      }
       if (intendedUseSelect && intendedUseSelect.value)
-        fields.push({ name: "intended_use", value: intendedUseSelect.value });
+        fields.push({
+          name: "intended_use",
+          value: getHubSpotOptionValue(
+            "intended_use",
+            intendedUseSelect.value,
+          ),
+        });
+      if (
+        intendedUseSelect &&
+        intendedUseSelect.value === "Other" &&
+        otherUseInput &&
+        otherUseInput.value
+      ) {
+        fields.push({ name: "other_use", value: otherUseInput.value });
+      }
 
       const body = {
         fields,
@@ -415,6 +551,7 @@
         showError(
           "Sorry, the enquiry could not be submitted. Please try again or contact us directly.",
         );
+      } finally {
         setLoading(false);
       }
     };
