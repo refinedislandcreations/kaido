@@ -6,25 +6,34 @@ importScripts(
 if (workbox) {
   workbox.setConfig({ debug: false });
 
+  const CACHE_VERSION = "v20260528";
+  const ASSETS_CACHE = `assets-cache-${CACHE_VERSION}`;
+  const IMAGES_CACHE = `images-cache-${CACHE_VERSION}`;
+  const PAGES_CACHE = `pages-cache-${CACHE_VERSION}`;
+  const ACTIVE_CACHES = [ASSETS_CACHE, IMAGES_CACHE, PAGES_CACHE];
+
+  workbox.core.skipWaiting();
+  workbox.core.clientsClaim();
+  workbox.precaching.cleanupOutdatedCaches();
+
   // Precache core assets
   workbox.precaching.precacheAndRoute([
     { url: "/", revision: null },
     { url: "/index.html", revision: null },
     { url: "/offline.html", revision: null },
-    { url: "/assets/css/output.css", revision: null },
-    { url: "/assets/css/custom-style.css", revision: null },
   ]);
 
-  // Cache-first for static assets (CSS, JS)
+  // Network-first for styles and scripts so deploys pick up design changes quickly
   workbox.routing.registerRoute(
     ({ request }) =>
       request.destination === "style" || request.destination === "script",
-    new workbox.strategies.CacheFirst({
-      cacheName: "assets-cache",
+    new workbox.strategies.NetworkFirst({
+      cacheName: ASSETS_CACHE,
+      networkTimeoutSeconds: 3,
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 100,
-          maxAgeSeconds: 60 * 60 * 24 * 30,
+          maxAgeSeconds: 60 * 60 * 24 * 7,
         }),
       ],
     }),
@@ -34,7 +43,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     ({ request }) => request.destination === "image",
     new workbox.strategies.CacheFirst({
-      cacheName: "images-cache",
+      cacheName: IMAGES_CACHE,
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 200,
@@ -46,7 +55,7 @@ if (workbox) {
 
   // Network-first for navigation requests with offline fallback
   const navigationHandler = new workbox.strategies.NetworkFirst({
-    cacheName: "pages-cache",
+    cacheName: PAGES_CACHE,
     networkTimeoutSeconds: 3,
   });
 
@@ -65,6 +74,20 @@ if (workbox) {
     if (event.data && event.data.type === "SKIP_WAITING") {
       self.skipWaiting();
     }
+  });
+
+  self.addEventListener("activate", (event) => {
+    event.waitUntil(
+      caches
+        .keys()
+        .then((cacheNames) =>
+          Promise.all(
+            cacheNames
+              .filter((cacheName) => !ACTIVE_CACHES.includes(cacheName))
+              .map((cacheName) => caches.delete(cacheName)),
+          ),
+        ),
+    );
   });
 } else {
   console.warn("Workbox failed to load");
