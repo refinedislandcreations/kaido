@@ -211,7 +211,7 @@
             <label
               class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
             >
-              Please Specify
+              Country/Region
             </label>
 
             <input
@@ -259,7 +259,7 @@
               <option class="bg-black" value="Luxury Yacht">
                 Luxury Yacht
               </option>
-              <option class="bg-black" value="Other">Other</option>
+              <option class="bg-black" value="Others">Others</option>
             </select>
             <p
               data-error-for="intended_use"
@@ -273,7 +273,7 @@
             <label
               class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
             >
-              Please Specify
+              Other Intended Use
             </label>
 
             <input
@@ -498,7 +498,7 @@
         "Hospitality/Resort": "Hospitality/Resort",
         "Wellness Operator": "Wellness Operator",
         "Luxury Yacht": "Luxury Yacht",
-        Other: "Other",
+        Others: "Others",
       },
     };
 
@@ -566,7 +566,7 @@
       const isOutsideIndonesia =
         locationSelect && locationSelect.value === "Outside Indonesia";
       const isOtherUse =
-        intendedUseSelect && intendedUseSelect.value === "Other";
+        intendedUseSelect && intendedUseSelect.value === "Others";
 
       if (outsideCountryField) {
         outsideCountryField.classList.toggle("hidden", !isOutsideIndonesia);
@@ -783,7 +783,7 @@
         });
       if (
         intendedUseSelect &&
-        intendedUseSelect.value === "Other" &&
+        intendedUseSelect.value === "Others" &&
         otherUseInput &&
         otherUseInput.value
       ) {
