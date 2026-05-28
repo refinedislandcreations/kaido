@@ -143,7 +143,11 @@ og_image: "/assets/images/phantom-hero.png"
         </button>
       </div>
 
-      <form data-waitlist-form class="mt-6 space-y-5 md:mt-7 md:space-y-6">
+      <form
+        data-waitlist-form
+        class="mt-6 space-y-5 md:mt-7 md:space-y-6"
+        novalidate
+      >
         <div class="text-left">
           <label
             for="waitlist-first-name"
@@ -158,28 +162,64 @@ og_image: "/assets/images/phantom-hero.png"
             type="text"
             autocomplete="given-name"
             required
+            maxlength="30"
             placeholder="Your first name"
             class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors"
           />
+          <p class="mt-1 text-[10px] leading-4 text-white/30">
+            Maximum 30 characters.
+          </p>
+          <p
+            data-error-for="firstname"
+            class="mt-1 hidden text-[10px] leading-4 text-red-400"
+            aria-live="polite"
+          ></p>
         </div>
 
         <div class="text-left">
           <label
-            for="waitlist-phone"
+            for="waitlist-phone-number"
             class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 md:text-xs"
           >
             Phone / WhatsApp
           </label>
-          <input
-            id="waitlist-phone"
-            name="phone"
-            data-hs-name="phone"
-            type="tel"
-            autocomplete="tel"
-            required
-            placeholder="+62 xxx xxxx xxxx"
-            class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors"
-          />
+          <div class="phone-input-row mt-2">
+            <div>
+              <input
+                id="waitlist-phone-code"
+                type="text"
+                inputmode="search"
+                autocomplete="off"
+                list="waitlist-phone-code-options"
+                data-validation-field="phone"
+                required
+                placeholder="Code"
+                class="phone-input-control phone-code-search text-sm"
+              />
+              <datalist id="waitlist-phone-code-options"></datalist>
+            </div>
+
+            <input
+              id="waitlist-phone-number"
+              name="phone"
+              data-hs-name="phone"
+              data-validation-field="phone"
+              type="tel"
+              autocomplete="tel-national"
+              inputmode="numeric"
+              required
+              placeholder="812 3456 7890"
+              class="phone-input-control text-sm"
+            />
+          </div>
+          <p class="mt-1 text-[10px] leading-4 text-white/30">
+            Choose your country code and enter the rest of the number.
+          </p>
+          <p
+            data-error-for="phone"
+            class="mt-1 hidden text-[10px] leading-4 text-red-400"
+            aria-live="polite"
+          ></p>
         </div>
 
         <div class="text-left">
@@ -199,6 +239,11 @@ og_image: "/assets/images/phantom-hero.png"
             placeholder="your@email.com"
             class="mt-2 w-full border-b border-white/10 bg-transparent pb-2 text-sm text-white outline-none placeholder:text-white/20 focus:border-[#A8CD97] transition-colors"
           />
+          <p
+            data-error-for="email"
+            class="mt-1 hidden text-[10px] leading-4 text-red-400"
+            aria-live="polite"
+          ></p>
         </div>
 
         <button
@@ -207,6 +252,13 @@ og_image: "/assets/images/phantom-hero.png"
         >
           Submit
         </button>
+
+        <p
+          data-form-status
+          class="hidden text-sm leading-6 text-red-400"
+          role="status"
+          aria-live="polite"
+        ></p>
       </form>
 
       <div
@@ -241,23 +293,129 @@ og_image: "/assets/images/phantom-hero.png"
 
     if (!openButton || !modal) return;
 
+    const COUNTRY_CODES = [
+      { value: "+1", iso: "US" },
+      { value: "+7", iso: "RU" },
+      { value: "+27", iso: "ZA" },
+      { value: "+30", iso: "GR" },
+      { value: "+31", iso: "NL" },
+      { value: "+32", iso: "BE" },
+      { value: "+33", iso: "FR" },
+      { value: "+34", iso: "ES" },
+      { value: "+36", iso: "HU" },
+      { value: "+39", iso: "IT" },
+      { value: "+40", iso: "RO" },
+      { value: "+41", iso: "CH" },
+      { value: "+43", iso: "AT" },
+      { value: "+44", iso: "GB" },
+      { value: "+45", iso: "DK" },
+      { value: "+46", iso: "SE" },
+      { value: "+47", iso: "NO" },
+      { value: "+48", iso: "PL" },
+      { value: "+49", iso: "DE" },
+      { value: "+51", iso: "PE" },
+      { value: "+52", iso: "MX" },
+      { value: "+53", iso: "CU" },
+      { value: "+54", iso: "AR" },
+      { value: "+55", iso: "BR" },
+      { value: "+56", iso: "CL" },
+      { value: "+57", iso: "CO" },
+      { value: "+58", iso: "VE" },
+      { value: "+60", iso: "MY" },
+      { value: "+61", iso: "AU" },
+      { value: "+62", iso: "ID" },
+      { value: "+63", iso: "PH" },
+      { value: "+64", iso: "NZ" },
+      { value: "+65", iso: "SG" },
+      { value: "+66", iso: "TH" },
+      { value: "+81", iso: "JP" },
+      { value: "+82", iso: "KR" },
+      { value: "+84", iso: "VN" },
+      { value: "+86", iso: "CN" },
+      { value: "+90", iso: "TR" },
+      { value: "+91", iso: "IN" },
+      { value: "+92", iso: "PK" },
+      { value: "+94", iso: "LK" },
+      { value: "+95", iso: "MM" },
+      { value: "+98", iso: "IR" },
+      { value: "+212", iso: "MA" },
+      { value: "+213", iso: "DZ" },
+      { value: "+216", iso: "TN" },
+      { value: "+218", iso: "LY" },
+      { value: "+220", iso: "GM" },
+      { value: "+221", iso: "SN" },
+      { value: "+234", iso: "NG" },
+      { value: "+255", iso: "TZ" },
+      { value: "+256", iso: "UG" },
+      { value: "+971", iso: "AE" },
+      { value: "+972", iso: "IL" },
+      { value: "+974", iso: "QA" },
+      { value: "+975", iso: "BT" },
+      { value: "+976", iso: "MN" },
+      { value: "+977", iso: "NP" },
+    ];
+
     const closeButton = modal.querySelector("[data-waitlist-close]");
     const form = modal.querySelector("[data-waitlist-form]");
     const thanks = modal.querySelector("[data-waitlist-thanks]");
     const firstNameInput = modal.querySelector("#waitlist-first-name");
     const emailInput = modal.querySelector("#waitlist-email");
-    const phoneInput = modal.querySelector("#waitlist-phone");
+    const phoneCodeInput = modal.querySelector("#waitlist-phone-code");
+    const phoneCodeOptions = modal.querySelector(
+      "#waitlist-phone-code-options",
+    );
+    const phoneNumberInput = modal.querySelector("#waitlist-phone-number");
+    const statusBox = form && form.querySelector("[data-form-status]");
     const submitBtn = form && form.querySelector('button[type="submit"]');
 
-    function showError(message) {
-      if (!form) return;
-      let errorBox = form.querySelector(".waitlist-error-box");
-      if (!errorBox) {
-        errorBox = document.createElement("div");
-        errorBox.className = "waitlist-error-box text-sm text-red-400";
-        form.insertBefore(errorBox, form.firstChild);
-      }
+    if (form) form.noValidate = true;
+
+    if (phoneCodeOptions) {
+      COUNTRY_CODES.forEach(({ value, iso }) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.label = `${iso} ${value}`;
+        phoneCodeOptions.appendChild(option);
+      });
+    }
+
+    if (form) {
+      form.querySelectorAll("[data-validation-field]").forEach((field) => {
+        const fieldName = field.getAttribute("data-validation-field");
+        if (!fieldName) return;
+
+        const clearField = () => setFieldError(fieldName, "");
+        field.addEventListener("input", clearField);
+        field.addEventListener("change", clearField);
+      });
+    }
+
+    function setStatus(message) {
+      if (!statusBox) return;
+      statusBox.textContent = message;
+      statusBox.classList.toggle("hidden", !message);
+    }
+
+    function setFieldError(fieldName, message) {
+      const errorBox = form.querySelector(`[data-error-for="${fieldName}"]`);
+      const controls = form.querySelectorAll(
+        `[data-validation-field="${fieldName}"]`,
+      );
+
+      controls.forEach((control) => {
+        control.setAttribute("aria-invalid", message ? "true" : "false");
+      });
+
+      if (!errorBox) return;
       errorBox.textContent = message;
+      errorBox.classList.toggle("hidden", !message);
+    }
+
+    function clearStatusAndErrors() {
+      setStatus("");
+      ["firstname", "phone", "email"].forEach((fieldName) => {
+        setFieldError(fieldName, "");
+      });
     }
 
     function setLoading(isLoading) {
@@ -267,13 +425,104 @@ og_image: "/assets/images/phantom-hero.png"
       submitBtn.textContent = isLoading ? "Sending..." : "Submit";
     }
 
+    function normalizePhoneNumber(value) {
+      return value.replace(/\D/g, "");
+    }
+
+    function normalizePhoneCode(value) {
+      const match = value.match(/\+?(\d{1,4})/);
+      return match ? `+${match[1]}` : "";
+    }
+
+    function buildInternationalPhone() {
+      const countryCode = phoneCodeInput
+        ? normalizePhoneCode(phoneCodeInput.value)
+        : "";
+      const localNumber = phoneNumberInput
+        ? normalizePhoneNumber(phoneNumberInput.value)
+        : "";
+
+      if (!countryCode || !localNumber) return "";
+      return `${countryCode}${localNumber}`;
+    }
+
+    function validate() {
+      let isValid = true;
+      let firstInvalidField = null;
+
+      clearStatusAndErrors();
+
+      if (!firstNameInput || !firstNameInput.value.trim()) {
+        setFieldError("firstname", "Please enter your first name.");
+        isValid = false;
+        firstInvalidField = firstInvalidField || firstNameInput;
+      } else if (firstNameInput.value.trim().length > 30) {
+        setFieldError(
+          "firstname",
+          "First name must be 30 characters or fewer.",
+        );
+        isValid = false;
+        firstInvalidField = firstInvalidField || firstNameInput;
+      }
+
+      if (!phoneCodeInput || !normalizePhoneCode(phoneCodeInput.value)) {
+        setFieldError(
+          "phone",
+          "Please search and choose your country code, then enter your number.",
+        );
+        isValid = false;
+        firstInvalidField =
+          firstInvalidField || phoneCodeInput || phoneNumberInput;
+      }
+      if (!phoneNumberInput || !phoneNumberInput.value.trim()) {
+        setFieldError("phone", "Please enter the rest of your phone number.");
+        isValid = false;
+        firstInvalidField =
+          firstInvalidField || phoneNumberInput || phoneCodeInput;
+      }
+      if (
+        phoneNumberInput &&
+        normalizePhoneNumber(phoneNumberInput.value).length < 5
+      ) {
+        setFieldError(
+          "phone",
+          "Please enter at least 5 digits for the phone number.",
+        );
+        isValid = false;
+        firstInvalidField = firstInvalidField || phoneNumberInput;
+      }
+
+      if (!emailInput || !emailInput.value.trim()) {
+        setFieldError("email", "Please enter your email.");
+        isValid = false;
+        firstInvalidField = firstInvalidField || emailInput;
+      } else {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!re.test(emailInput.value.trim())) {
+          setFieldError("email", "Please enter a valid email address.");
+          isValid = false;
+          firstInvalidField = firstInvalidField || emailInput;
+        }
+      }
+
+      if (
+        !isValid &&
+        firstInvalidField &&
+        typeof firstInvalidField.focus === "function"
+      ) {
+        firstInvalidField.focus();
+      }
+
+      return isValid;
+    }
+
     const openModal = () => {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       if (form) form.classList.remove("hidden");
       if (thanks) thanks.classList.add("hidden");
-      showError("");
+      clearStatusAndErrors();
       requestAnimationFrame(() => firstNameInput && firstNameInput.focus());
     };
 
@@ -309,26 +558,13 @@ og_image: "/assets/images/phantom-hero.png"
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        const firstName = (firstNameInput || {}).value || "";
-        const email = (emailInput || {}).value || "";
-        const phone = (phoneInput || {}).value || "";
-        if (!firstName.trim()) {
-          showError("Please enter your first name.");
-          if (firstNameInput) firstNameInput.focus();
-          return;
-        }
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          showError("Please enter a valid email address.");
-          if (emailInput) emailInput.focus();
-          return;
-        }
-        if (!phone.trim()) {
-          showError("Please enter your phone or WhatsApp number.");
-          if (phoneInput) phoneInput.focus();
+        if (!validate()) {
           return;
         }
 
-        showError("");
+        const firstName = firstNameInput ? firstNameInput.value.trim() : "";
+        const email = emailInput ? emailInput.value.trim() : "";
+        const phone = buildInternationalPhone();
         setLoading(true);
 
         // HubSpot form submission (programmatic)
@@ -374,7 +610,7 @@ og_image: "/assets/images/phantom-hero.png"
           modal.setAttribute("aria-hidden", "false");
         } catch (err) {
           console.error("Waitlist: HubSpot submit error", err);
-          showError(
+          setStatus(
             "Sorry, the waitlist submission could not be sent. Please try again or contact us directly.",
           );
         } finally {

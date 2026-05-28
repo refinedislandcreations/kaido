@@ -123,7 +123,7 @@ body {
 .select-with-arrow::after {
   content: "";
   position: absolute;
-  top: 75%;
+  top: 40%;
   right: 0.75rem;
   width: 0.75rem;
   height: 0.75rem;
@@ -134,6 +134,64 @@ body {
   pointer-events: none;
 }
 
+.phone-input-row {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .phone-input-row {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+}
+
+.phone-input-control {
+  width: 100%;
+  padding: 0 0 0.5rem;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.phone-input-control::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.phone-code-search {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.phone-code-search::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.phone-code-search:focus {
+  border-color: #a8cd97;
+  background: transparent;
+  box-shadow: none;
+}
+
+.phone-code-search::-webkit-search-cancel-button,
+.phone-code-search::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.phone-input-control:focus {
+  border-color: #a8cd97;
+  background: transparent;
+  box-shadow: none;
+}
+
 /* Accessibility: Focus states for all interactive elements */
 button:focus-visible,
 a:focus-visible,
@@ -142,6 +200,12 @@ select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid #a8c08e;
   outline-offset: 2px;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #f87171 !important;
 }
 
 /* Skip to main content link (for screen readers) */
