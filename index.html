@@ -373,8 +373,7 @@ og_image: "/assets/images/phantom-hero.png"
     if (phoneCodeOptions) {
       COUNTRY_CODES.forEach(({ value, iso }) => {
         const option = document.createElement("option");
-        option.value = value;
-        option.label = `${iso} ${value}`;
+        option.value = `${iso} ${value}`;
         phoneCodeOptions.appendChild(option);
       });
     }
