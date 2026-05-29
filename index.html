@@ -148,6 +148,21 @@ og_image: "/assets/images/phantom-hero.png"
         class="mt-6 space-y-5 md:mt-7 md:space-y-6"
         novalidate
       >
+        <input
+          type="text"
+          name="hp_field"
+          aria-hidden="true"
+          tabindex="-1"
+          style="
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+          "
+        />
+        <input type="hidden" name="form_timestamp" data-form-timestamp />
         <div class="text-left">
           <label
             for="waitlist-first-name"
@@ -378,6 +393,33 @@ og_image: "/assets/images/phantom-hero.png"
       });
     }
 
+    const DISPOSABLE_DOMAINS = [
+      "mailinator.com",
+      "10minutemail.com",
+      "yopmail.com",
+      "guerrillamail.com",
+      "maildrop.cc",
+      "trashmail.com",
+      "tempmail.net",
+      "tempmail.org",
+      "mail-temp.org",
+    ];
+
+    function isDisposableEmail(email) {
+      try {
+        const domain = email.split("@").pop().toLowerCase();
+        return DISPOSABLE_DOMAINS.some((d) => domain.endsWith(d));
+      } catch (e) {
+        return false;
+      }
+    }
+
+    try {
+      const tsInput = form.querySelector("[data-form-timestamp]");
+      if (tsInput) tsInput.value = Date.now().toString();
+      form.dataset.formStart = Date.now().toString();
+    } catch (e) {}
+
     if (form) {
       form.querySelectorAll("[data-validation-field]").forEach((field) => {
         const fieldName = field.getAttribute("data-validation-field");
@@ -501,8 +543,37 @@ og_image: "/assets/images/phantom-hero.png"
           setFieldError("email", "Please enter a valid email address.");
           isValid = false;
           firstInvalidField = firstInvalidField || emailInput;
+        } else if (isDisposableEmail(emailInput.value.trim())) {
+          setFieldError(
+            "email",
+            "Disposable email addresses are not permitted.",
+          );
+          isValid = false;
+          firstInvalidField = firstInvalidField || emailInput;
         }
       }
+
+      const hp = form.querySelector('[name="hp_field"]');
+      if (hp && hp.value && hp.value.trim().length > 0) {
+        setStatus("Submission blocked.");
+        return false;
+      }
+
+      const start = form.dataset.formStart
+        ? parseInt(form.dataset.formStart, 10)
+        : 0;
+      if (start && Date.now() - start < 5000) {
+        setStatus("Please take a moment before submitting the form.");
+        return false;
+      }
+
+      try {
+        const last = localStorage.getItem("kaido_last_submit");
+        if (last && Date.now() - parseInt(last, 10) < 30000) {
+          setStatus("Please wait a moment before submitting again.");
+          return false;
+        }
+      } catch (e) {}
 
       if (
         !isValid &&
@@ -581,6 +652,10 @@ og_image: "/assets/images/phantom-hero.png"
         };
 
         try {
+          try {
+            localStorage.setItem("kaido_last_submit", Date.now().toString());
+          } catch (e) {}
+
           const res = await fetch(
             `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
             {

@@ -41,6 +41,22 @@
           data-form-id="ff30bcc6-46b5-49d4-8670-92bb1eded1ab"
           data-portal-id="242242619"
         >
+          <!-- Honeypot + timestamp for spam prevention -->
+          <input
+            type="text"
+            name="hp_field"
+            aria-hidden="true"
+            tabindex="-1"
+            style="
+              position: absolute;
+              left: -9999px;
+              top: auto;
+              width: 1px;
+              height: 1px;
+              overflow: hidden;
+            "
+          />
+          <input type="hidden" name="form_timestamp" data-form-timestamp />
           <!-- First + Last Name -->
           <div class="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6">
             <div class="text-left">
@@ -483,6 +499,35 @@
       });
     }
 
+    // --- Spam prevention helpers ---
+    const DISPOSABLE_DOMAINS = [
+      "mailinator.com",
+      "10minutemail.com",
+      "yopmail.com",
+      "guerrillamail.com",
+      "maildrop.cc",
+      "trashmail.com",
+      "tempmail.net",
+      "tempmail.org",
+      "mail-temp.org",
+    ];
+
+    function isDisposableEmail(email) {
+      try {
+        const domain = email.split("@").pop().toLowerCase();
+        return DISPOSABLE_DOMAINS.some((d) => domain.endsWith(d));
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // set form timestamp on load
+    try {
+      const tsInput = form.querySelector("[data-form-timestamp]");
+      if (tsInput) tsInput.value = Date.now().toString();
+      if (form) form.dataset.formStart = Date.now().toString();
+    } catch (e) {}
+
     const hubspotOptionValues = {
       location: {
         Bali: "Bali",
@@ -666,6 +711,13 @@
           setFieldError("email", "Please enter a valid email address.");
           isValid = false;
           firstInvalidField = firstInvalidField || emailInput;
+        } else if (isDisposableEmail(emailInput.value.trim())) {
+          setFieldError(
+            "email",
+            "Disposable email addresses are not permitted.",
+          );
+          isValid = false;
+          firstInvalidField = firstInvalidField || emailInput;
         }
       }
       if (!phoneCodeInput || !normalizePhoneCode(phoneCodeInput.value)) {
@@ -713,9 +765,10 @@
         isValid = false;
         firstInvalidField = firstInvalidField || outsideCountryInput;
       }
+
       if (
         intendedUseSelect &&
-        intendedUseSelect.value === "Other" &&
+        intendedUseSelect.value === "Others" &&
         (!otherUseInput || !otherUseInput.value.trim())
       ) {
         setFieldError(
@@ -725,6 +778,31 @@
         isValid = false;
         firstInvalidField = firstInvalidField || otherUseInput;
       }
+
+      // honeypot check
+      const hp = form.querySelector('[name="hp_field"]');
+      if (hp && hp.value && hp.value.trim().length > 0) {
+        setStatus("Submission blocked.");
+        return false;
+      }
+
+      // minimum time (5s) check
+      const start = form.dataset.formStart
+        ? parseInt(form.dataset.formStart, 10)
+        : 0;
+      if (start && Date.now() - start < 5000) {
+        setStatus("Please take a moment before submitting the form.");
+        return false;
+      }
+
+      // throttle via localStorage (30s)
+      try {
+        const last = localStorage.getItem("kaido_last_submit");
+        if (last && Date.now() - parseInt(last, 10) < 30000) {
+          setStatus("Please wait a moment before submitting again.");
+          return false;
+        }
+      } catch (e) {}
 
       if (
         !isValid &&
@@ -804,6 +882,11 @@
       try {
         console.log("Enquiry: submitting to HubSpot", body);
         setLoading(true);
+
+        // persist throttle timestamp
+        try {
+          localStorage.setItem("kaido_last_submit", Date.now().toString());
+        } catch (e) {}
 
         const res = await fetch(
           `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
