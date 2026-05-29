@@ -4,7 +4,9 @@
 <section class="relative section overflow-hidden bg-[#0A0A0A] text-[#3D5234]">
   <!-- Background -->
   <div class="absolute inset-0 flex justify-center">
-    <div class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden">
+    <div
+      class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden relative"
+    >
       <img
         src="{{ section.background_image }}"
         alt="Product preview - {{ section.title }} collection"
@@ -12,11 +14,11 @@
         loading="lazy"
         class="h-full w-full object-cover"
       />
-    </div>
 
-    <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,transparent_10%,rgba(236,233,225,0.45)_25%,rgba(236,233,225,0.78)_52%,rgba(236,233,225,0.96)_100%)]"
-    ></div>
+      <div
+        class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,transparent_10%,rgba(236,233,225,0.45)_25%,rgba(236,233,225,0.78)_52%,rgba(236,233,225,0.96)_100%)]"
+      ></div>
+    </div>
   </div>
 
   <div class="relative z-10 flex items-center">
