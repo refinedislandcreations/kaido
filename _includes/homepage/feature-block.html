@@ -1,0 +1,56 @@
+<!-- _includes/homepage/feature-block.html -->
+{% assign section = include.section %}
+{% assign flex_dir = "flex-col md:flex-row" %}
+{% if section.image_position == 'right' %}
+  {% assign flex_dir = "flex-col md:flex-row-reverse" %}
+{% endif %}
+
+<section class="relative bg-[#0A0A0A] text-white overflow-hidden">
+  <div class="relative z-10 flex items-center">
+    <div class="mx-auto w-full max-w-screen-2xl">
+      <div class="mx-auto w-full max-w-7xl px-5 py-16 md:py-24 sm:px-6 md:px-8 lg:px-10">
+        <div class="flex {{ flex_dir }} gap-8 lg:gap-16">
+          <!-- Image Side -->
+          <div class="w-full md:w-1/2 min-h-[40vh] md:min-h-[60vh] relative">
+            <img src="{{ section.image }}" alt="{{ section.title | strip_html }}" class="absolute inset-0 w-full h-full object-cover">
+          </div>
+          
+          <!-- Text Side -->
+          <div class="w-full md:w-1/2 flex flex-col justify-center">
+            <div class="w-full">
+              <div class="flex items-center gap-2 mb-6">
+                 <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-[#4F5B46]">{{ section.eyebrow }}</span>
+                 <div class="h-px w-12 md:w-16 bg-white/10"></div>
+              </div>
+              
+              <h2 class="font-title font-bold text-[3rem] md:text-[4.5rem] lg:text-[5rem] leading-[0.95] tracking-[-0.04em] uppercase text-white mb-4">
+                {{ section.title }}
+              </h2>
+              
+              {% if section.subtitle %}
+              <p class="font-bold uppercase text-lg md:text-2xl tracking-[-0.02em] mb-6 text-[#A8CD97]">{{ section.subtitle }}</p>
+              {% endif %}
+              
+              <div class="space-y-6 text-sm md:text-[15px] leading-[1.8] text-white/65">
+                {% for p in section.paragraphs %}
+                  <p>{{ p }}</p>
+                {% endfor %}
+              </div>
+              
+              {% if section.stats %}
+              <div class="mt-12 md:mt-16 grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pt-8 border-t border-white/10">
+                {% for stat in section.stats %}
+                <div>
+                  <div class="font-title text-[9px] md:text-[10px] uppercase tracking-[0.25em] text-white/60 mb-2">{{ stat.label }}</div>
+                  <div class="font-bold text-sm md:text-base text-white">{{ stat.value }}</div>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

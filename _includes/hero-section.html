@@ -1,8 +1,24 @@
 <!-- _includes/hero-section.html -->
 {% assign section = include.section %}
 
+{% if section.theme == 'light' %}
+  {% assign bg_class = "bg-white text-black" %}
+  {% assign overlay_class = "bg-white/40" %}
+  {% assign eyebrow_class = "text-black/70" %}
+  {% assign line_class = "bg-black/30" %}
+  {% assign desc_class = "text-black/80" %}
+  {% assign btn_class = "border-black/80 text-black hover:border-black hover:bg-black hover:text-white focus:ring-offset-white" %}
+{% else %}
+  {% assign bg_class = "bg-black text-white" %}
+  {% assign overlay_class = "bg-black/45" %}
+  {% assign eyebrow_class = "text-[#A8CD97]" %}
+  {% assign line_class = "bg-[#A8CD97]/40" %}
+  {% assign desc_class = "text-white/80" %}
+  {% assign btn_class = "border-white/80 text-white hover:border-white hover:bg-white hover:text-[#0A0A0A] focus:ring-offset-black" %}
+{% endif %}
+
 <section
-  class="relative min-h-[40dvh] md:min-h-[85dvh] overflow-hidden bg-black text-white"
+  class="relative min-h-[40dvh] md:min-h-[85dvh] overflow-hidden {{ bg_class }}"
 >
   <!-- Background -->
   <div class="absolute inset-0 flex justify-center">
@@ -15,7 +31,7 @@
       />
     </div>
 
-    <div class="absolute inset-0 bg-black/45"></div>
+    <div class="absolute inset-0 {{ overlay_class }}"></div>
   </div>
 
   <div class="relative z-10 flex min-h-[40dvh] md:min-h-[85dvh] items-center">
@@ -30,12 +46,12 @@
             class="hero-eyebrow mb-3 flex items-center gap-2 sm:mb-4 sm:gap-3 md:mb-6 md:gap-4"
           >
             <span
-              class="font-title text-[9px] uppercase tracking-[0.25em] text-[#A8CD97] sm:text-[10px] md:text-[11px]"
+              class="font-title text-[9px] uppercase tracking-[0.25em] {{ eyebrow_class }} sm:text-[10px] md:text-[11px]"
             >
               {{ section.eyebrow }}
             </span>
 
-            <div class="h-px w-10 bg-[#A8CD97]/40 sm:w-12 md:w-16"></div>
+            <div class="h-px w-10 {{ line_class }} sm:w-12 md:w-16"></div>
           </div>
 
           <!-- Title -->
@@ -54,7 +70,7 @@
 
           <!-- Description -->
           <div
-            class="hero-description mt-6 text-sm leading-[1.7] text-white/80 sm:mt-8 md:text-base md:mt-10 max-w-xl"
+            class="hero-description mt-6 text-sm leading-[1.7] {{ desc_class }} sm:mt-8 md:text-base md:mt-10 max-w-xl"
           >
             {% for item in section.description %}
             <p>{{ item }}</p>
@@ -67,7 +83,7 @@
             <div class="mt-8 sm:mt-10 md:mt-12">
               <a
                 href="{{ section.button_url }}"
-                class="group inline-flex items-center justify-center gap-3 border border-white/80 bg-transparent px-10 py-4 font-title text-[11px] font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#0A0A0A] focus:outline-none focus:ring-2 focus:ring-[#A8CD97] focus:ring-offset-2 focus:ring-offset-black md:text-xs cursor-pointer"
+                class="group inline-flex items-center justify-center gap-3 border bg-transparent px-10 py-4 font-title text-[11px] font-semibold uppercase tracking-[0.25em] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#A8CD97] focus:ring-offset-2 md:text-xs cursor-pointer {{ btn_class }}"
                 aria-label="{{ section.button_text }} - {{ section.title }}"
               >
                 <span>{{ section.button_text }}</span>
