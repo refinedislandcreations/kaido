@@ -1,64 +1,66 @@
 <!-- _includes/homepage/split-choice.html -->
 {% assign section = include.section %}
 
-<section class="relative bg-black text-white">
-  <div class="relative z-10 flex items-center">
+<section class="relative w-full min-h-[80vh] md:min-h-[100dvh] flex bg-black">
+  <!-- Full bleed backgrounds -->
+  <div class="absolute inset-0 flex w-full h-full">
+    <!-- Left Background -->
+    <div class="w-1/2 h-full relative group overflow-hidden">
+      <img src="{{ section.left.image }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="{{ section.left.title }}">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+    </div>
+    <!-- Right Background -->
+    <div class="w-1/2 h-full relative group overflow-hidden">
+      <img src="{{ section.right.image }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="{{ section.right.title }}">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- Absolute Centered Title (Overlapping both sides) -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none pb-20 md:pb-0">
+    <div class="flex flex-col items-center text-center">
+       <div class="flex items-center gap-2 mb-3 md:mb-4 justify-center">
+          <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-white/70">{{ section.eyebrow }}</span>
+          <div class="h-px w-12 md:w-16 bg-white/20"></div>
+       </div>
+       <h2 class="font-title font-bold text-[2.5rem] md:text-[4rem] lg:text-[4.5rem] tracking-[-0.04em] text-white leading-[1] uppercase drop-shadow-lg">
+         {{ section.title }}
+       </h2>
+    </div>
+  </div>
+
+  <!-- Content Layer matching hero-section padding -->
+  <div class="relative z-10 flex w-full min-h-[80vh] md:min-h-full items-end pb-16 md:pb-24">
     <div class="mx-auto w-full max-w-screen-2xl">
-      <div class="mx-auto w-full max-w-7xl px-5 py-16 md:py-24 sm:px-6 md:px-8 lg:px-10">
-        
-        <!-- Centered title -->
-        <div class="flex flex-col items-center text-center mb-12 md:mb-16">
-           <div class="flex items-center gap-2 mb-3 md:mb-5 justify-center">
-              <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-white/70">{{ section.eyebrow }}</span>
-              <div class="h-px w-12 md:w-16 bg-white/20"></div>
-           </div>
-           <h2 class="font-title font-bold text-[2.5rem] md:text-[4.5rem] lg:text-[5.5rem] tracking-[-0.04em] text-white leading-none uppercase">
-             {{ section.title }}
-           </h2>
+      <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10 grid grid-cols-2 gap-8 lg:gap-12">
+        <!-- Left Text -->
+        <div class="max-w-md pr-4">
+          <div class="flex items-center gap-2 mb-3 md:mb-4">
+             <span class="font-title text-[8px] md:text-[10px] uppercase tracking-[0.25em] text-white/60">{{ section.left.eyebrow }}</span>
+             <div class="h-px w-10 md:w-12 bg-white/20"></div>
+          </div>
+          <h3 class="font-title text-3xl md:text-5xl mb-4 tracking-[-0.02em] font-medium text-white">{{ section.left.title }}</h3>
+          <p class="text-white/70 text-sm md:text-[15px] leading-[1.8] mb-8">{{ section.left.description }}</p>
+          
+          <a href="{{ section.left.button_url }}" class="inline-flex items-center gap-3 border border-white/60 px-6 py-3 font-title text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black text-white pointer-events-auto">
+            <span>{{ section.left.button_text }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="square" stroke-linejoin="miter" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          <!-- Left Item -->
-          <div class="relative min-h-[50vh] md:min-h-[70vh] bg-black text-white flex flex-col justify-end p-6 md:p-12 overflow-hidden group">
-            <img src="{{ section.left.image }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="{{ section.left.title }}">
-            <!-- Gradient overlay to ensure text readability -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10"></div>
-            
-            <div class="relative z-10 max-w-lg">
-              <div class="flex items-center gap-2 mb-4">
-                 <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-white/60">{{ section.left.eyebrow }}</span>
-                 <div class="h-px w-12 md:w-16 bg-white/20"></div>
-              </div>
-              <h3 class="font-title text-3xl md:text-5xl lg:text-5xl mb-4 md:mb-6 tracking-[-0.02em] font-medium">{{ section.left.title }}</h3>
-              <p class="text-white/70 text-sm md:text-[15px] leading-[1.8] mb-8 md:mb-10 max-w-md">{{ section.left.description }}</p>
-              
-              <a href="{{ section.left.button_url }}" class="inline-flex items-center gap-3 border border-white/60 px-8 py-4 font-title text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">
-                <span>{{ section.left.button_text }}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="square" stroke-linejoin="miter" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
+        <!-- Right Text -->
+        <div class="max-w-md pl-4">
+          <div class="flex items-center gap-2 mb-3 md:mb-4">
+             <span class="font-title text-[8px] md:text-[10px] uppercase tracking-[0.25em] text-white/60">{{ section.right.eyebrow }}</span>
+             <div class="h-px w-10 md:w-12 bg-white/20"></div>
           </div>
-
-          <!-- Right Item -->
-          <div class="relative min-h-[50vh] md:min-h-[70vh] bg-[#D1D2C6] text-white flex flex-col justify-end p-6 md:p-12 overflow-hidden group">
-            <img src="{{ section.right.image }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="{{ section.right.title }}">
-            <!-- Gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/5"></div>
-            
-            <div class="relative z-10 max-w-lg">
-              <div class="flex items-center gap-2 mb-4">
-                 <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] text-white/60">{{ section.right.eyebrow }}</span>
-                 <div class="h-px w-12 md:w-16 bg-white/20"></div>
-              </div>
-              <h3 class="font-title text-3xl md:text-5xl lg:text-5xl mb-4 md:mb-6 tracking-[-0.02em] font-medium">{{ section.right.title }}</h3>
-              <p class="text-white/80 text-sm md:text-[15px] leading-[1.8] mb-8 md:mb-10 max-w-md">{{ section.right.description }}</p>
-              
-              <a href="{{ section.right.button_url }}" class="inline-flex items-center gap-3 border border-white/60 px-8 py-4 font-title text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">
-                <span>{{ section.right.button_text }}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="square" stroke-linejoin="miter" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-          </div>
+          <h3 class="font-title text-3xl md:text-5xl mb-4 tracking-[-0.02em] font-medium text-white">{{ section.right.title }}</h3>
+          <p class="text-white/80 text-sm md:text-[15px] leading-[1.8] mb-8">{{ section.right.description }}</p>
+          
+          <a href="{{ section.right.button_url }}" class="inline-flex items-center gap-3 border border-white/60 px-6 py-3 font-title text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black text-white pointer-events-auto">
+            <span>{{ section.right.button_text }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="square" stroke-linejoin="miter" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
         </div>
       </div>
     </div>
