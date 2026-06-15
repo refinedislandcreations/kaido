@@ -1,0 +1,27 @@
+<!-- _includes/product/stats-bar.html -->
+{% assign section = include.section %}
+{% if section.theme == 'light' %}
+  {% assign bg_class = "bg-[#F4F3ED] text-[#141414]" %}
+  {% assign border_outer = "border-black/10" %}
+  {% assign border_inner = "border-black/10" %}
+  {% assign eyebrow_class = "text-black/60" %}
+  {% assign title_class = "text-[#4F5B46]" %}
+{% else %}
+  {% assign bg_class = "bg-[#0A0A0A] text-white" %}
+  {% assign border_outer = "border-white/10" %}
+  {% assign border_inner = "border-white/10" %}
+  {% assign eyebrow_class = "text-[#8C9A81]" %}
+  {% assign title_class = "text-white" %}
+{% endif %}
+<section class="w-full {{ bg_class }} border-y {{ border_outer }} py-12 md:py-16">
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 divide-y md:divide-y-0 md:divide-x {{ border_inner }} lg:divide-x lg:divide-y-0">
+      {% for item in section.stats %}
+      <div class="flex flex-col space-y-4 pt-8 md:pt-0 {% if forloop.first == false %}md:pl-8{% endif %}">
+        <h4 class="font-title text-[10px] uppercase tracking-[0.2em] {{ eyebrow_class }}">{{ item.eyebrow }}</h4>
+        <p class="font-title text-2xl lg:text-3xl {{ title_class }}">{{ item.title }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+layout: default
+title: Kaido / Contact
+description: Contact Kaido for enquiries.
+
+contact-hero:
+  theme: "dark"
+  eyebrow: "KAIDO / RECOVERY"
+  title: "CONTACT"
+  subtitle: "BEGIN THE <span class='italic text-[#A8CD97]'>CONVERSATION.</span>"
+  button_text: "GET IN TOUCH"
+  button_url: "#enquiry"
+  background_image: "/assets/images/phantom-hero.webp"
+
+contact-form:
+  eyebrow: "ENQUIRY"
+  title: "PHANTOM &<br>ORACLE."
+
+contact-text:
+  theme: "light"
+  eyebrow: "BESPOKE"
+  title: "COMMERCIAL<br>SPACES,<br><span class='text-[#4F5B46]'>BY DESIGN.</span>"
+  paragraphs:
+    - "For large-scale orders, custom finishes, or placement designed into the space from the start."
+    - "Begin with the details. We will do the rest."
+  footer_quote: "- Designed for spaces that demand more."
+  button_text: "CONTACT"
+  button_url: "/contact.html"
+
+---
+
+{% include hero-section.html section=page.contact-hero %}
+<div id="enquiry">
+  {% include contact/contact-form.html section=page.contact-form %}
+</div>
+{% include homepage/text-block.html section=page.contact-text %}

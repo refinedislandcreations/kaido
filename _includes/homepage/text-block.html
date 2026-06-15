@@ -53,6 +53,23 @@
                   <p class="italic text-sm md:text-[15px] {{ text_class }}">{{ section.footer_quote }}</p>
                 </div>
               {% endif %}
+              {% if section.side_specs %}
+                <div class="mt-12 space-y-4">
+                  {% for spec in section.side_specs %}
+                  <div class="flex items-center gap-8">
+                    <span class="w-24 font-title text-[10px] uppercase tracking-[0.2em] {{ text_class }}">{{ spec.label }}</span>
+                    <span class="font-title text-sm md:text-base font-bold {{ title_class }} tracking-[-0.02em]">{{ spec.value }}</span>
+                  </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if section.button_text %}
+                <div class="mt-12 flex justify-end">
+                  <a href="{{ section.button_url }}" class="inline-flex items-center justify-center border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-white transition-colors duration-300 font-title text-[9px] uppercase tracking-[0.25em] px-8 py-4">
+                    {{ section.button_text }} &rarr;
+                  </a>
+                </div>
+              {% endif %}
             </div>
           </div>
         {% endif %}

@@ -1,0 +1,163 @@
+---
+layout: default
+title: Kaido / Oracle
+description: The Oracle ice bath.
+
+oracle-hero:
+  theme: "dark"
+  eyebrow: "KAIDO / RECOVERY"
+  title: "ORACLE"
+  subtitle: "IVORY-WHITE AND SAGE.<br>DESIGNED FOR AESTHETIC SPACES."
+  button_text: "ENQUIRE NOW"
+  button_url: "/contact.html"
+  secondary_button_text: "EXPLORE THE BUILD"
+  secondary_button_url: "#build"
+  background_image: "/assets/images/oracle.jpeg"
+
+oracle-stats:
+  stats:
+    - eyebrow: "PRODUCTION"
+      title: "HANDMADE TO ORDER"
+    - eyebrow: "SS316 MARINE-GRADE"
+      title: "STAINLESS STEEL"
+    - eyebrow: "TOTAL PRICE"
+      title: "RP 160,000,000"
+    - eyebrow: "TO PLACE ORDER"
+      title: "50% DEPOSIT"
+
+oracle-difference:
+  theme: "light"
+  eyebrow: "THE DIFFERENCE"
+  title: "<span class='text-[#4F5B46]'>SAME ENGINEERING.</span><br>DIFFERENT AESTHETIC."
+  paragraphs:
+    - "Oracle shares Phantom's SS316 core, hand-finishing, and structural warranty."
+    - "The difference is the finish. Ivory white, sage steps and lid. A statement of softness, restraint, and refinement, crafted to complement the visual language of any space it occupies."
+  side_specs:
+    - label: "MATERIAL"
+      value: "SS316 MARINE-GRADE"
+    - label: "FINISH"
+      value: "HAND-FINISHED"
+    - label: "WARRANTY"
+      value: "3-YEARS"
+
+oracle-specs:
+  eyebrow: "SPECIFICATION"
+  title: "A DOCUMENT<br>OF <span class='text-[#8C9A81]'>BUILD.</span>"
+  categories:
+    - title: "VESSEL"
+      items:
+        - title: "MATERIAL"
+          value: "SS316 MARINE-GRADE"
+          icon: "atom"
+        - title: "INTERIOR"
+          value: "NEEDLE FINISH"
+          icon: "wrench"
+        - title: "INSULATION"
+          value: "40MM CLOSED-CELL FOAM"
+          icon: "circle-slash"
+        - title: "STEP & LID"
+          value: "REPURPOSED PLASTIC"
+          icon: "circle-minus"
+    - title: "DIMENSIONS"
+      items:
+        - title: "SIZE"
+          value: "85CM × 110CM"
+          icon: "arrows-out"
+        - title: "WATER"
+          value: "550 LITRES"
+          icon: "arrows-v"
+        - title: "BARREL"
+          value: "90 KG"
+          icon: "drop"
+        - title: "STEP & LID"
+          value: "98 KG"
+          icon: "dumbbell"
+    - title: "THERMAL"
+      items:
+        - title: "RANGE"
+          value: "3°C — 40°C"
+          icon: "thermometer"
+        - title: "CHILLER"
+          value: "3000W"
+          icon: "thermometer-sun"
+        - title: "SANITATION"
+          value: "OZONE + FILTER"
+          icon: "sun"
+        - title: "WARRANTY"
+          value: "3 YEARS"
+          icon: "recycle"
+
+oracle-cta-mid:
+  theme: "dark"
+  eyebrow: "KAIDO / RECOVERY"
+  title: "FOR SPACES DESIGNED<br>TO BE REMEMBERED."
+  button_text: "ANY QUESTIONS?"
+  button_url: "/contact.html"
+  background_image: "/assets/images/oracle.jpeg"
+
+oracle-gallery:
+  eyebrow: "IN PLACE"
+  title: "A CENTERPIECE<br>OF <span class='text-[#8C9A81]'>DESIGN.</span>"
+  images:
+    - url: "/assets/images/oracle.jpeg"
+      eyebrow: "RETREAT"
+      title: "ROCCA UBUD"
+      description: "Set into the volcanic stone of the Ayung valley."
+    - url: "/assets/images/oracle.jpeg"
+      eyebrow: "POOL CLUB"
+      title: "LE BAJO"
+      description: "Anchoring the sunset edge of the Komodo waterline."
+    - url: "/assets/images/oracle.jpeg"
+      eyebrow: "PRIVATE VILLA"
+      title: "DANS VILLA"
+      description: "Drawn into the architecture, not added to it."
+    - url: "/assets/images/oracle.jpeg"
+      eyebrow: "POOL CLUB"
+      title: "LE BAJO"
+      description: "Anchoring the sunset edge of the Komodo waterline."
+
+oracle-maintenance:
+  theme: "light"
+  left:
+    eyebrow: "ON DELIVERY"
+    title: "WHAT'S<br><span class='text-[#4F5B46]'>INCLUDED</span>"
+    items:
+      - "ORACLE ICE BATH"
+      - "SMART CONTROL CHILLER"
+      - "RECYCLED STEP & LID"
+      - "HOSE & ADAPTORS"
+      - "3-YEAR WARRANTY"
+  right:
+    eyebrow: "AFTERCARE"
+    title: "PREMIUM<br>MAINTENANCE"
+    items:
+      - title: "WATER CHANGE"
+        frequency: "EVERY 2 WEEKS"
+      - title: "FILTER CHANGE"
+        frequency: "EVERY 2 WEEKS"
+      - title: "DEEP CLEAN"
+        frequency: "MONTHLY"
+      - title: "SERVICING"
+        frequency: "MONTHLY"
+    price_label: "PER MONTH"
+    price: "RP 1,500,000"
+
+oracle-cta-end:
+  theme: "light"
+  title: "MAKE ORACLE<br>YOURS."
+  button_text: "ORDER NOW"
+  button_url: "/contact.html"
+  background_image: "/assets/images/oracle.jpeg"
+
+---
+
+{% include hero-section.html section=page.oracle-hero %}
+{% include product/stats-bar.html section=page.oracle-stats %}
+{% include homepage/text-block.html section=page.oracle-difference %}
+{% include homepage/cta-hero.html section=page.oracle-cta-mid %}
+<div id="build">
+  {% include product/specs-block.html section=page.oracle-specs %}
+</div>
+{% include product/image-grid.html section=page.oracle-gallery %}
+{% include product/includes-maintenance.html section=page.oracle-maintenance %}
+{% include homepage/cta-hero.html section=page.oracle-cta-end %}
