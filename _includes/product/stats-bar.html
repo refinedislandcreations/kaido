@@ -19,7 +19,7 @@
       {% for item in section.stats %}
       <div class="flex flex-col space-y-4 pt-8 md:pt-0 {% if forloop.first == false %}md:pl-8{% endif %}">
         <h4 class="font-title text-[10px] uppercase tracking-[0.2em] {{ eyebrow_class }}">{{ item.eyebrow }}</h4>
-        <p class="font-title text-2xl lg:text-3xl {{ title_class }}">{{ item.title }}</p>
+        <p class="font-title font-bold italic text-2xl lg:text-3xl {{ title_class }}">{{ item.title }}</p>
       </div>
       {% endfor %}
     </div>

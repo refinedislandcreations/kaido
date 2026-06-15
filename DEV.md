@@ -2,531 +2,617 @@
 
 ## Objective
 
-Build the homepage (`homepage.html`) for this Jekyll project based on the design screenshots located in:
+Update the existing pages so they match the provided design screenshots much more accurately while maintaining consistency with the rest of the website.
+
+The following pages have already been created:
 
 ```text
-design/homepage/
-```
-
-The homepage must be implemented using reusable Jekyll includes and front matter-driven content.
-
-The goal is not to recreate each screenshot as a separate section file. Instead, identify reusable patterns and build a maintainable component system.
-
-**Important:** Before implementation, inspect existing pages, layouts, includes, and styles to ensure the homepage follows the same design language, coding patterns, and component architecture already used throughout the site.
-
----
-
-## Tech Stack
-
-* Jekyll
-* Liquid
-* Tailwind CSS v4
-
-All styling should be implemented primarily using Tailwind CSS v4 utility classes.
-
----
-
-## Existing Project Conventions
-
-Before creating any new code, analyze the existing project structure and follow the established patterns.
-
-### Existing Pages
-
-Review existing pages and reuse their conventions whenever possible:
-
-* Layout structure
-* Section spacing
-* Typography scale
-* Component patterns
-* Naming conventions
-* Liquid patterns
-* Front matter organization
-
-The homepage should feel like a natural part of the existing website, not a separate design system.
-
----
-
-### Existing Includes
-
-Review existing files in:
-
-```text
-_includes/
-```
-
-and any subdirectories.
-
-Reuse existing components whenever appropriate instead of creating new ones.
-
-Before creating a new include:
-
-1. Search for an existing include with similar functionality.
-2. Reuse it if possible.
-3. Extend it if necessary.
-4. Only create a new include when no suitable component exists.
-
----
-
-### Existing Styling
-
-Review the project's styling before implementing anything new.
-
-Particularly inspect:
-
-```text
-assets/css/custom-style.css
-```
-
-and any other CSS files currently used by the project.
-
-The homepage should match the visual language already established across the site.
-
----
-
-### Styling Priority
-
-Use styling in the following order:
-
-1. Existing project styles and utility classes
-2. Existing reusable components
-3. Tailwind CSS v4 utilities
-4. New custom CSS (only if absolutely necessary)
-
-Avoid creating styles that duplicate functionality already present in:
-
-```text
-assets/css/custom-style.css
-```
-
----
-
-### Visual Consistency
-
-Ensure the homepage matches existing pages in terms of:
-
-* Colors
-* Typography
-* Button styles
-* Border radius
-* Shadows
-* Section spacing
-* Container widths
-* Card designs
-* Responsive behavior
-
-The finished homepage should look like it was built by the same developer who created the rest of the site.
-
----
-
-### Avoid Design Drift
-
-Do not introduce:
-
-* New design systems
-* New spacing scales
-* New color palettes
-* New button styles
-* New card styles
-* New typography systems
-
-unless absolutely required by the provided homepage design screenshots.
-
-Prefer adapting existing project patterns whenever possible.
-
----
-
-## Reference Files
-
-### Page Implementation Reference
-
-Use the following file as the source of truth for page structure:
-
-```text
+homepage.html
 presale.html
+phantom.html
+oracle.html
+contact.html
 ```
 
-Follow its patterns for:
+However, their current implementation does not visually match the design screenshots closely enough.
 
-* Front matter structure
-* Include usage
-* Page composition
-* Data organization
-* Section ordering
+Your task is to refine and update the styling, layout, spacing, colors, typography, and visual details so each page closely matches its corresponding design sections.
+
+**Important:** Treat `homepage.html` and `presale.html` as the canonical implementations of the site's design system. All pages should use the same container widths, spacing scale, typography hierarchy, component styling, and overall visual language while being updated to match their respective design screenshots.
 
 ---
 
-### Include Implementation Reference
+## Homepage and Presale Consistency Requirement
 
-Use the following file as the source of truth for reusable includes:
-
-```text
-_includes/
-```
-
-Follow its patterns for:
-
-* Liquid syntax
-* Include parameters
-* HTML structure
-* Component architecture
-* Naming conventions
-
----
-
-## Design Assets
-
-Homepage screenshots are located in:
-
-```text
-design/homepage/
-```
-
-Examples:
-
-```text
-section-1.png
-section-2.png
-...
-section-14.png
-```
-
-Analyze every screenshot and recreate the complete homepage.
-
----
-
-## Required Deliverables
-
-### Homepage
-
-Create or update:
+Use:
 
 ```text
 homepage.html
 ```
 
----
-
-### Reusable Includes
-
-Create reusable components under:
+and
 
 ```text
-_includes/homepage/
+presale.html
 ```
 
-Use meaningful component names based on layout and functionality.
+as the visual and structural references for the website.
+
+The following pages:
+
+```text
+phantom.html
+oracle.html
+contact.html
+presale.html
+```
+
+must feel like they belong to the same design system.
+
+---
+
+### Container Width Consistency
+
+Inspect:
+
+```text
+homepage.html
+presale.html
+```
+
+and any related includes they use.
+
+Ensure that all sections in:
+
+```text
+phantom.html
+oracle.html
+contact.html
+presale.html
+```
+
+use the same:
+
+- max-width
+- container structure
+- horizontal padding
+- content alignment
+- section spacing conventions
+
+as the homepage and presale pages.
+
+Do not introduce different container widths unless explicitly required by the design.
+
+---
+
+### Visual Consistency
+
+Match the overall styling patterns already established in:
+
+```text
+homepage.html
+presale.html
+```
+
+including:
+
+- Typography scale
+- Section spacing
+- Card styling
+- Border radius
+- Shadows
+- Button styles
+- Container widths
+- Grid spacing
+- Responsive behavior
+- Gradient usage
+- Background treatments
+
+The pages should look like they were designed and built as part of the same system.
+
+---
+
+### Reuse Existing Homepage and Presale Patterns
+
+Before creating new styles:
+
+1. Inspect `homepage.html`.
+2. Inspect `presale.html`.
+3. Inspect all related includes.
+4. Reuse existing component patterns whenever possible.
+5. Extend existing patterns instead of creating new ones.
+
+---
+
+### Design Accuracy + Site Consistency
+
+The goal is to satisfy both requirements:
+
+1. Match the design screenshots as closely as possible.
+2. Maintain the same visual language and layout system used in `homepage.html` and `presale.html`.
+
+If a design screenshot leaves something ambiguous, follow the conventions already established in those pages.
+
+---
+
+## Design Sources
+
+### Presale Page
+
+Page:
+
+```text
+presale.html
+```
+
+Design screenshots:
+
+```text
+design/presale/
+```
+
+Contains multiple section screenshots.
 
 Examples:
 
 ```text
-_includes/homepage/hero.html
-_includes/homepage/feature-grid.html
-_includes/homepage/content-block.html
-_includes/homepage/stats.html
-_includes/homepage/testimonials.html
-_includes/homepage/faq.html
-_includes/homepage/cta.html
+Section 1.png
+Section 2.png
+Section 3.png
+...
 ```
 
-These are examples only. Create the components that best fit the actual homepage structure.
+Each screenshot represents a section of the Presale page.
+
+Compare the implementation against every screenshot and update the styling until it closely matches the design.
 
 ---
 
-## Component Reuse Rules
+### Phantom Page
 
-Many sections may share the same layout structure.
-
-Before creating a new include:
-
-1. Check whether an existing include can be reused.
-2. Extend the component with additional parameters if needed.
-3. Only create a new include when the layout is genuinely unique.
-
----
-
-### Good Example
-
-One reusable component:
+Page:
 
 ```text
-feature-grid.html
+phantom.html
 ```
 
-used by multiple sections with different content.
-
----
-
-### Bad Example
-
-Creating:
+Design screenshots:
 
 ```text
-section-4.html
-section-7.html
-section-11.html
+design/phantom/
 ```
 
-when they all use the same layout structure.
-
-Avoid duplicate markup.
-
-Follow DRY principles.
-
----
-
-## Front Matter Driven Content
-
-All homepage content should be stored in page front matter.
-
-Do not hardcode:
-
-* Headings
-* Paragraphs
-* Buttons
-* Cards
-* Statistics
-* Testimonials
-* FAQ items
-* Feature items
-* CTA content
-
-Content should be configurable through front matter.
-
----
-
-### Example
-
-```yaml
----
-layout: default
-
-hero:
-  title: Example Title
-  subtitle: Example Subtitle
-  image: /assets/images/home/hero.png
-
-features:
-  title: Why Choose Us
-
-  items:
-    - title: Fast
-      description: Description
-
-    - title: Reliable
-      description: Description
----
-```
-
----
-
-### Include Usage
-
-```liquid
-{% include homepage/hero.html data=page.hero %}
-
-{% include homepage/feature-grid.html
-   title=page.features.title
-   items=page.features.items %}
-```
-
----
-
-## Homepage Composition
-
-The homepage should primarily assemble reusable includes.
-
-Example:
-
-```liquid
----
-layout: default
----
-
-{% include homepage/hero.html data=page.hero %}
-
-{% include homepage/feature-grid.html
-   title=page.features.title
-   items=page.features.items %}
-
-{% include homepage/content-block.html
-   data=page.content_block %}
-
-{% include homepage/testimonials.html
-   items=page.testimonials %}
-
-{% include homepage/cta.html
-   data=page.cta %}
-```
-
----
-
-## Tailwind CSS v4 Requirements
-
-### Tailwind First
-
-Prefer utility classes over custom CSS.
-
-Good:
-
-```html
-<div class="mx-auto max-w-7xl px-6 py-20">
-```
-
-Avoid:
-
-```css
-.homepage-section {
-  max-width: 1280px;
-  padding: 80px 24px;
-}
-```
-
-unless absolutely necessary.
-
----
-
-### Responsive Design
-
-All sections must be mobile-first.
-
-Use responsive Tailwind utilities.
-
-Examples:
-
-```html
-class="grid grid-cols-1 gap-8 lg:grid-cols-2"
-```
-
-```html
-class="text-3xl md:text-4xl lg:text-5xl"
-```
-
-```html
-class="px-4 md:px-6 lg:px-8"
-```
-
----
-
-### Container Standard
-
-Prefer:
-
-```html
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-```
-
-or follow the project's existing container convention if one already exists.
-
----
-
-### Component Self-Containment
-
-Each include should contain its own Tailwind styling.
-
-Example:
-
-```liquid
-<section class="py-20">
-  <div class="mx-auto max-w-7xl px-6">
-    ...
-  </div>
-</section>
-```
-
-Avoid page-specific styling dependencies.
-
----
-
-### Design Fidelity
-
-Match the screenshots as closely as possible:
-
-* Layout
-* Spacing
-* Typography
-* Alignment
-* Cards
-* Borders
-* Shadows
-* Corner radius
-* Buttons
-* Responsive behavior
-
----
-
-## Images
-
-Use the homepage screenshots as visual references.
-
-If image assets already exist in the project:
-
-* Reuse them
-* Follow existing image conventions
-* Reference them through front matter whenever possible
-
-Avoid hardcoded image paths inside reusable includes.
-
-Example:
-
-```yaml
-hero:
-  image: /assets/images/home/hero.png
-```
-
----
-
-## Development Workflow
-
-For every screenshot in:
+Contains:
 
 ```text
-design/homepage/
+Section 1.png
+Section 2.png
+Section 3.png
+Section 4.png
+Section 5.png
+Section 6.png
+Section 7.png
 ```
 
-1. Analyze the layout.
-2. Identify the section type.
-3. Check whether an existing include can be reused.
-4. Extend an existing include if appropriate.
-5. Create a new include only if the layout is unique.
-6. Move content into front matter.
-7. Assemble the homepage using reusable includes.
+Each screenshot represents a section of the Phantom page.
 
 ---
 
-## Architecture Requirements
+### Oracle Page
 
-The final implementation must be:
+Page:
 
-* Component-based
-* DRY
-* Front matter driven
-* Reusable
-* Maintainable
-* Scalable
-* Tailwind CSS v4 based
-* Consistent with existing project architecture
+```text
+oracle.html
+```
+
+Design screenshots:
+
+```text
+design/oracle/
+```
+
+Contains:
+
+```text
+Section 1.png
+Section 2.png
+Section 3.png
+Section 4.png
+Section 5.png
+Section 6.png
+Section 7.png
+Section 8.png
+```
+
+Each screenshot represents a section of the Oracle page.
+
+---
+
+### Contact Page
+
+Page:
+
+```text
+contact.html
+```
+
+Design screenshots:
+
+```text
+design/contact/
+```
+
+Contains:
+
+```text
+Section 1.png
+Section 2.png
+Section 3.png
+```
+
+Each screenshot represents a section of the Contact page.
+
+---
+
+## Primary Goal
+
+The objective is NOT to rebuild the pages from scratch.
+
+The pages already exist.
+
+Instead:
+
+1. Compare each existing page against its corresponding design screenshots.
+2. Identify visual differences.
+3. Update the implementation until it closely matches the design.
+4. Preserve the existing page architecture whenever possible.
+
+Focus on visual accuracy and consistency with the homepage and presale pages.
+
+---
+
+## Required Improvements
+
+### Colors (Highest Priority)
+
+The current colors do not perfectly match the designs.
+
+For every section:
+
+- Compare backgrounds against the screenshot.
+- Compare text colors.
+- Compare button colors.
+- Compare gradients.
+- Compare card colors.
+- Compare border colors.
+- Compare accent colors.
+- Compare overlay colors.
+- Compare hover states.
+
+Update the implementation so the colors match the design as closely as possible.
+
+Do not approximate if the correct color can be inferred from the design.
+
+---
+
+### Spacing
+
+Review and refine:
+
+- Top padding
+- Bottom padding
+- Section spacing
+- Grid gaps
+- Card spacing
+- Content spacing
+- Button spacing
+- Image spacing
+
+Match both:
+
+- The design screenshots
+- The spacing scale used in `homepage.html`
+- The spacing scale used in `presale.html`
+
+---
+
+### Typography
+
+Review:
+
+- Font sizes
+- Font weights
+- Line heights
+- Letter spacing
+- Heading hierarchy
+- Text alignment
+
+Adjust typography to better match the design.
+
+Typography should remain consistent with:
+
+```text
+homepage.html
+presale.html
+```
+
+---
+
+### Layout
+
+Review:
+
+- Content alignment
+- Column widths
+- Image positioning
+- Grid layouts
+- Container spacing
+- Card sizing
+- Responsive stacking behavior
+
+Match the visual structure shown in the screenshots.
+
+---
+
+### Borders & Shadows
+
+Review:
+
+- Border radius
+- Border colors
+- Border widths
+- Card shadows
+- Glow effects
+- Divider styling
+
+Update where necessary.
+
+Follow existing homepage and presale styling patterns whenever possible.
+
+---
+
+### Buttons
+
+Review:
+
+- Colors
+- Hover states
+- Sizes
+- Corner radius
+- Typography
+- Padding
+- Visual weight
+
+Buttons should closely resemble both:
+
+- The design screenshots
+- The button system already used in `homepage.html`
+- The button system already used in `presale.html`
+
+---
+
+### Images & Visual Elements
+
+Review:
+
+- Image sizing
+- Aspect ratios
+- Positioning
+- Decorative elements
+- Background graphics
+- Layering effects
+
+Match the design screenshots as closely as possible.
+
+---
+
+## Existing Project Conventions
+
+Before making styling changes, review:
+
+```text
+assets/css/custom-style.css
+```
+
+and inspect:
+
+```text
+_includes/
+_layouts/
+homepage.html
+presale.html
+```
+
+Maintain consistency with the existing project where possible.
+
+However, when there is a conflict between the current implementation and the design screenshots, prioritize matching the screenshots while still staying aligned with the homepage and presale design language.
+
+---
+
+## Tailwind CSS v4
+
+Use Tailwind CSS v4 utilities whenever possible.
+
+Preferred order:
+
+1. Existing project styles
+2. Existing reusable components
+3. Existing homepage patterns
+4. Existing presale patterns
+5. Tailwind CSS v4 utilities
+6. New custom CSS (only when necessary)
+
+Avoid unnecessary custom CSS.
+
+Avoid introducing a separate styling system.
+
+---
+
+## Section-by-Section Review
+
+### Presale
+
+Compare:
+
+```text
+presale.html
+```
+
+against every screenshot inside:
+
+```text
+design/presale/
+```
+
+Update every section until it visually matches the design.
+
+---
+
+### Phantom
+
+Compare:
+
+```text
+phantom.html
+```
+
+against:
+
+```text
+design/phantom/Section 1.png
+design/phantom/Section 2.png
+design/phantom/Section 3.png
+design/phantom/Section 4.png
+design/phantom/Section 5.png
+design/phantom/Section 6.png
+design/phantom/Section 7.png
+```
+
+Update every section until it visually matches the design.
+
+---
+
+### Oracle
+
+Compare:
+
+```text
+oracle.html
+```
+
+against:
+
+```text
+design/oracle/Section 1.png
+design/oracle/Section 2.png
+design/oracle/Section 3.png
+design/oracle/Section 4.png
+design/oracle/Section 5.png
+design/oracle/Section 6.png
+design/oracle/Section 7.png
+design/oracle/Section 8.png
+```
+
+Update every section until it visually matches the design.
+
+---
+
+### Contact
+
+Compare:
+
+```text
+contact.html
+```
+
+against:
+
+```text
+design/contact/Section 1.png
+design/contact/Section 2.png
+design/contact/Section 3.png
+```
+
+Update every section until it visually matches the design.
+
+---
+
+## Validation Process
+
+For every section:
+
+1. Open the design screenshot.
+2. Compare it against the current implementation.
+3. Identify visual differences.
+4. Adjust styling.
+5. Re-check colors.
+6. Re-check spacing.
+7. Re-check typography.
+8. Re-check responsiveness.
+9. Re-check alignment.
+10. Repeat until the section closely matches the design.
+
+Do not stop after the first implementation pass.
+
+Iteratively refine the UI.
+
+---
+
+## What NOT To Do
+
+Do NOT:
+
+- Rewrite the entire page architecture.
+- Remove reusable components unnecessarily.
+- Replace existing includes without reason.
+- Introduce a new design system.
+- Change content unless required by the design.
+- Create entirely new layouts if the current layout is already structurally correct.
+- Introduce a different container system from homepage or presale.
+- Use different spacing scales than homepage or presale.
+- Create styling that conflicts with existing project conventions.
+
+Focus on refinement and visual accuracy.
 
 ---
 
 ## Success Criteria
 
-A successful implementation will:
+The update is successful when:
 
-* Recreate the complete homepage from all screenshots
-* Generate a complete `homepage.html`
-* Create reusable components in `_includes/homepage/`
-* Reuse existing includes whenever possible
-* Follow existing site patterns and styling
-* Leverage `assets/css/custom-style.css` where appropriate
-* Use front matter for content management
-* Avoid duplicated section markup
-* Follow the patterns from:
+- Presale closely matches all screenshots in `design/presale/`
+- Phantom closely matches all screenshots in `design/phantom/`
+- Oracle closely matches all screenshots in `design/oracle/`
+- Contact closely matches all screenshots in `design/contact/`
+- All pages use the same width system as `homepage.html`
+- All pages use the same width system as `presale.html`
+- All pages use the same visual language as `homepage.html`
+- All pages use the same visual language as `presale.html`
+- Colors are visually accurate
+- Typography is visually accurate
+- Spacing is visually accurate
+- Layouts are visually accurate
+- Buttons, cards, borders, and shadows match the designs
+- Responsive behavior remains intact
+- Existing project architecture is preserved
 
-```text
-presale.html
-_includes/
-```
+---
 
-* Use Tailwind CSS v4 for styling
-* Maintain visual consistency with the rest of the website
-* Be easy to extend and maintain in the future
+## Final Validation Checklist
+
+Before finishing:
+
+- Compare every section against its screenshot.
+- Verify container widths match homepage.html.
+- Verify container widths match presale.html.
+- Verify spacing patterns match homepage.html.
+- Verify spacing patterns match presale.html.
+- Verify typography hierarchy matches homepage.html.
+- Verify typography hierarchy matches presale.html.
+- Verify button styling matches homepage.html.
+- Verify button styling matches presale.html.
+- Verify colors closely match the design screenshots.
+- Verify responsive layouts still work correctly.
+
+The final result should feel like a near pixel-perfect implementation of the provided designs while remaining fully consistent with the design system already established in `homepage.html` and `presale.html`.
