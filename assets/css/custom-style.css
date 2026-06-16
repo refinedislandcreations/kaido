@@ -182,8 +182,11 @@ body {
 }
 
 .phone-code-search::-webkit-search-cancel-button,
-.phone-code-search::-webkit-calendar-picker-indicator {
-  display: none;
+.phone-code-search::-webkit-calendar-picker-indicator,
+.phone-code-search::-webkit-list-button {
+  display: none !important;
+  opacity: 0 !important;
+  -webkit-appearance: none !important;
 }
 
 .phone-input-control:focus {
