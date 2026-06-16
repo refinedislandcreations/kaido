@@ -12,11 +12,11 @@
 {% else %}
   {% assign bg_class = "bg-black text-white" %}
   {% assign overlay_class = "bg-black/45" %}
-  {% assign eyebrow_class = "text-[#A8CD97]" %}
-  {% assign line_class = "bg-[#A8CD97]/40" %}
+  {% assign eyebrow_class = "text-kaido" %}
+  {% assign line_class = "bg-kaido/40" %}
   {% assign desc_class = "text-white/80" %}
   {% assign btn_class = "border-white/80 text-white hover:border-white hover:bg-white hover:text-[#0A0A0A] focus:ring-offset-black" %}
-  {% assign ring_class = "focus:ring-[#A8CD97]" %}
+  {% assign ring_class = "focus:ring-kaido" %}
 {% endif %}
 
 <section
@@ -57,11 +57,12 @@
           </div>
 
           <!-- Title -->
-          <h1
+          {% assign h_tag = include.heading_level | default: 'h1' %}
+          <{{ h_tag }}
             class="hero-title font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem]"
           >
             {{ section.title }}
-          </h1>
+          </{{ h_tag }}>
 
           <!-- Subtitle -->
           <div

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        kaido: "#A8C08E",
+        kaido: "#A8CD97",
         dark: {
           50: "#f5f5f5",
           100: "#e0e0e0",

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: product
 title: Kaido / Phantom
 description: The Phantom ice bath.
 
@@ -27,7 +27,7 @@ phantom-stats:
 
 phantom-specs:
   eyebrow: "SPECIFICATION"
-  title: "A DOCUMENT<br>OF <span class='text-[#A8CD97]'>BUILD.</span>"
+  title: "A DOCUMENT<br>OF <span class='text-kaido'>BUILD.</span>"
   categories:
     - title: "VESSEL"
       items:
@@ -74,14 +74,14 @@ phantom-specs:
 
 phantom-cta-mid:
   theme: "dark"
-  title: "COLD IS WHERE WE BEGIN.<br><span class='text-[#A8CD97]'>IT'S NOT WHERE WE END.</span>"
+  title: "COLD IS WHERE WE BEGIN.<br><span class='text-kaido'>IT'S NOT WHERE WE END.</span>"
   button_text: "ANY QUESTIONS?"
   button_url: "/contact.html"
   background_image: "/assets/images/phantom-hero.webp"
 
 phantom-gallery:
   eyebrow: "IN PLACE"
-  title: "A CENTERPIECE<br>OF <span class='text-[#A8CD97]'>DESIGN.</span>"
+  title: "A CENTERPIECE<br>OF <span class='text-kaido'>DESIGN.</span>"
   images:
     - url: "/assets/images/phantom-hero.webp"
       eyebrow: "RETREAT"
@@ -103,7 +103,7 @@ phantom-gallery:
 phantom-maintenance:
   left:
     eyebrow: "ON DELIVERY"
-    title: "WHAT'S<br><span class='text-[#A8CD97]'>INCLUDED</span>"
+    title: "WHAT'S<br><span class='text-kaido'>INCLUDED</span>"
     items:
       - "PHANTOM ICE BATH"
       - "SMART CONTROL CHILLER"
@@ -127,19 +127,18 @@ phantom-maintenance:
 
 phantom-cta-end:
   theme: "dark"
-  title: "MAKE PHANTOM<br><span class='text-[#A8CD97]'>YOURS.</span>"
+  title: "MAKE PHANTOM<br><span class='text-kaido'>YOURS.</span>"
   button_text: "ORDER NOW"
   button_url: "/contact.html"
   background_image: "/assets/images/phantom-hero.webp"
-
 ---
 
-{% include hero-section.html section=page.phantom-hero %}
-{% include product/stats-bar.html section=page.phantom-stats %}
+{% include hero-section.html section=page.phantom-hero %} {% include
+product/stats-bar.html section=page.phantom-stats %}
 <div id="build">
   {% include product/specs-block.html section=page.phantom-specs %}
 </div>
-{% include homepage/cta-hero.html section=page.phantom-cta-mid %}
-{% include product/image-grid.html section=page.phantom-gallery %}
-{% include product/includes-maintenance.html section=page.phantom-maintenance %}
-{% include homepage/cta-hero.html section=page.phantom-cta-end %}
+{% include homepage/cta-hero.html section=page.phantom-cta-mid %} {% include
+product/image-grid.html section=page.phantom-gallery %} {% include
+product/includes-maintenance.html section=page.phantom-maintenance %} {% include
+homepage/cta-hero.html section=page.phantom-cta-end %}

@@ -2,26 +2,69 @@
 {% assign section = include.section %}
 {% if section.theme == 'light' %}
   {% assign bg_class = "bg-[#F4F3ED] text-[#141414]" %}
-  {% assign border_outer = "border-black/10" %}
-  {% assign border_inner = "border-black/10" %}
-  {% assign eyebrow_class = "text-black/60" %}
-  {% assign title_class = "text-[#4F5B46]" %}
+  {% assign border_outer = "border-black/15" %}
+  {% assign eyebrow_class = "text-black/40" %}
+  {% assign title_class = "text-black" %}
 {% else %}
-  {% assign bg_class = "bg-[#0A0A0A] text-white" %}
-  {% assign border_outer = "border-white/10" %}
-  {% assign border_inner = "border-white/10" %}
-  {% assign eyebrow_class = "text-[#A8CD97]" %}
+  {% assign bg_class = "bg-black/90 backdrop-blur-sm text-white" %}
+  {% assign border_outer = "border-white/25" %}
+  {% assign eyebrow_class = "text-white/40" %}
   {% assign title_class = "text-white" %}
 {% endif %}
-<section class="w-full {{ bg_class }} border-y {{ border_outer }} py-12 md:py-16">
-  <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 divide-y md:divide-y-0 md:divide-x {{ border_inner }} lg:divide-x lg:divide-y-0">
-      {% for item in section.stats %}
-      <div class="flex flex-col space-y-4 pt-8 md:pt-0 {% if forloop.first == false %}md:pl-8{% endif %}">
-        <h4 class="font-title text-[10px] uppercase tracking-[0.2em] {{ eyebrow_class }}">{{ item.eyebrow }}</h4>
-        <p class="font-title font-bold italic text-2xl lg:text-3xl {{ title_class }}">{{ item.title }}</p>
+
+<section class="stats-section relative z-20 w-full {{ bg_class }} border-b {{ border_outer }} py-2 md:py-6">
+  <div class="flex justify-center w-full max-w-screen-2xl mx-auto">
+    <div class="mx-auto w-full max-w-7xl px-5 py-4 sm:px-6 md:px-8 lg:px-10">
+      <!-- Responsive: 2 columns on mobile, flex row on desktop -->
+      <div class="stats-container grid grid-cols-2 gap-x-6 gap-y-5 md:flex md:w-full md:justify-between md:gap-6">
+        {% for item in section.stats %}
+        <div class="stats-item text-left">
+          <div class="mb-1 font-medium uppercase tracking-[0.1em] {{ eyebrow_class }} text-[10px] md:mb-1.5 md:text-xs">
+            {{ item.eyebrow }}
+          </div>
+          <div class="font-title font-medium tracking-[-0.02em] text-base md:text-xl {{ title_class }}">
+            {{ item.title }}
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof gsap === 'undefined') return;
+    
+    // Set initial state for stats items (hidden)
+    gsap.set(".stats-item", { opacity: 0, y: 8 });
+
+    // Wait for hero animation to complete
+    const animateStats = () => {
+      // Animate all stats items at the same time
+      gsap.to(".stats-item", {
+        opacity: 1,
+        y: 0,
+        duration: 0.55,
+        stagger: 0,
+        ease: "power3.out",
+        delay: 0,
+      });
+    };
+
+    // Check if hero animation already completed
+    let heroCompleted = false;
+
+    window.addEventListener("heroAnimationComplete", () => {
+      heroCompleted = true;
+      animateStats();
+    });
+
+    // Fallback: animate after 2 seconds
+    setTimeout(() => {
+      if (!heroCompleted) {
+        animateStats();
+      }
+    }, 2000);
+  });
+</script>
