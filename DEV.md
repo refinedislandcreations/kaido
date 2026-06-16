@@ -1,618 +1,168 @@
-# DEV.md
+# Design Parity & Layout Consistency Audit
 
 ## Objective
 
-Update the existing pages so they match the provided design screenshots much more accurately while maintaining consistency with the rest of the website.
+Perform a complete implementation audit and ensure the HTML pages match their design references with pixel-perfect accuracy.
 
-The following pages have already been created:
+### Pages
 
-```text
-homepage.html
-presale.html
-phantom.html
-oracle.html
-contact.html
-```
-
-However, their current implementation does not visually match the design screenshots closely enough.
-
-Your task is to refine and update the styling, layout, spacing, colors, typography, and visual details so each page closely matches its corresponding design sections.
-
-**Important:** Treat `homepage.html` and `presale.html` as the canonical implementations of the site's design system. All pages should use the same container widths, spacing scale, typography hierarchy, component styling, and overall visual language while being updated to match their respective design screenshots.
+| Implementation  | Design Reference   |
+| --------------- | ------------------ |
+| `homepage.html` | `design/homepage/` |
+| `phantom.html`  | `design/phantom/`  |
+| `oracle.html`   | `design/oracle/`   |
 
 ---
 
-## Homepage and Presale Consistency Requirement
+## Required Actions
 
-Use:
+### 1. Full Design Comparison
 
-```text
-homepage.html
-```
+For each page, compare the implementation against the design reference and identify all differences including:
 
-and
+* Layout structure
+* Section hierarchy
+* Positioning
+* Alignment
+* Typography
+* Font sizes
+* Font weights
+* Line heights
+* Colors
+* Backgrounds
+* Borders
+* Shadows
+* Buttons
+* Cards
+* Images
+* Icons
+* Spacing
+* Padding
+* Margins
+* Responsive behavior
+* Missing elements
+* Extra elements
 
-```text
-presale.html
-```
-
-as the visual and structural references for the website.
-
-The following pages:
-
-```text
-phantom.html
-oracle.html
-contact.html
-presale.html
-```
-
-must feel like they belong to the same design system.
-
----
-
-### Container Width Consistency
-
-Inspect:
-
-```text
-homepage.html
-presale.html
-```
-
-and any related includes they use.
-
-Ensure that all sections in:
-
-```text
-phantom.html
-oracle.html
-contact.html
-presale.html
-```
-
-use the same:
-
-- max-width
-- container structure
-- horizontal padding
-- content alignment
-- section spacing conventions
-
-as the homepage and presale pages.
-
-Do not introduce different container widths unless explicitly required by the design.
+Do not assume parity. Verify every section individually.
 
 ---
 
-### Visual Consistency
+### 2. Container Width Audit (Critical)
 
-Match the overall styling patterns already established in:
+Inspect every section and verify that container widths are consistent across all pages.
 
-```text
-homepage.html
-presale.html
-```
+Check:
 
-including:
+* Hero sections
+* Feature sections
+* Content sections
+* CTA sections
+* Footer sections
+* Navigation containers
 
-- Typography scale
-- Section spacing
-- Card styling
-- Border radius
-- Shadows
-- Button styles
-- Container widths
-- Grid spacing
-- Responsive behavior
-- Gradient usage
-- Background treatments
+Requirements:
 
-The pages should look like they were designed and built as part of the same system.
+* All sections must follow the same container system unless explicitly different in the design.
+* Left and right content boundaries must align consistently.
+* No section should be wider or narrower than intended.
+* Max-width values must match the design reference.
+* Horizontal padding must be consistent.
 
----
+If inconsistencies exist:
 
-### Reuse Existing Homepage and Presale Patterns
-
-Before creating new styles:
-
-1. Inspect `homepage.html`.
-2. Inspect `presale.html`.
-3. Inspect all related includes.
-4. Reuse existing component patterns whenever possible.
-5. Extend existing patterns instead of creating new ones.
+1. Identify the section.
+2. Report the current width.
+3. Report the expected width.
+4. Explain the discrepancy.
+5. Fix the implementation.
 
 ---
 
-### Design Accuracy + Site Consistency
+### 3. Responsive Verification
 
-The goal is to satisfy both requirements:
+Validate all layouts at:
 
-1. Match the design screenshots as closely as possible.
-2. Maintain the same visual language and layout system used in `homepage.html` and `presale.html`.
+* Desktop
+* Tablet
+* Mobile
 
-If a design screenshot leaves something ambiguous, follow the conventions already established in those pages.
+Ensure:
 
----
-
-## Design Sources
-
-### Presale Page
-
-Page:
-
-```text
-presale.html
-```
-
-Design screenshots:
-
-```text
-design/presale/
-```
-
-Contains multiple section screenshots.
-
-Examples:
-
-```text
-Section 1.png
-Section 2.png
-Section 3.png
-...
-```
-
-Each screenshot represents a section of the Presale page.
-
-Compare the implementation against every screenshot and update the styling until it closely matches the design.
+* No overflow issues.
+* No broken layouts.
+* Consistent spacing.
+* Proper scaling of typography.
+* Correct stacking behavior.
+* Design parity across breakpoints.
 
 ---
 
-### Phantom Page
+### 4. Implementation Fixes
 
-Page:
+Do not only report issues.
 
-```text
-phantom.html
-```
+Apply all required fixes directly to the implementation.
 
-Design screenshots:
+Requirements:
 
-```text
-design/phantom/
-```
-
-Contains:
-
-```text
-Section 1.png
-Section 2.png
-Section 3.png
-Section 4.png
-Section 5.png
-Section 6.png
-Section 7.png
-```
-
-Each screenshot represents a section of the Phantom page.
+* Preserve existing functionality.
+* Reuse existing styles where possible.
+* Remove duplicated styling patterns.
+* Standardize container widths and spacing tokens.
+* Ensure visual consistency across all pages.
 
 ---
 
-### Oracle Page
+### 5. Final Validation Pass
 
-Page:
+After fixes are complete:
 
-```text
-oracle.html
-```
-
-Design screenshots:
-
-```text
-design/oracle/
-```
-
-Contains:
-
-```text
-Section 1.png
-Section 2.png
-Section 3.png
-Section 4.png
-Section 5.png
-Section 6.png
-Section 7.png
-Section 8.png
-```
-
-Each screenshot represents a section of the Oracle page.
+1. Re-audit all three pages.
+2. Verify design parity.
+3. Verify width consistency.
+4. Verify responsive behavior.
+5. Verify no regressions were introduced.
 
 ---
 
-### Contact Page
+## Expected Output
 
-Page:
+For each page provide:
 
-```text
-contact.html
-```
+### Matching Items
 
-Design screenshots:
+List components that already match the design.
 
-```text
-design/contact/
-```
+### Issues Found
 
-Contains:
+List all discrepancies.
 
-```text
-Section 1.png
-Section 2.png
-Section 3.png
-```
+### Fixes Applied
 
-Each screenshot represents a section of the Contact page.
+Describe every change made.
 
----
+### Width Consistency Report
 
-## Primary Goal
+Document all container width corrections.
 
-The objective is NOT to rebuild the pages from scratch.
+### Responsive Report
 
-The pages already exist.
+Document all responsive fixes.
 
-Instead:
+### Final Confidence Score
 
-1. Compare each existing page against its corresponding design screenshots.
-2. Identify visual differences.
-3. Update the implementation until it closely matches the design.
-4. Preserve the existing page architecture whenever possible.
-
-Focus on visual accuracy and consistency with the homepage and presale pages.
-
----
-
-## Required Improvements
-
-### Colors (Highest Priority)
-
-The current colors do not perfectly match the designs.
-
-For every section:
-
-- Compare backgrounds against the screenshot.
-- Compare text colors.
-- Compare button colors.
-- Compare gradients.
-- Compare card colors.
-- Compare border colors.
-- Compare accent colors.
-- Compare overlay colors.
-- Compare hover states.
-
-Update the implementation so the colors match the design as closely as possible.
-
-Do not approximate if the correct color can be inferred from the design.
-
----
-
-### Spacing
-
-Review and refine:
-
-- Top padding
-- Bottom padding
-- Section spacing
-- Grid gaps
-- Card spacing
-- Content spacing
-- Button spacing
-- Image spacing
-
-Match both:
-
-- The design screenshots
-- The spacing scale used in `homepage.html`
-- The spacing scale used in `presale.html`
-
----
-
-### Typography
-
-Review:
-
-- Font sizes
-- Font weights
-- Line heights
-- Letter spacing
-- Heading hierarchy
-- Text alignment
-
-Adjust typography to better match the design.
-
-Typography should remain consistent with:
-
-```text
-homepage.html
-presale.html
-```
-
----
-
-### Layout
-
-Review:
-
-- Content alignment
-- Column widths
-- Image positioning
-- Grid layouts
-- Container spacing
-- Card sizing
-- Responsive stacking behavior
-
-Match the visual structure shown in the screenshots.
-
----
-
-### Borders & Shadows
-
-Review:
-
-- Border radius
-- Border colors
-- Border widths
-- Card shadows
-- Glow effects
-- Divider styling
-
-Update where necessary.
-
-Follow existing homepage and presale styling patterns whenever possible.
-
----
-
-### Buttons
-
-Review:
-
-- Colors
-- Hover states
-- Sizes
-- Corner radius
-- Typography
-- Padding
-- Visual weight
-
-Buttons should closely resemble both:
-
-- The design screenshots
-- The button system already used in `homepage.html`
-- The button system already used in `presale.html`
-
----
-
-### Images & Visual Elements
-
-Review:
-
-- Image sizing
-- Aspect ratios
-- Positioning
-- Decorative elements
-- Background graphics
-- Layering effects
-
-Match the design screenshots as closely as possible.
-
----
-
-## Existing Project Conventions
-
-Before making styling changes, review:
-
-```text
-assets/css/custom-style.css
-```
-
-and inspect:
-
-```text
-_includes/
-_layouts/
-homepage.html
-presale.html
-```
-
-Maintain consistency with the existing project where possible.
-
-However, when there is a conflict between the current implementation and the design screenshots, prioritize matching the screenshots while still staying aligned with the homepage and presale design language.
-
----
-
-## Tailwind CSS v4
-
-Use Tailwind CSS v4 utilities whenever possible.
-
-Preferred order:
-
-1. Existing project styles
-2. Existing reusable components
-3. Existing homepage patterns
-4. Existing presale patterns
-5. Tailwind CSS v4 utilities
-6. New custom CSS (only when necessary)
-
-Avoid unnecessary custom CSS.
-
-Avoid introducing a separate styling system.
-
----
-
-## Section-by-Section Review
-
-### Presale
-
-Compare:
-
-```text
-presale.html
-```
-
-against every screenshot inside:
-
-```text
-design/presale/
-```
-
-Update every section until it visually matches the design.
-
----
-
-### Phantom
-
-Compare:
-
-```text
-phantom.html
-```
-
-against:
-
-```text
-design/phantom/Section 1.png
-design/phantom/Section 2.png
-design/phantom/Section 3.png
-design/phantom/Section 4.png
-design/phantom/Section 5.png
-design/phantom/Section 6.png
-design/phantom/Section 7.png
-```
-
-Update every section until it visually matches the design.
-
----
-
-### Oracle
-
-Compare:
-
-```text
-oracle.html
-```
-
-against:
-
-```text
-design/oracle/Section 1.png
-design/oracle/Section 2.png
-design/oracle/Section 3.png
-design/oracle/Section 4.png
-design/oracle/Section 5.png
-design/oracle/Section 6.png
-design/oracle/Section 7.png
-design/oracle/Section 8.png
-```
-
-Update every section until it visually matches the design.
-
----
-
-### Contact
-
-Compare:
-
-```text
-contact.html
-```
-
-against:
-
-```text
-design/contact/Section 1.png
-design/contact/Section 2.png
-design/contact/Section 3.png
-```
-
-Update every section until it visually matches the design.
-
----
-
-## Validation Process
-
-For every section:
-
-1. Open the design screenshot.
-2. Compare it against the current implementation.
-3. Identify visual differences.
-4. Adjust styling.
-5. Re-check colors.
-6. Re-check spacing.
-7. Re-check typography.
-8. Re-check responsiveness.
-9. Re-check alignment.
-10. Repeat until the section closely matches the design.
-
-Do not stop after the first implementation pass.
-
-Iteratively refine the UI.
-
----
-
-## What NOT To Do
-
-Do NOT:
-
-- Rewrite the entire page architecture.
-- Remove reusable components unnecessarily.
-- Replace existing includes without reason.
-- Introduce a new design system.
-- Change content unless required by the design.
-- Create entirely new layouts if the current layout is already structurally correct.
-- Introduce a different container system from homepage or presale.
-- Use different spacing scales than homepage or presale.
-- Create styling that conflicts with existing project conventions.
-
-Focus on refinement and visual accuracy.
+Provide a score from 0–100% representing design parity with the reference.
 
 ---
 
 ## Success Criteria
 
-The update is successful when:
+The task is complete only when:
 
-- Presale closely matches all screenshots in `design/presale/`
-- Phantom closely matches all screenshots in `design/phantom/`
-- Oracle closely matches all screenshots in `design/oracle/`
-- Contact closely matches all screenshots in `design/contact/`
-- All pages use the same width system as `homepage.html`
-- All pages use the same width system as `presale.html`
-- All pages use the same visual language as `homepage.html`
-- All pages use the same visual language as `presale.html`
-- Colors are visually accurate
-- Typography is visually accurate
-- Spacing is visually accurate
-- Layouts are visually accurate
-- Buttons, cards, borders, and shadows match the designs
-- Responsive behavior remains intact
-- Existing project architecture is preserved
-
----
-
-## Final Validation Checklist
-
-Before finishing:
-
-- Compare every section against its screenshot.
-- Verify container widths match homepage.html.
-- Verify container widths match presale.html.
-- Verify spacing patterns match homepage.html.
-- Verify spacing patterns match presale.html.
-- Verify typography hierarchy matches homepage.html.
-- Verify typography hierarchy matches presale.html.
-- Verify button styling matches homepage.html.
-- Verify button styling matches presale.html.
-- Verify colors closely match the design screenshots.
-- Verify responsive layouts still work correctly.
-
-The final result should feel like a near pixel-perfect implementation of the provided designs while remaining fully consistent with the design system already established in `homepage.html` and `presale.html`.
+* `homepage.html` visually matches `design/homepage/`
+* `phantom.html` visually matches `design/phantom/`
+* `oracle.html` visually matches `design/oracle/`
+* Container widths are consistent across all sections and pages
+* Desktop, tablet, and mobile layouts are verified
+* No known visual discrepancies remain
+* Design parity confidence is ≥ 95%

@@ -12,7 +12,7 @@
   {% assign bg_class = "bg-[#0A0A0A] text-white" %}
   {% assign eyebrow_class = "text-white/40" %}
   {% assign title_class = "text-white" %}
-  {% assign icon_class = "text-[#8C9A81]" %}
+  {% assign icon_class = "text-[#A8CD97]" %}
   {% assign border_class = "bg-white/10" %}
   {% assign detail_eyebrow_class = "text-white/60" %}
   {% assign detail_title_class = "text-white" %}
@@ -34,7 +34,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-16">
       {% for category in section.categories %}
       <div class="flex flex-col">
-        <h3 class="font-title text-[11px] uppercase tracking-[0.2em] {% if section.theme == 'light' %}{{ title_class }}{% else %}text-[#8C9A81]{% endif %} mb-6">{{ category.title }}</h3>
+        <h3 class="font-title text-[11px] uppercase tracking-[0.2em] {% if section.theme == 'light' %}{{ title_class }}{% else %}text-[#A8CD97]{% endif %} mb-6">{{ category.title }}</h3>
         <div class="h-px w-full {{ border_class }} mb-8"></div>
         
         <div class="flex flex-col space-y-10">
