@@ -2,62 +2,102 @@
 <footer class="w-full bg-[#0A0A0A] py-16 md:py-24 border-t border-white/10 font-body">
   <div class="mx-auto w-full max-w-screen-2xl">
     <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10">
-      
+
       <!-- Top Section -->
-      <div class="flex flex-col md:flex-row items-start justify-between gap-16 md:gap-8">
-        
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 text-center lg:text-left">
+
         <!-- Left: Logo & Info -->
-        <div class="flex flex-col md:max-w-sm">
-          <a href="/" aria-label="Kaido Home" class="inline-block mb-8 md:mb-10">
-            <img src="{{ '/assets/images/logo-2.png' | relative_url }}" alt="Kaido Logo" class="h-12 md:h-14 w-auto object-contain" />
+        <div class="flex flex-col items-center lg:items-start lg:max-w-sm w-full lg:w-auto">
+          <a href="/" aria-label="Kaido Home" class="inline-block mb-6 lg:mb-10">
+            <img src="{{ '/assets/images/logo-2.png' | relative_url }}" alt="Kaido Logo"
+              class="h-28 sm:h-32 md:h-40 w-auto object-contain" />
           </a>
-          <p class="text-base text-white/90 mb-10 md:mb-12">Designed and engineered for recovery.</p>
-          <div class="flex flex-col gap-1 text-sm text-white/40">
-            <p>&copy; 2025 Kaido. All rights reserved.</p>
-            <a href="https://kaido-recovery.com" target="_blank" rel="noopener noreferrer" class="hover:text-white/60 transition-colors focus:outline-none focus:text-white/60">kaido-recovery.com</a>
+          <p class="text-[15px] md:text-base text-white/90 max-w-xs lg:max-w-none mb-2 lg:mb-4">Designed and engineered
+            for recovery.
+          </p>
+          <div class="text-[11px] lg:text-sm text-white/40">
+            &copy; <span id="current-year">2026</span> Kaido. All rights reserved.
           </div>
         </div>
 
         <!-- Middle: Links -->
-        <div class="flex items-start gap-16 md:gap-24 pt-4 md:pt-6">
-          <div class="flex flex-col gap-5 text-sm text-white/80">
-            <a href="/phantom" class="hover:text-white transition-colors focus:outline-none focus:text-kaido">Phantom</a>
+        <div
+          class="flex items-center justify-center gap-16 md:gap-24 w-full lg:w-auto border-y border-white/10 lg:border-none py-8 lg:py-0 my-4 lg:my-0">
+          <div class="flex flex-col gap-6 text-[15px] lg:text-sm text-white/80">
+            <a href="/phantom"
+              class="hover:text-white transition-colors focus:outline-none focus:text-kaido">Phantom</a>
             <a href="/oracle" class="hover:text-white transition-colors focus:outline-none focus:text-kaido">Oracle</a>
           </div>
-          <div class="flex flex-col gap-5 text-sm text-white/80">
+          <div class="flex flex-col gap-6 text-[15px] lg:text-sm text-white/80">
             <a href="/craft" class="hover:text-white transition-colors focus:outline-none focus:text-kaido">Craft</a>
-            <a href="/contact" class="hover:text-white transition-colors focus:outline-none focus:text-kaido">Contact</a>
+            <a href="/contact"
+              class="hover:text-white transition-colors focus:outline-none focus:text-kaido">Contact</a>
           </div>
         </div>
 
         <!-- Right: Social Icons -->
-        <div class="flex items-center gap-6 text-kaido pt-4 md:pt-6">
-          <!-- Instagram -->
-          <a href="https://instagram.com/kaido.recovery" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Kaido on Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          <!-- Facebook -->
-          <a href="https://facebook.com/kaido.recovery" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Kaido on Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-          </a>
-          <!-- YouTube -->
-          <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Kaido on YouTube">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-          </a>
-          <!-- LinkedIn -->
-          <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors focus:outline-none focus:text-white" aria-label="Kaido on LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </a>
+        <div class="flex flex-col items-center lg:items-end w-full lg:w-auto">
+          <div class="flex items-center gap-8 text-kaido">
+            <!-- Instagram -->
+            <a href="https://instagram.com/kaido.recovery" target="_blank" rel="noopener noreferrer"
+              class="hover:text-white transition-colors focus:outline-none focus:text-white"
+              aria-label="Kaido on Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://facebook.com/kaido.recovery" target="_blank" rel="noopener noreferrer"
+              class="hover:text-white transition-colors focus:outline-none focus:text-white"
+              aria-label="Kaido on Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@kaido.recovery" target="_blank" rel="noopener noreferrer"
+              class="hover:text-white transition-colors focus:outline-none focus:text-white"
+              aria-label="Kaido on YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                </path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/company/kaido-recovery" target="_blank" rel="noopener noreferrer"
+              class="hover:text-white transition-colors focus:outline-none focus:text-white"
+              aria-label="Kaido on LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Bottom: Credits -->
-      <div class="mt-24 pt-8 md:mt-32 md:pt-10 text-center">
-        <p class="text-[12px] text-white/30 tracking-wide">
-          Designed and built by <a href="https://refinedislandcreations.com" target="_blank" rel="noopener noreferrer" class="hover:text-white/50 transition-colors focus:outline-none focus:text-white/50">Refined Island Creations</a>.
+      <!-- Bottom: Credits & Copyright -->
+      <div
+        class="mt-16 md:mt-24 pt-8 md:pt-10 flex flex-col items-center justify-center text-center border-t border-white/5">
+        <p class="text-[11px] text-white/30 tracking-wide">
+          Designed and built by <a href="https://refinedislandcreations.com" target="_blank" rel="noopener noreferrer"
+            class="hover:text-white/50 transition-colors focus:outline-none focus:text-white/50">Refined Island
+            Creations</a>.
         </p>
       </div>
 
     </div>
   </div>
 </footer>
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
