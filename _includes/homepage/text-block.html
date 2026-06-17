@@ -1,88 +1,115 @@
 <!-- _includes/homepage/text-block.html -->
-{% assign section = include.section %}
-
-{% if section.theme == 'light' %}
-  {% assign bg_class = "bg-[#F4F3ED] text-[#141414]" %}
-  {% assign eyebrow_class = "text-black/60" %}
-  {% assign title_class = "text-[#141414]" %}
-  {% assign line_class = "bg-black/20" %}
-  {% assign text_class = "text-[#141414]/80" %}
-  {% assign border_class = "border-black/20" %}
-{% else %}
-  {% assign bg_class = "bg-[#0A0A0A] text-white" %}
-  {% assign eyebrow_class = "text-kaido" %}
-  {% assign title_class = "text-white" %}
-  {% assign line_class = "bg-white/10" %}
-  {% assign text_class = "text-white/65" %}
-  {% assign border_class = "border-white/10" %}
-{% endif %}
+{% assign section = include.section %} {% if section.theme == 'light' %} {%
+assign bg_class = "bg-[#F4F3ED] text-[#141414]" %} {% assign eyebrow_class =
+"text-black/60" %} {% assign title_class = "text-[#141414]" %} {% assign
+line_class = "bg-black/20" %} {% assign text_class = "text-[#141414]/80" %} {%
+assign border_class = "border-black/20" %} {% else %} {% assign bg_class =
+"bg-[#0A0A0A] text-white" %} {% assign eyebrow_class = "text-kaido/50" %} {%
+assign title_class = "text-white" %} {% assign line_class = "bg-white/10" %} {%
+assign text_class = "text-white/65" %} {% assign border_class =
+"border-white/10" %} {% endif %}
 
 <section class="relative {{ bg_class }}">
   <div class="relative z-10 flex items-center">
     <div class="mx-auto w-full max-w-screen-2xl">
-      <div class="mx-auto w-full max-w-7xl px-5 py-16 md:py-24 sm:px-6 md:px-8 lg:px-10">
+      <div
+        class="mx-auto w-full max-w-7xl px-5 py-16 md:py-24 sm:px-6 md:px-8 lg:px-10"
+      >
         {% if section.layout == 'full' %}
-          <div class="max-w-5xl">
-            <div class="flex items-center gap-2 mb-6 md:mb-8">
-               <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] {{ eyebrow_class }}">{{ section.eyebrow }}</span>
-               <div class="h-px w-12 md:w-16 {{ line_class }}"></div>
+        <div class="max-w-5xl">
+          <div class="flex items-center gap-2 mb-6 md:mb-8">
+            <span
+              class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] {{ eyebrow_class }}"
+              >{{ section.eyebrow }}</span
+            >
+            <div class="h-px w-12 md:w-16 {{ line_class }}"></div>
+          </div>
+          <h2
+            class="font-title font-bold text-2xl md:text-3xl lg:text-[2.5rem] leading-[1.4] tracking-[0.02em] uppercase {{ title_class }}"
+          >
+            {{ section.title }}
+          </h2>
+        </div>
+        {% else %}
+        <div class="grid md:grid-cols-12 gap-12 md:gap-16 lg:gap-24">
+          <div class="md:col-span-7">
+            <div class="flex items-center gap-2 mb-6">
+              <span
+                class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] {{ eyebrow_class }}"
+                >{{ section.eyebrow }}</span
+              >
+              <div class="h-px w-12 md:w-16 {{ line_class }}"></div>
             </div>
-            <h2 class="font-title font-bold text-2xl md:text-3xl lg:text-[2.5rem] leading-[1.4] tracking-[0.02em] uppercase {{ title_class }}">
+            <h2
+              class="font-title font-bold text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] leading-[0.95] tracking-[-0.04em] uppercase {{ title_class }}"
+            >
               {{ section.title }}
             </h2>
           </div>
-        {% else %}
-          <div class="grid md:grid-cols-12 gap-12 md:gap-16 lg:gap-24">
-            <div class="md:col-span-7">
-              <div class="flex items-center gap-2 mb-6">
-                 <span class="font-title text-[9px] md:text-[11px] uppercase tracking-[0.25em] {{ eyebrow_class }}">{{ section.eyebrow }}</span>
-                 <div class="h-px w-12 md:w-16 {{ line_class }}"></div>
-              </div>
-              <h2 class="font-title font-bold text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] leading-[0.95] tracking-[-0.04em] uppercase {{ title_class }}">
-                {{ section.title }}
-              </h2>
+          <div class="md:col-span-5 md:pt-16 flex flex-col justify-start">
+            <div
+              class="space-y-6 text-sm md:text-[15px] leading-[1.8] {{ text_class }}"
+            >
+              {% for p in section.paragraphs %}
+              <p>{{ p }}</p>
+              {% endfor %}
             </div>
-            <div class="md:col-span-5 md:pt-16 flex flex-col justify-start">
-              <div class="space-y-6 text-sm md:text-[15px] leading-[1.8] {{ text_class }}">
-                {% for p in section.paragraphs %}
-                  <p>{{ p }}</p>
-                {% endfor %}
-              </div>
-              {% if section.footer_quote %}
-                <div class="mt-10 pt-6 border-t {{ border_class }}">
-                  <p class="italic text-sm md:text-[15px] {{ text_class }}">{{ section.footer_quote }}</p>
-                </div>
-              {% endif %}
-              {% if section.side_specs %}
-                <div class="mt-12 space-y-4">
-                  {% for spec in section.side_specs %}
-                  <div class="flex items-center gap-8">
-                    <span class="w-24 font-title text-[10px] uppercase tracking-[0.2em] {{ text_class }}">{{ spec.label }}</span>
-                    <span class="font-title text-sm md:text-base font-bold {{ title_class }} tracking-[-0.02em]">{{ spec.value }}</span>
-                  </div>
-                  {% endfor %}
-                </div>
-              {% endif %}
-              {% if section.button_text %}
-                <div class="mt-12 flex justify-end">
-                  <a href="{{ section.button_url }}" class="inline-flex items-center justify-center border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-white transition-colors duration-300 font-title text-[9px] uppercase tracking-[0.25em] px-8 py-4">
-                    {{ section.button_text }} &rarr;
-                  </a>
-                </div>
-              {% endif %}
+            {% if section.footer_quote %}
+            <div class="mt-10 pt-6 border-t {{ border_class }}">
+              <p class="italic text-sm md:text-[15px] {{ text_class }}">
+                {{ section.footer_quote }}
+              </p>
             </div>
+            {% endif %} {% if section.side_specs %}
+            <div class="mt-12 space-y-4">
+              {% for spec in section.side_specs %}
+              <div class="flex items-center gap-8">
+                <span
+                  class="w-24 font-title text-[10px] uppercase tracking-[0.2em] {{ text_class }}"
+                  >{{ spec.label }}</span
+                >
+                <span
+                  class="font-title text-sm md:text-base font-bold {{ title_class }} tracking-[-0.02em]"
+                  >{{ spec.value }}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %} {% if section.button_text %}
+            <div class="mt-12 flex justify-end">
+              <a
+                href="{{ section.button_url }}"
+                class="inline-flex items-center justify-center border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-white transition-colors duration-300 font-title text-[9px] uppercase tracking-[0.25em] px-8 py-4"
+              >
+                {{ section.button_text }} &rarr;
+              </a>
+            </div>
+            {% endif %}
           </div>
-        {% endif %}
-
-        {% if section.stats %}
-        <div class="mt-16 md:mt-24 pt-8 md:pt-12 border-t {{ border_class }} sm:flex sm:justify-center">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 md:gap-20 lg:gap-24 w-full sm:w-auto">
+        </div>
+        {% endif %} {% if section.stats %}
+        <div
+          class="mt-16 md:mt-24 pt-8 md:pt-12 border-t {{ border_class }} sm:flex sm:justify-center"
+        >
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 md:gap-20 lg:gap-24 w-full sm:w-auto"
+          >
             {% for stat in section.stats %}
             <div class="text-left">
-              <div class="font-title text-[9px] md:text-[10px] uppercase tracking-[0.25em] {{ eyebrow_class }} mb-3">{{ stat.label }}</div>
-              <div class="font-title font-bold text-xl md:text-2xl {{ title_class }} tracking-[-0.02em] mb-1">{{ stat.value }}</div>
+              <div
+                class="font-title text-[9px] md:text-[10px] uppercase tracking-[0.25em] {{ eyebrow_class }} mb-3"
+              >
+                {{ stat.label }}
+              </div>
+              <div
+                class="font-title font-bold text-xl md:text-2xl {{ title_class }} tracking-[-0.02em] mb-1"
+              >
+                {{ stat.value }}
+              </div>
               {% if stat.description %}
-                <div class="text-sm md:text-[15px] uppercase {{ text_class }}">{{ stat.description }}</div>
+              <div class="text-sm md:text-[15px] uppercase {{ text_class }}">
+                {{ stat.description }}
+              </div>
               {% endif %}
             </div>
             {% endfor %}

@@ -871,11 +871,20 @@
       background-color: color-mix(in oklab, var(--color-black) 90%, transparent);
     }
   }
+  .bg-kaido\/10 {
+    background-color: color-mix(in oklab, #A8CD97 10%, transparent);
+  }
   .bg-kaido\/20 {
     background-color: color-mix(in oklab, #A8CD97 20%, transparent);
   }
+  .bg-kaido\/25 {
+    background-color: color-mix(in oklab, #A8CD97 25%, transparent);
+  }
   .bg-kaido\/40 {
     background-color: color-mix(in oklab, #A8CD97 40%, transparent);
+  }
+  .bg-kaido\/50 {
+    background-color: color-mix(in oklab, #A8CD97 50%, transparent);
   }
   .bg-transparent {
     background-color: transparent;
@@ -1329,6 +1338,12 @@
   }
   .text-kaido {
     color: #A8CD97;
+  }
+  .text-kaido\/50 {
+    color: color-mix(in oklab, #A8CD97 50%, transparent);
+  }
+  .text-kaido\/80 {
+    color: color-mix(in oklab, #A8CD97 80%, transparent);
   }
   .text-red-400 {
     color: var(--color-red-400);
