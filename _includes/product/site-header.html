@@ -1,6 +1,6 @@
 <header
   data-site-header
-  class="site-header fixed top-0 left-0 z-50 w-full bg-transparent"
+  class="site-header fixed top-0 left-0 z-50 w-full bg-transparent {% if page.url contains 'oracle' %}site-header--light{% endif %}"
 >
   <!-- Header Top Bar -->
   <div class="relative z-50 mx-auto w-full max-w-screen-2xl">
@@ -26,22 +26,22 @@
         <nav class="hidden md:flex items-center gap-8">
           <a
             href="/phantom.html"
-            class="font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
+            class="header-link font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
             >Phantom</a
           >
           <a
             href="/oracle.html"
-            class="font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
+            class="header-link font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
             >Oracle</a
           >
           <a
             href="/homepage.html"
-            class="font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
+            class="header-link font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
             >Craft</a
           >
           <a
             href="/contact.html"
-            class="font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
+            class="header-link font-body text-sm text-white/70 hover:text-white transition-colors duration-300"
             >Contact</a
           >
         </nav>

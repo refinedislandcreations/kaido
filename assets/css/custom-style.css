@@ -37,6 +37,27 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
 }
 
+.site-header.site-header--light.is-scrolled {
+  background-color: rgba(244, 243, 237, 0.92);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.site-header.site-header--light.is-scrolled .header-link {
+  color: rgba(20, 20, 20, 0.7);
+}
+
+.site-header.site-header--light.is-scrolled .header-link:hover {
+  color: rgba(20, 20, 20, 1);
+}
+
+.site-header.site-header--light.is-scrolled img {
+  filter: invert(1);
+}
+
+.site-header.site-header--light.is-scrolled #mobile-menu-btn {
+  color: #141414 !important;
+}
+
 .site-header__social-icon {
   display: block;
   width: 1em;
