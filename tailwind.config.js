@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        kaido: "#A8CD97",
+        oracle: "#A8CD97",
+        oracleDark: "#3D5234",
         dark: {
           50: "#f5f5f5",
           100: "#e0e0e0",

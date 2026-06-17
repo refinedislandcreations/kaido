@@ -2,75 +2,120 @@
 {% assign section = include.section %}
 {% if section.theme == 'light' %}
   {% assign bg_class = "bg-[#F4F3ED] text-[#141414]" %}
-  {% assign eyebrow_class = "text-black/60" %}
+  {% assign eyebrow_class = "text-oracleDark" %}
   {% assign title_class = "text-[#141414]" %}
-  {% assign highlight_class = "text-[#4F5B46]" %}
+  {% assign highlight_class = "text-oracleDark" %}
   {% assign border_class = "border-black/10" %}
+  {% assign line_class = "bg-black/20" %}
   {% assign text_class = "text-[#141414]" %}
+  {% assign icon_class = "text-[#141414]" %}
   {% assign box_bg = "bg-[#E6E5DA]" %}
-  {% assign badge_bg = "bg-[#4F5B46]/20" %}
+  {% assign badge_bg = "bg-[#c6d1b2]" %}
+  {% assign badge_text = "text-oracleDark" %}
 {% else %}
   {% assign bg_class = "bg-[#0A0A0A] text-white" %}
-  {% assign eyebrow_class = "text-white/40" %}
+  {% assign eyebrow_class = "text-oracleDark" %}
   {% assign title_class = "text-white" %}
-  {% assign highlight_class = "text-kaido" %}
+  {% assign highlight_class = "text-oracle" %}
   {% assign border_class = "border-white/10" %}
+  {% assign line_class = "bg-white/20" %}
   {% assign text_class = "text-white" %}
-  {% assign box_bg = "bg-[#151515]" %}
-  {% assign badge_bg = "bg-kaido/20" %}
+  {% assign icon_class = "text-white" %}
+  {% assign box_bg = "bg-[#202020]" %}
+  {% assign badge_bg = "bg-oracleDark" %}
+  {% assign badge_text = "text-white" %}
 {% endif %}
 
-<section class="w-full {{ bg_class }} py-20 md:py-32 border-t {{ border_class }}">
+<section class="w-full {{ bg_class }} py-20 md:py-32">
   <div class="mx-auto w-full max-w-screen-2xl">
     <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 md:px-8 lg:px-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-      
-      <!-- Left side: Included -->
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2 mb-6">
-           <span class="font-title text-[10px] uppercase tracking-[0.25em] {{ eyebrow_class }}">{{ section.left.eyebrow }}</span>
-           <div class="h-px w-12 {{ border_class }}"></div>
-        </div>
-        <h2 class="font-title font-bold text-4xl md:text-5xl {{ title_class }} tracking-[-0.02em] leading-[1.1] mb-12">{{ section.left.title }}</h2>
-        
-        <div class="flex flex-col gap-6">
-          {% for item in section.left.items %}
-          <div class="flex items-center gap-6 pb-6 border-b {{ border_class }}">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 {{ highlight_class }} flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="font-title font-medium text-lg {{ text_class }}">{{ item }}</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Left side: Included -->
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2 mb-6">
+            <span
+              class="font-title text-[10px] uppercase tracking-[0.25em] {{ eyebrow_class }}"
+              >{{ section.left.eyebrow }}</span
+            >
+            <div class="h-px w-12 {{ line_class }}"></div>
           </div>
-          {% endfor %}
-        </div>
-      </div>
+          <h2
+            class="font-title font-bold text-4xl md:text-5xl {{ title_class }} tracking-[-0.02em] leading-[1.1] mb-12"
+          >
+            {{ section.left.title }}
+          </h2>
 
-      <!-- Right side: Maintenance -->
-      <div class="flex flex-col">
-        <div class="flex items-center gap-2 mb-6">
-           <span class="font-title text-[10px] uppercase tracking-[0.25em] {{ eyebrow_class }}">{{ section.right.eyebrow }}</span>
-           <div class="h-px w-12 {{ border_class }}"></div>
-        </div>
-        <h2 class="font-title font-bold text-4xl md:text-5xl {{ highlight_class }} tracking-[-0.02em] leading-[1.1] mb-12">{{ section.right.title }}</h2>
-
-        <div class="{{ box_bg }} p-8 md:p-12 w-full flex flex-col">
-          <div class="flex flex-col gap-6 mb-10">
-            {% for item in section.right.items %}
-            <div class="flex items-center justify-between pb-6 border-b {{ border_class }}">
-              <span class="font-title font-medium {{ text_class }}">{{ item.title }}</span>
-              <span class="{{ badge_bg }} {{ highlight_class }} px-3 py-1.5 font-title text-[10px] uppercase tracking-[0.1em]">{{ item.frequency }}</span>
+          <div class="flex flex-col gap-6">
+            {% for item in section.left.items %}
+            <div
+              class="flex items-center gap-6 pb-6 border-b {{ border_class }}"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 {{ icon_class }} flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <span class="font-title font-medium text-lg {{ text_class }}"
+                >{{ item }}</span
+              >
             </div>
             {% endfor %}
           </div>
-          
-          <div class="flex flex-col">
-            <span class="font-title text-[10px] uppercase tracking-[0.2em] {{ eyebrow_class }} mb-2">{{ section.right.price_label }}</span>
-            <span class="font-title font-bold text-2xl {{ text_class }}">{{ section.right.price }}</span>
+        </div>
+
+        <!-- Right side: Maintenance -->
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2 mb-6">
+            <span
+              class="font-title text-[10px] uppercase tracking-[0.25em] {{ eyebrow_class }}"
+              >{{ section.right.eyebrow }}</span
+            >
+            <div class="h-px w-12 {{ line_class }}"></div>
+          </div>
+          <h2
+            class="font-title font-bold text-4xl md:text-5xl {{ title_class }} tracking-[-0.02em] leading-[1.1] mb-12"
+          >
+            {{ section.right.title }}
+          </h2>
+
+          <div class="{{ box_bg }} p-8 md:p-12 w-full flex flex-col">
+            <div class="flex flex-col gap-6 mb-10">
+              {% for item in section.right.items %}
+              <div
+                class="flex items-center justify-between pb-6 border-b {{ border_class }}"
+              >
+                <span class="font-title font-medium {{ text_class }}"
+                  >{{ item.title }}</span
+                >
+                <span
+                  class="{{ badge_bg }} {{ badge_text }} px-3 py-1.5 font-title text-[10px] uppercase tracking-[0.1em]"
+                  >{{ item.frequency }}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="flex flex-col">
+              <span
+                class="font-title text-[10px] uppercase tracking-[0.2em] {{ eyebrow_class }} mb-2"
+                >{{ section.right.price_label }}</span
+              >
+              <span class="font-title font-bold text-2xl {{ text_class }}"
+                >{{ section.right.price }}</span
+              >
+            </div>
           </div>
         </div>
       </div>
-
-    </div>
     </div>
   </div>
 </section>

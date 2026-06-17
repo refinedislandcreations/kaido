@@ -4,331 +4,333 @@
 <section class="bg-black section text-white">
   <!-- Fixed max-width container -->
   <div class="mx-auto w-full max-w-screen-2xl">
-    <div class="mx-auto w-full max-w-3xl px-5 text-center sm:px-6 md:px-8 lg:px-10">
-    <div class="mx-auto max-w-xl lg:max-w-2xl">
-      <!-- Eyebrow -->
-      <span
-        class="font-title text-[9px] text-kaido uppercase tracking-[0.25em] sm:text-[10px] md:text-[11px]"
-      >
-        {{ section.eyebrow }}
-      </span>
-
-      <!-- Title -->
-      <h2
-        class="mt-3 font-title text-[1.4rem] font-semibold uppercase leading-[0.95] tracking-[-0.04em] md:mt-4 md:text-[2.2rem]"
-      >
-        {{ section.title }}
-      </h2>
-
-      <!-- Description -->
-      <div
-        class="mt-3 space-y-2 max-w-lg mx-auto text-xs leading-[1.6] text-white/60 md:mt-4 md:text-sm"
-      >
-        {% for item in section.description %}
-        <p>{{ item }}</p>
-        {% endfor %}
-      </div>
-
-      <!-- Form -->
-      <div
-        class="mx-auto mt-6 bg-[#141414] p-4 sm:mt-6 sm:p-4 md:mt-6 md:p-5 lg:mt-8 lg:p-6"
-      >
-        <form
-          class="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10"
-          novalidate
-          data-region="na2"
-          data-form-id="ff30bcc6-46b5-49d4-8670-92bb1eded1ab"
-          data-portal-id="242242619"
+    <div
+      class="mx-auto w-full max-w-3xl px-5 text-center sm:px-6 md:px-8 lg:px-10"
+    >
+      <div class="mx-auto max-w-xl lg:max-w-2xl">
+        <!-- Eyebrow -->
+        <span
+          class="font-title text-[9px] text-oracle uppercase tracking-[0.25em] sm:text-[10px] md:text-[11px]"
         >
-          <!-- Honeypot + timestamp for spam prevention -->
-          <input
-            type="text"
-            name="hp_field"
-            aria-hidden="true"
-            tabindex="-1"
-            style="
-              position: absolute;
-              left: -9999px;
-              top: auto;
-              width: 1px;
-              height: 1px;
-              overflow: hidden;
-            "
-          />
-          <input type="hidden" name="form_timestamp" data-form-timestamp />
-          <!-- First + Last Name -->
-          <div class="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6">
-            <div class="text-left">
-              <label
-                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-              >
-                First Name
-              </label>
+          {{ section.eyebrow }}
+        </span>
 
-              <input
-                type="text"
-                name="firstname"
-                data-hs-name="firstname"
-                data-validation-field="firstname"
-                required
-                maxlength="30"
-                placeholder="First name"
-                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
-              />
-              <p class="mt-1 text-[10px] leading-4 text-white/30">
-                Maximum 30 characters.
-              </p>
-              <p
-                data-error-for="firstname"
-                class="mt-1 hidden text-[10px] leading-4 text-red-400"
-                aria-live="polite"
-              ></p>
-            </div>
+        <!-- Title -->
+        <h2
+          class="mt-3 font-title text-[1.4rem] font-semibold uppercase leading-[0.95] tracking-[-0.04em] md:mt-4 md:text-[2.2rem]"
+        >
+          {{ section.title }}
+        </h2>
 
-            <div class="text-left">
-              <label
-                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-              >
-                Last Name
-              </label>
+        <!-- Description -->
+        <div
+          class="mt-3 space-y-2 max-w-lg mx-auto text-xs leading-[1.6] text-white/60 md:mt-4 md:text-sm"
+        >
+          {% for item in section.description %}
+          <p>{{ item }}</p>
+          {% endfor %}
+        </div>
 
-              <input
-                type="text"
-                name="lastname"
-                data-hs-name="lastname"
-                data-validation-field="lastname"
-                required
-                maxlength="30"
-                placeholder="Last name"
-                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
-              />
-              <p class="mt-1 text-[10px] leading-4 text-white/30">
-                Maximum 30 characters.
-              </p>
-              <p
-                data-error-for="lastname"
-                class="mt-1 hidden text-[10px] leading-4 text-red-400"
-                aria-live="polite"
-              ></p>
-            </div>
-          </div>
-
-          <!-- Email -->
-          <div class="text-left">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Email
-            </label>
-
+        <!-- Form -->
+        <div
+          class="mx-auto mt-6 bg-[#141414] p-4 sm:mt-6 sm:p-4 md:mt-6 md:p-5 lg:mt-8 lg:p-6"
+        >
+          <form
+            class="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10"
+            novalidate
+            data-region="na2"
+            data-form-id="ff30bcc6-46b5-49d4-8670-92bb1eded1ab"
+            data-portal-id="242242619"
+          >
+            <!-- Honeypot + timestamp for spam prevention -->
             <input
-              type="email"
-              name="email"
-              data-hs-name="email"
-              data-validation-field="email"
-              required
-              placeholder="your@email.com"
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
+              type="text"
+              name="hp_field"
+              aria-hidden="true"
+              tabindex="-1"
+              style="
+                position: absolute;
+                left: -9999px;
+                top: auto;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+              "
             />
-            <p
-              data-error-for="email"
-              class="mt-1 hidden text-[10px] leading-4 text-red-400"
-              aria-live="polite"
-            ></p>
-          </div>
+            <input type="hidden" name="form_timestamp" data-form-timestamp />
+            <!-- First + Last Name -->
+            <div class="grid gap-4 sm:gap-5 md:grid-cols-2 md:gap-6">
+              <div class="text-left">
+                <label
+                  class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+                >
+                  First Name
+                </label>
 
-          <!-- Phone / WhatsApp -->
-          <div class="text-left">
-            <label
-              for="enquiry-phone-number"
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Phone / WhatsApp
-            </label>
-
-            <div class="phone-input-row mt-2">
-              <div>
                 <input
-                  id="enquiry-phone-code"
                   type="text"
-                  inputmode="search"
-                  autocomplete="off"
-                  list="enquiry-phone-code-options"
+                  name="firstname"
+                  data-hs-name="firstname"
+                  data-validation-field="firstname"
                   required
-                  data-validation-field="phone"
-                  placeholder="Code"
-                  class="phone-input-control phone-code-search text-xs md:text-sm"
+                  maxlength="30"
+                  placeholder="First name"
+                  class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
                 />
-                <datalist id="enquiry-phone-code-options"></datalist>
+                <p class="mt-1 text-[10px] leading-4 text-white/30">
+                  Maximum 30 characters.
+                </p>
+                <p
+                  data-error-for="firstname"
+                  class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                  aria-live="polite"
+                ></p>
               </div>
 
-              <input
-                id="enquiry-phone-number"
-                type="tel"
-                name="hs_whatsapp_phone_number"
-                required
-                autocomplete="tel-national"
-                inputmode="numeric"
-                placeholder="812 3456 7890"
-                data-hs-name="hs_whatsapp_phone_number"
-                data-validation-field="phone"
-                class="phone-input-control text-xs md:text-sm"
-              />
+              <div class="text-left">
+                <label
+                  class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+                >
+                  Last Name
+                </label>
+
+                <input
+                  type="text"
+                  name="lastname"
+                  data-hs-name="lastname"
+                  data-validation-field="lastname"
+                  required
+                  maxlength="30"
+                  placeholder="Last name"
+                  class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
+                />
+                <p class="mt-1 text-[10px] leading-4 text-white/30">
+                  Maximum 30 characters.
+                </p>
+                <p
+                  data-error-for="lastname"
+                  class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                  aria-live="polite"
+                ></p>
+              </div>
             </div>
 
-            <p class="mt-1 text-[10px] leading-4 text-white/30">
-              Choose your country code and enter the rest of the number.
-            </p>
+            <!-- Email -->
+            <div class="text-left">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+              >
+                Email
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                data-hs-name="email"
+                data-validation-field="email"
+                required
+                placeholder="your@email.com"
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
+              />
+              <p
+                data-error-for="email"
+                class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                aria-live="polite"
+              ></p>
+            </div>
+
+            <!-- Phone / WhatsApp -->
+            <div class="text-left">
+              <label
+                for="enquiry-phone-number"
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+              >
+                Phone / WhatsApp
+              </label>
+
+              <div class="phone-input-row mt-2">
+                <div>
+                  <input
+                    id="enquiry-phone-code"
+                    type="text"
+                    inputmode="search"
+                    autocomplete="off"
+                    list="enquiry-phone-code-options"
+                    required
+                    data-validation-field="phone"
+                    placeholder="Code"
+                    class="phone-input-control phone-code-search text-xs md:text-sm"
+                  />
+                  <datalist id="enquiry-phone-code-options"></datalist>
+                </div>
+
+                <input
+                  id="enquiry-phone-number"
+                  type="tel"
+                  name="hs_whatsapp_phone_number"
+                  required
+                  autocomplete="tel-national"
+                  inputmode="numeric"
+                  placeholder="812 3456 7890"
+                  data-hs-name="hs_whatsapp_phone_number"
+                  data-validation-field="phone"
+                  class="phone-input-control text-xs md:text-sm"
+                />
+              </div>
+
+              <p class="mt-1 text-[10px] leading-4 text-white/30">
+                Choose your country code and enter the rest of the number.
+              </p>
+
+              <p
+                aria-live="polite"
+                data-error-for="phone"
+                class="mt-1 hidden text-[10px] leading-4 text-red-400"
+              ></p>
+            </div>
+
+            <!-- Location -->
+            <div class="text-left select-with-arrow">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+              >
+                Location
+              </label>
+
+              <select
+                id="locationSelect"
+                name="location"
+                data-hs-name="location"
+                data-validation-field="location"
+                required
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
+              >
+                <option class="bg-black" value="">Select</option>
+                <option class="bg-black" value="Bali">Bali</option>
+                <option class="bg-black" value="Lombok">Lombok</option>
+                <option class="bg-black" value="Jakarta">Jakarta</option>
+                <option class="bg-black" value="Elsewhere in Indonesia">
+                  Elsewhere in Indonesia
+                </option>
+                <option class="bg-black" value="Outside Indonesia">
+                  Outside Indonesia
+                </option>
+              </select>
+              <p
+                data-error-for="location"
+                class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                aria-live="polite"
+              ></p>
+            </div>
+
+            <!-- Outside Indonesia (Conditional) -->
+            <div id="outsideIndonesiaField" class="hidden text-left">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+              >
+                Country/Region
+              </label>
+
+              <input
+                type="text"
+                name="country"
+                data-hs-name="country"
+                data-validation-field="country"
+                placeholder="Country / Region"
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
+              />
+              <p
+                data-error-for="country"
+                class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                aria-live="polite"
+              ></p>
+            </div>
+
+            <!-- Intended Use -->
+            <div class="text-left select-with-arrow">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+              >
+                Intended Use
+              </label>
+
+              <select
+                id="intendedUseSelect"
+                name="intended_use"
+                data-hs-name="intended_use"
+                data-validation-field="intended_use"
+                required
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
+              >
+                <option class="bg-black" value="">Select</option>
+                <option class="bg-black" value="Private Residence">
+                  Private Residence
+                </option>
+                <option class="bg-black" value="Gym">Gym</option>
+                <option class="bg-black" value="Hospitality/Resort">
+                  Hospitality / Resort
+                </option>
+                <option class="bg-black" value="Wellness Operator">
+                  Wellness Operator
+                </option>
+                <option class="bg-black" value="Luxury Yacht">
+                  Luxury Yacht
+                </option>
+                <option class="bg-black" value="Others">Others</option>
+              </select>
+              <p
+                data-error-for="intended_use"
+                class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                aria-live="polite"
+              ></p>
+            </div>
+
+            <!-- Other Intended Use (Conditional) -->
+            <div id="otherUseField" class="hidden text-left">
+              <label
+                class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
+              >
+                Other Intended Use
+              </label>
+
+              <input
+                type="text"
+                name="other_intended_use"
+                data-hs-name="other_intended_use"
+                data-validation-field="other_intended_use"
+                placeholder="Tell us more"
+                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
+              />
+              <p
+                data-error-for="other_intended_use"
+                class="mt-1 hidden text-[10px] leading-4 text-red-400"
+                aria-live="polite"
+              ></p>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full border border-white bg-white py-2 font-title text-[10px] font-semibold uppercase tracking-[0.18em] text-black transition duration-300 hover:bg-transparent hover:text-white sm:py-2.5 sm:text-xs md:py-3 md:text-sm cursor-pointer"
+            >
+              Submit Enquiry
+            </button>
 
             <p
-              aria-live="polite"
-              data-error-for="phone"
-              class="mt-1 hidden text-[10px] leading-4 text-red-400"
-            ></p>
-          </div>
-
-          <!-- Location -->
-          <div class="text-left select-with-arrow">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Location
-            </label>
-
-            <select
-              id="locationSelect"
-              name="location"
-              data-hs-name="location"
-              data-validation-field="location"
-              required
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
-            >
-              <option class="bg-black" value="">Select</option>
-              <option class="bg-black" value="Bali">Bali</option>
-              <option class="bg-black" value="Lombok">Lombok</option>
-              <option class="bg-black" value="Jakarta">Jakarta</option>
-              <option class="bg-black" value="Elsewhere in Indonesia">
-                Elsewhere in Indonesia
-              </option>
-              <option class="bg-black" value="Outside Indonesia">
-                Outside Indonesia
-              </option>
-            </select>
-            <p
-              data-error-for="location"
-              class="mt-1 hidden text-[10px] leading-4 text-red-400"
+              data-form-status
+              class="hidden text-sm leading-6 text-red-400"
+              role="status"
               aria-live="polite"
             ></p>
-          </div>
-
-          <!-- Outside Indonesia (Conditional) -->
-          <div id="outsideIndonesiaField" class="hidden text-left">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Country/Region
-            </label>
-
-            <input
-              type="text"
-              name="country"
-              data-hs-name="country"
-              data-validation-field="country"
-              placeholder="Country / Region"
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
-            />
-            <p
-              data-error-for="country"
-              class="mt-1 hidden text-[10px] leading-4 text-red-400"
-              aria-live="polite"
-            ></p>
-          </div>
-
-          <!-- Intended Use -->
-          <div class="text-left select-with-arrow">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Intended Use
-            </label>
-
-            <select
-              id="intendedUseSelect"
-              name="intended_use"
-              data-hs-name="intended_use"
-              data-validation-field="intended_use"
-              required
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
-            >
-              <option class="bg-black" value="">Select</option>
-              <option class="bg-black" value="Private Residence">
-                Private Residence
-              </option>
-              <option class="bg-black" value="Gym">Gym</option>
-              <option class="bg-black" value="Hospitality/Resort">
-                Hospitality / Resort
-              </option>
-              <option class="bg-black" value="Wellness Operator">
-                Wellness Operator
-              </option>
-              <option class="bg-black" value="Luxury Yacht">
-                Luxury Yacht
-              </option>
-              <option class="bg-black" value="Others">Others</option>
-            </select>
-            <p
-              data-error-for="intended_use"
-              class="mt-1 hidden text-[10px] leading-4 text-red-400"
-              aria-live="polite"
-            ></p>
-          </div>
-
-          <!-- Other Intended Use (Conditional) -->
-          <div id="otherUseField" class="hidden text-left">
-            <label
-              class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
-            >
-              Other Intended Use
-            </label>
-
-            <input
-              type="text"
-              name="other_intended_use"
-              data-hs-name="other_intended_use"
-              data-validation-field="other_intended_use"
-              placeholder="Tell us more"
-              class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none placeholder:text-white/20 focus:border-kaido transition-colors md:mt-3 md:pb-2 md:text-sm"
-            />
-            <p
-              data-error-for="other_intended_use"
-              class="mt-1 hidden text-[10px] leading-4 text-red-400"
-              aria-live="polite"
-            ></p>
-          </div>
-
-          <!-- Submit -->
-          <button
-            type="submit"
-            class="w-full border border-white bg-white py-2 font-title text-[10px] font-semibold uppercase tracking-[0.18em] text-black transition duration-300 hover:bg-transparent hover:text-white sm:py-2.5 sm:text-xs md:py-3 md:text-sm cursor-pointer"
-          >
-            Submit Enquiry
-          </button>
+          </form>
 
           <p
-            data-form-status
-            class="hidden text-sm leading-6 text-red-400"
-            role="status"
-            aria-live="polite"
-          ></p>
-        </form>
-
-        <p
-          class="mx-auto mt-3 max-w-md text-xs leading-6 text-white/30 sm:mt-4 md:mt-5"
-        >
-          A Kaido advisor will reach out within 24 hours to discuss your Phantom
-          and the order process privately.
-        </p>
-      </div>
+            class="mx-auto mt-3 max-w-md text-xs leading-6 text-white/30 sm:mt-4 md:mt-5"
+          >
+            A Kaido advisor will reach out within 24 hours to discuss your
+            Phantom and the order process privately.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -346,7 +348,7 @@
       <div class="flex items-start justify-between gap-4">
         <div>
           <span
-            class="font-title text-[9px] uppercase tracking-[0.25em] text-kaido sm:text-[10px] md:text-[11px]"
+            class="font-title text-[9px] uppercase tracking-[0.25em] text-oracle sm:text-[10px] md:text-[11px]"
             >Thank you</span
           >
           <h2

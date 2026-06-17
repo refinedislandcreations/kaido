@@ -3,20 +3,22 @@
 
 {% if section.theme == 'light' %}
   {% assign bg_class = "bg-white text-black" %}
-  {% assign overlay_class = "bg-white/40" %}
-  {% assign eyebrow_class = "text-black/70" %}
-  {% assign line_class = "bg-black/30" %}
+  {% assign overlay_class = "pointer-events-none bg-[radial-gradient(circle_at_top_right,transparent_10%,rgba(236,233,225,0.45)_25%,rgba(236,233,225,0.78)_52%,rgba(236,233,225,0.96)_100%)]" %}
+  {% assign eyebrow_class = "text-oracleDark" %}
+  {% assign line_class = "bg-oracleDark/40" %}
   {% assign desc_class = "text-black/80" %}
-  {% assign btn_class = "border-black/80 text-black hover:border-black hover:bg-black hover:text-white focus:ring-offset-white" %}
-  {% assign ring_class = "focus:ring-[#4F5B46]" %}
+  {% assign btn_class = "border-black/40 text-oracleDark hover:border-oracleDark hover:bg-oracleDark hover:text-white focus:ring-offset-white" %}
+  {% assign ring_class = "focus:ring-oracleDark" %}
+  {% assign title_class = "text-oracleDark" %}
 {% else %}
   {% assign bg_class = "bg-black text-white" %}
   {% assign overlay_class = "bg-black/45" %}
-  {% assign eyebrow_class = "text-kaido" %}
-  {% assign line_class = "bg-kaido/40" %}
+  {% assign eyebrow_class = "text-oracle" %}
+  {% assign line_class = "bg-oracle/40" %}
   {% assign desc_class = "text-white/80" %}
   {% assign btn_class = "border-white/80 text-white hover:border-white hover:bg-white hover:text-[#0A0A0A] focus:ring-offset-black" %}
-  {% assign ring_class = "focus:ring-kaido" %}
+  {% assign ring_class = "focus:ring-oracle" %}
+  {% assign title_class = "text-white" %}
 {% endif %}
 
 <section
@@ -59,7 +61,7 @@
           <!-- Title -->
           {% assign h_tag = include.heading_level | default: 'h1' %}
           <{{ h_tag }}
-            class="hero-title font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem]"
+            class="hero-title font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem] {{ title_class }}"
           >
             {{ section.title }}
           </{{ h_tag }}>

@@ -1,28 +1,31 @@
 <!-- _includes/product/stats-bar.html -->
-{% assign section = include.section %}
-{% if section.theme == 'light' %}
-  {% assign bg_class = "bg-[#F4F3ED] text-[#141414]" %}
-  {% assign border_outer = "border-black/15" %}
-  {% assign eyebrow_class = "text-black/40" %}
-  {% assign title_class = "text-black" %}
-{% else %}
-  {% assign bg_class = "bg-black/90 backdrop-blur-sm text-white" %}
-  {% assign border_outer = "border-white/25" %}
-  {% assign eyebrow_class = "text-white/40" %}
-  {% assign title_class = "text-white" %}
-{% endif %}
+{% assign section = include.section %} {% if section.theme == 'light' %} {%
+assign bg_class = "bg-[#F4F3ED] text-[#141414]" %} {% assign border_outer =
+"border-black/15" %} {% assign eyebrow_class = "text-black/40" %} {% assign
+title_class = "text-black" %} {% else %} {% assign bg_class = "bg-black/90
+backdrop-blur-sm text-white" %} {% assign border_outer = "border-white/25" %} {%
+assign eyebrow_class = "text-oracle/80" %} {% assign title_class = "text-white"
+%} {% endif %}
 
-<section class="stats-section relative z-20 w-full {{ bg_class }} border-b {{ border_outer }} py-2 md:py-6">
+<section
+  class="stats-section relative z-20 w-full {{ bg_class }} border-b {{ border_outer }} py-2 md:py-6"
+>
   <div class="flex justify-center w-full max-w-screen-2xl mx-auto">
     <div class="mx-auto w-full max-w-7xl px-5 py-4 sm:px-6 md:px-8 lg:px-10">
       <!-- Responsive: 2 columns on mobile, flex row on desktop -->
-      <div class="stats-container grid grid-cols-2 gap-x-6 gap-y-5 md:flex md:w-full md:justify-between md:gap-6">
+      <div
+        class="stats-container grid grid-cols-2 gap-x-6 gap-y-5 md:flex md:w-full md:justify-between md:gap-6"
+      >
         {% for item in section.stats %}
         <div class="stats-item text-left">
-          <div class="mb-1 font-medium uppercase tracking-[0.1em] {{ eyebrow_class }} text-[10px] md:mb-1.5 md:text-xs">
+          <div
+            class="mb-1 font-medium uppercase tracking-[0.1em] {{ eyebrow_class }} text-[10px] md:mb-1.5 md:text-xs"
+          >
             {{ item.eyebrow }}
           </div>
-          <div class="font-title font-medium tracking-[-0.02em] text-base md:text-xl {{ title_class }}">
+          <div
+            class="font-title font-medium tracking-[-0.02em] text-base md:text-xl {{ title_class }}"
+          >
             {{ item.title }}
           </div>
         </div>
@@ -34,8 +37,8 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    if (typeof gsap === 'undefined') return;
-    
+    if (typeof gsap === "undefined") return;
+
     // Set initial state for stats items (hidden)
     gsap.set(".stats-item", { opacity: 0, y: 8 });
 
