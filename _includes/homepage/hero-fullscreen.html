@@ -27,7 +27,7 @@
     <div class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden">
       <img
         src="{{ section.background_image }}"
-        alt="Hero background - {{ section.title }}"
+        alt="Hero background - {{ section.title | strip_html | escape }}"
         role="presentation"
         class="h-full w-full object-cover"
         fetchpriority="high"
@@ -87,7 +87,7 @@
               <a
                 href="{{ section.button_url }}"
                 class="group inline-flex items-center justify-center gap-3 border bg-transparent px-10 py-4 font-title text-[11px] font-semibold uppercase tracking-[0.25em] transition-all duration-300 focus:outline-none focus:ring-2 {{ ring_class }} focus:ring-offset-2 md:text-xs cursor-pointer {{ btn_class }}"
-                aria-label="{{ section.button_text }} - {{ section.title }}"
+                aria-label="{{ section.button_text | strip_html | escape }} - {{ section.title | strip_html | escape }}"
               >
                 <span>{{ section.button_text }}</span>
 
@@ -111,7 +111,7 @@
               <a
                 href="{{ section.secondary_button_url }}"
                 class="group inline-flex items-center gap-3 font-title text-[11px] font-semibold uppercase tracking-[0.25em] transition-all duration-300 md:text-xs cursor-pointer {{ eyebrow_class }} hover:opacity-80"
-                aria-label="{{ section.secondary_button_text }} - {{ section.title }}"
+                aria-label="{{ section.secondary_button_text | strip_html | escape }} - {{ section.title | strip_html | escape }}"
               >
                 <span>{{ section.secondary_button_text }}</span>
                 <svg
