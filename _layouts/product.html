@@ -14,6 +14,42 @@
       content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
     />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:type" content="website" />
+    {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image | absolute_url }}" />
+    {% elsif site.og.image %}
+    <meta property="og:image" content="{{ site.og.image | absolute_url }}" />
+    {% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="{{ site.twitter.username }}" />
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    {% if page.og_image %}
+    <meta name="twitter:image" content="{{ page.og_image | absolute_url }}" />
+    {% elsif site.og.image %}
+    <meta name="twitter:image" content="{{ site.og.image | absolute_url }}" />
+    {% endif %}
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ '/' | absolute_url }}",
+      "description": "{{ site.description }}"
+    }
+    </script>
+
     <!-- Favicon -->
     <link
       rel="apple-touch-icon"
@@ -113,6 +149,6 @@
         window.addEventListener("scroll", updateHeaderState, { passive: true });
       })();
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   </body>
 </html>
