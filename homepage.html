@@ -175,10 +175,14 @@ cta-order:
 {% include homepage/hero-fullscreen.html section=page.hero-phantom %} {% include
 homepage/hero-fullscreen.html section=page.hero-oracle heading_level="h2" %} {%
 include homepage/text-block.html section=page.manifesto-philosophy %} {% include
-homepage/split-choice.html section=page.collection-showcase %} {% include
-homepage/text-block.html section=page.engineering-principles %} {% include
-homepage/feature-block.html section=page.principle-material %} {% include
-homepage/feature-block.html section=page.principle-thermal %} {% include
+homepage/split-choice.html section=page.collection-showcase %}
+
+<div id="craft">
+  {% include homepage/text-block.html section=page.engineering-principles %}
+</div>
+
+{% include homepage/feature-block.html section=page.principle-material %} {%
+include homepage/feature-block.html section=page.principle-thermal %} {% include
 homepage/feature-block.html section=page.principle-hygiene %} {% include
 homepage/feature-block.html section=page.principle-sculptural-form %} {% include
 homepage/cta-hero.html section=page.sustainability-vision %} {% include

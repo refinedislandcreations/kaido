@@ -70,8 +70,15 @@
     <!-- WhatsApp Floating Button Container -->
     <div class="fixed bottom-0 left-0 right-0 z-50 pointer-events-none">
       <div class="mx-auto w-full max-w-screen-2xl relative">
+        {% assign product_name = page.title | split: " / " | last %}
+        {% if product_name == "Oracle" or product_name == "Phantom" %}
+          {% assign target_product = product_name %}
+        {% else %}
+          {% assign target_product = "Phantom/Oracle" %}
+        {% endif %}
+        {% assign wa_text = "Hi Kaido, I'd like to know more about " | append: target_product %}
         <a
-          href="https://wa.me/6281330864125"
+          href="https://wa.me/6281330864125?text={{ wa_text | url_encode }}"
           target="_blank"
           rel="noopener noreferrer"
           class="absolute bottom-6 right-5 sm:right-6 md:right-8 lg:right-10 flex items-center justify-center w-14 h-14 text-oracle hover:text-white hover:scale-110 transition-all duration-300 pointer-events-auto"
