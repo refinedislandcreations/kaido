@@ -94,13 +94,13 @@
     <!-- Main Styles -->
     <link
       rel="stylesheet"
-      href="{{ '/assets/css/custom-style.css' | relative_url }}"
+      href="{{ '/assets/css/custom-style.css' | relative_url }}?v={{ site.time | date: '%s' }}"
     />
 
     <!-- Output Styles | Tailwindcss -->
     <link
       rel="stylesheet"
-      href="{{ '/assets/css/output.css' | relative_url }}"
+      href="{{ '/assets/css/output.css' | relative_url }}?v={{ site.time | date: '%s' }}"
     />
 
     <!-- Structured Data (JSON-LD) -->

@@ -1,3 +1,5 @@
+---
+---
 /* Workbox-based Service Worker for Kaido */
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/6.5.4/workbox-sw.js",
@@ -6,7 +8,7 @@ importScripts(
 if (workbox) {
   workbox.setConfig({ debug: false });
 
-  const CACHE_VERSION = "v20260528";
+  const CACHE_VERSION = "v{{ site.time | date: '%s' }}";
   const ASSETS_CACHE = `assets-cache-${CACHE_VERSION}`;
   const IMAGES_CACHE = `images-cache-${CACHE_VERSION}`;
   const PAGES_CACHE = `pages-cache-${CACHE_VERSION}`;
