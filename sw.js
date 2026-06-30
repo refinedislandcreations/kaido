@@ -31,7 +31,7 @@ if (workbox) {
       request.destination === "style" || request.destination === "script",
     new workbox.strategies.NetworkFirst({
       cacheName: ASSETS_CACHE,
-      networkTimeoutSeconds: 3,
+      networkTimeoutSeconds: 1,
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxEntries: 100,
@@ -58,7 +58,7 @@ if (workbox) {
   // Network-first for navigation requests with offline fallback
   const navigationHandler = new workbox.strategies.NetworkFirst({
     cacheName: PAGES_CACHE,
-    networkTimeoutSeconds: 3,
+    networkTimeoutSeconds: 1,
   });
 
   workbox.routing.registerRoute(
