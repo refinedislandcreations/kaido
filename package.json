@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev:css": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch",
-    "build:css": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify",
+    "dev:css": "NODE_OPTIONS='--disable-warning=DEP0205' npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "build:css": "NODE_OPTIONS='--disable-warning=DEP0205' npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify",
     "dev": "concurrently \"npm run dev:css\" \"bundle exec jekyll serve\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
