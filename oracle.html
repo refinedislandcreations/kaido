@@ -153,8 +153,10 @@ oracle-cta-end:
   background_image: "/assets/images/oracle.jpeg"
 ---
 
-{% include hero-section.html section=page.oracle-hero %} {% include
-product/stats-bar.html section=page.oracle-stats %} {% include
+<div class="h-[100svh] w-full flex flex-col">
+  {% include hero-section.html section=page.oracle-hero %}
+  {% include product/stats-bar.html section=page.oracle-stats %}
+</div> {% include
 homepage/text-block.html section=page.oracle-difference %} {% include
 homepage/cta-hero.html section=page.oracle-cta-mid %}
 <div id="build">

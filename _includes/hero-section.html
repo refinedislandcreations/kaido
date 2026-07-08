@@ -21,7 +21,7 @@
   {% assign title_class = "text-white" %}
 {% endif %}
 
-<section class="section relative min-h-[40dvh] md:min-h-[85dvh] overflow-hidden {{ bg_class }}"
+<section class="relative w-full h-full flex-1 overflow-hidden {{ bg_class }}"
 >
   <!-- Background -->
   <div class="absolute inset-0 flex justify-center">
@@ -37,7 +37,7 @@
     <div class="absolute inset-0 {{ overlay_class }}"></div>
   </div>
 
-  <div class="relative z-10 flex min-h-[40dvh] md:min-h-[85dvh] items-center">
+  <div class="relative z-10 flex h-full w-full items-center">
     <div class="mx-auto w-full max-w-screen-2xl">
       <!-- Fixed max-width to prevent excessive width on large screens -->
       <div

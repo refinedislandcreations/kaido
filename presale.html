@@ -71,8 +71,10 @@ enquiry_section:
     - "A member of the Kaido team will respond within 24 hours to discuss your Phantom and arrange next steps."
 ---
 
-{% include hero-section.html section=page.hero_section %} {% include
-stats-section.html stats=page.stats_section %} {% include
+<div class="h-[100svh] w-full flex flex-col">
+  {% include hero-section.html section=page.hero_section %}
+  {% include stats-section.html stats=page.stats_section %}
+</div> {% include
 specification-section.html section=page.spec_section %} {% include
 collection-section.html section=page.collection_section %}
 

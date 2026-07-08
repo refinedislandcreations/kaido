@@ -133,8 +133,10 @@ phantom-cta-end:
   background_image: "/assets/images/phantom-hero.webp"
 ---
 
-{% include hero-section.html section=page.phantom-hero %} {% include
-product/stats-bar.html section=page.phantom-stats %}
+<div class="h-[100svh] w-full flex flex-col">
+  {% include hero-section.html section=page.phantom-hero %}
+  {% include product/stats-bar.html section=page.phantom-stats %}
+</div>
 <div id="build">
   {% include product/specs-block.html section=page.phantom-specs %}
 </div>
