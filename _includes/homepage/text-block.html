@@ -2,12 +2,12 @@
 {% assign section = include.section %} {% if section.theme == 'light' %} {%
 assign bg_class = "bg-[#F4F3ED] text-[#141414]" %} {% assign eyebrow_class =
 "text-black/60" %} {% assign title_class = "text-[#141414]" %} {% assign
-line_class = "bg-black/20" %} {% assign text_class = "text-[#141414]/80" %} {%
-assign border_class = "border-black/20" %} {% else %} {% assign bg_class =
+line_class = "bg-black/20" %} {% assign text_class = "text-[#141414]/80" %} {% assign border_class =
+"border-black/20" %} {% assign btn_class = "border-[#141414] text-[#141414] hover:bg-oracleDark hover:text-white hover:border-oracleDark focus:ring-oracleDark" %} {% else %} {% assign bg_class =
 "bg-[#0A0A0A] text-white" %} {% assign eyebrow_class = "text-oracle/50" %} {%
 assign title_class = "text-white" %} {% assign line_class = "bg-white/10" %} {%
 assign text_class = "text-white/65" %} {% assign border_class =
-"border-white/10" %} {% endif %}
+"border-white/10" %} {% assign btn_class = "border-white text-white hover:bg-white hover:text-[#0A0A0A] focus:ring-white" %} {% endif %}
 
 <section class="section relative {{ bg_class }}">
   <div class="relative z-10 flex items-center">
@@ -79,7 +79,7 @@ assign text_class = "text-white/65" %} {% assign border_class =
             <div class="mt-12 flex justify-end">
               <a
                 href="{{ section.button_url }}"
-                class="inline-flex items-center justify-center border border-[#141414] text-[#141414] hover:bg-[#141414] hover:text-white transition-colors duration-300 font-title text-[9px] uppercase tracking-[0.25em] px-8 py-4"
+                class="inline-flex items-center justify-center border transition-colors duration-300 font-title text-[9px] uppercase tracking-[0.25em] px-8 py-4 {{ btn_class }}"
               >
                 {{ section.button_text }} &rarr;
               </a>
