@@ -1,7 +1,7 @@
 # Netlify configuration for Kaido website
 
 [build]
-  command = "npm run build:css && jekyll build"
+  command = "npm run build:css && bundle exec jekyll build"
   publish = "_site"
   functions = "netlify/functions"
 
