@@ -1171,9 +1171,6 @@
   .text-\[1\.35rem\] {
     font-size: 1.35rem;
   }
-  .text-\[2\.2rem\] {
-    font-size: 2.2rem;
-  }
   .text-\[2\.5rem\] {
     font-size: 2.5rem;
   }
@@ -2753,10 +2750,10 @@
       text-align: left;
     }
   }
-  .lg\:text-2xl {
+  .lg\:text-5xl {
     @media (width >= 64rem) {
-      font-size: var(--text-2xl);
-      line-height: var(--tw-leading, var(--text-2xl--line-height));
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
   }
   .lg\:text-6xl {
@@ -2824,11 +2821,6 @@
       font-size: 4rem;
     }
   }
-  .lg\:text-\[5\.5rem\] {
-    @media (width >= 64rem) {
-      font-size: 5.5rem;
-    }
-  }
   .lg\:text-\[5rem\] {
     @media (width >= 64rem) {
       font-size: 5rem;
@@ -2857,11 +2849,6 @@
   .xl\:text-\[4\.5rem\] {
     @media (width >= 80rem) {
       font-size: 4.5rem;
-    }
-  }
-  .xl\:text-\[5\.5rem\] {
-    @media (width >= 80rem) {
-      font-size: 5.5rem;
     }
   }
 }
