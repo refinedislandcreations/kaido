@@ -60,21 +60,21 @@
           <!-- Title -->
           {% assign h_tag = include.heading_level | default: 'h1' %}
           <{{ h_tag }}
-            class="hero-title font-title text-[3rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[6rem] {{ title_class }}"
+            class="hero-title font-title text-[2rem] font-bold leading-[0.9] tracking-[-0.06em] md:text-[3.5rem] lg:text-[4rem] {{ title_class }}"
           >
             {{ section.title }}
           </{{ h_tag }}>
 
           <!-- Subtitle -->
           <div
-            class="hero-subtitle mt-4 text-lg font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-2xl"
+            class="hero-subtitle mt-4 text-sm font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-lg"
           >
             {{ section.subtitle }}
           </div>
 
           <!-- Description -->
           <div
-            class="hero-description mt-6 text-sm leading-[1.7] {{ desc_class }} sm:mt-8 md:text-base md:mt-10 max-w-xl"
+            class="hero-description mt-6 text-[10px] leading-[1.7] {{ desc_class }} sm:mt-8 md:text-xs md:mt-10 max-w-xl"
           >
             {% for item in section.description %}
             <p>{{ item }}</p>
