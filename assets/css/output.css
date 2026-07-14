@@ -361,9 +361,6 @@
   .-mr-2 {
     margin-right: calc(var(--spacing) * -2);
   }
-  .mr-auto {
-    margin-right: auto;
-  }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
@@ -390,9 +387,6 @@
   }
   .mb-16 {
     margin-bottom: calc(var(--spacing) * 16);
-  }
-  .ml-auto {
-    margin-left: auto;
   }
   .block {
     display: block;
@@ -448,9 +442,6 @@
   .h-\[5vh\] {
     height: 5vh;
   }
-  .h-\[70vh\] {
-    height: 70vh;
-  }
   .h-\[85svh\] {
     height: 85svh;
   }
@@ -483,6 +474,9 @@
   }
   .min-h-\[95dvh\] {
     min-height: 95dvh;
+  }
+  .min-h-\[100svh\] {
+    min-height: 100svh;
   }
   .min-h-screen {
     min-height: 100vh;
@@ -543,6 +537,9 @@
   }
   .max-w-\[640px\] {
     max-width: 640px;
+  }
+  .max-w-\[2560px\] {
+    max-width: 2560px;
   }
   .max-w-lg {
     max-width: var(--container-lg);
@@ -1018,14 +1015,8 @@
   .object-cover {
     object-fit: cover;
   }
-  .object-\[30\%_center\] {
-    object-position: 30% center;
-  }
   .object-\[40\%_center\] {
     object-position: 40% center;
-  }
-  .object-\[70\%_center\] {
-    object-position: 70% center;
   }
   .object-center {
     object-position: center;
@@ -1114,9 +1105,6 @@
   .pb-12 {
     padding-bottom: calc(var(--spacing) * 12);
   }
-  .pb-16 {
-    padding-bottom: calc(var(--spacing) * 16);
-  }
   .text-center {
     text-align: center;
   }
@@ -1171,6 +1159,12 @@
   .text-\[1\.4rem\] {
     font-size: 1.4rem;
   }
+  .text-\[1\.5rem\] {
+    font-size: 1.5rem;
+  }
+  .text-\[1\.8rem\] {
+    font-size: 1.8rem;
+  }
   .text-\[1\.15rem\] {
     font-size: 1.15rem;
   }
@@ -1182,6 +1176,9 @@
   }
   .text-\[2\.5rem\] {
     font-size: 2.5rem;
+  }
+  .text-\[2rem\] {
+    font-size: 2rem;
   }
   .text-\[3rem\] {
     font-size: 3rem;
@@ -1935,11 +1932,6 @@
       padding-inline: calc(var(--spacing) * 6);
     }
   }
-  .sm\:px-8 {
-    @media (width >= 40rem) {
-      padding-inline: calc(var(--spacing) * 8);
-    }
-  }
   .sm\:py-2\.5 {
     @media (width >= 40rem) {
       padding-block: calc(var(--spacing) * 2.5);
@@ -1966,6 +1958,16 @@
     @media (width >= 40rem) {
       font-size: var(--text-xs);
       line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+  .sm\:text-\[2\.5rem\] {
+    @media (width >= 40rem) {
+      font-size: 2.5rem;
+    }
+  }
+  .sm\:text-\[2rem\] {
+    @media (width >= 40rem) {
+      font-size: 2rem;
     }
   }
   .sm\:text-\[3rem\] {
@@ -2026,6 +2028,11 @@
   .md\:col-span-5 {
     @media (width >= 48rem) {
       grid-column: span 5 / span 5;
+    }
+  }
+  .md\:col-span-6 {
+    @media (width >= 48rem) {
+      grid-column: span 6 / span 6;
     }
   }
   .md\:col-span-7 {
@@ -2427,6 +2434,12 @@
       line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
   }
+  .md\:text-4xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+    }
+  }
   .md\:text-5xl {
     @media (width >= 48rem) {
       font-size: var(--text-5xl);
@@ -2474,9 +2487,19 @@
       font-size: 1.5rem;
     }
   }
+  .md\:text-\[1\.8rem\] {
+    @media (width >= 48rem) {
+      font-size: 1.8rem;
+    }
+  }
   .md\:text-\[2\.2rem\] {
     @media (width >= 48rem) {
       font-size: 2.2rem;
+    }
+  }
+  .md\:text-\[2\.5rem\] {
+    @media (width >= 48rem) {
+      font-size: 2.5rem;
     }
   }
   .md\:text-\[2\.8rem\] {
@@ -2487,6 +2510,11 @@
   .md\:text-\[2rem\] {
     @media (width >= 48rem) {
       font-size: 2rem;
+    }
+  }
+  .md\:text-\[3\.5rem\] {
+    @media (width >= 48rem) {
+      font-size: 3.5rem;
     }
   }
   .md\:text-\[3rem\] {
@@ -2720,26 +2748,6 @@
       padding-block: calc(var(--spacing) * 0);
     }
   }
-  .lg\:pr-10 {
-    @media (width >= 64rem) {
-      padding-right: calc(var(--spacing) * 10);
-    }
-  }
-  .lg\:pr-12 {
-    @media (width >= 64rem) {
-      padding-right: calc(var(--spacing) * 12);
-    }
-  }
-  .lg\:pl-10 {
-    @media (width >= 64rem) {
-      padding-left: calc(var(--spacing) * 10);
-    }
-  }
-  .lg\:pl-12 {
-    @media (width >= 64rem) {
-      padding-left: calc(var(--spacing) * 12);
-    }
-  }
   .lg\:text-left {
     @media (width >= 64rem) {
       text-align: left;
@@ -2775,9 +2783,35 @@
       line-height: var(--tw-leading, var(--text-sm--line-height));
     }
   }
+  .lg\:text-xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .lg\:text-\[1\.5rem\] {
+    @media (width >= 64rem) {
+      font-size: 1.5rem;
+    }
+  }
   .lg\:text-\[2\.5rem\] {
     @media (width >= 64rem) {
       font-size: 2.5rem;
+    }
+  }
+  .lg\:text-\[2rem\] {
+    @media (width >= 64rem) {
+      font-size: 2rem;
+    }
+  }
+  .lg\:text-\[3\.5rem\] {
+    @media (width >= 64rem) {
+      font-size: 3.5rem;
+    }
+  }
+  .lg\:text-\[3rem\] {
+    @media (width >= 64rem) {
+      font-size: 3rem;
     }
   }
   .lg\:text-\[4\.5rem\] {
@@ -2808,6 +2842,16 @@
   .lg\:text-\[12rem\] {
     @media (width >= 64rem) {
       font-size: 12rem;
+    }
+  }
+  .xl\:text-\[3\.5rem\] {
+    @media (width >= 80rem) {
+      font-size: 3.5rem;
+    }
+  }
+  .xl\:text-\[3rem\] {
+    @media (width >= 80rem) {
+      font-size: 3rem;
     }
   }
   .xl\:text-\[4\.5rem\] {

@@ -31,21 +31,21 @@ md:flex-row" %} {% if section.image_position == 'right' %} {% assign flex_dir =
               </div>
 
               <h2
-                class="font-title font-bold text-[2.2rem] sm:text-[3rem] md:text-[2.8rem] lg:text-[4rem] xl:text-[4.5rem] leading-[0.95] tracking-[-0.04em] uppercase text-white mb-4 break-words"
+                class="font-title font-bold text-[1.5rem] sm:text-[2rem] md:text-[1.8rem] lg:text-[2.5rem] xl:text-[3rem] leading-[0.95] tracking-[-0.04em] uppercase text-white mb-4 break-words"
               >
                 {{ section.title }}
               </h2>
 
               {% if section.subtitle %}
               <p
-                class="font-title font-bold text-lg md:text-xl lg:text-2xl text-white"
+                class="font-title font-bold text-sm md:text-base lg:text-lg text-white"
               >
                 {{ section.subtitle }}
               </p>
               {% endif %}
 
               <div
-                class="space-y-6 text-sm md:text-[15px] leading-[1.8] text-white/65 mt-2 md:mt-4"
+                class="space-y-6 text-[10px] md:text-xs leading-[1.8] text-white/65 mt-2 md:mt-4"
               >
                 {% for p in section.paragraphs %}
                 <p>{{ p }}</p>
