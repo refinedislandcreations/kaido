@@ -116,14 +116,14 @@
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "Customer Support",
-          "email": "info@kaido.recovery"
+          "email": "info@kaido.recovery.com"
         }
       }
     </script>
     <!-- Meta Pixel Code -->
     <script>
-      fbq('init', '2197525264025521');
-      fbq('track', 'PageView');
+      fbq("init", "2197525264025521");
+      fbq("track", "PageView");
     </script>
   </head>
 
@@ -134,18 +134,13 @@
     {% include site-footer.html %}
 
     <!-- WhatsApp Floating Button -->
-    {% assign product_name = page.title | split: " / " | last %}
-    {% if product_name == "Oracle" or product_name == "Phantom" %}
-      {% assign target_product = product_name %}
-    {% else %}
-      {% assign target_product = "Phantom/Oracle" %}
-    {% endif %}
-    
-    {% if page.url == "/presale.html" %}
-      {% assign wa_text = "Hi Kaido, I'd like to know more about Phantom" %}
-    {% else %}
-      {% assign wa_text = "Hi Kaido, I'd like to know more about " | append: target_product %}
-    {% endif %}
+    {% assign product_name = page.title | split: " / " | last %} {% if
+    product_name == "Oracle" or product_name == "Phantom" %} {% assign
+    target_product = product_name %} {% else %} {% assign target_product =
+    "Phantom/Oracle" %} {% endif %} {% if page.url == "/presale.html" %} {%
+    assign wa_text = "Hi Kaido, I'd like to know more about Phantom" %} {% else
+    %} {% assign wa_text = "Hi Kaido, I'd like to know more about " | append:
+    target_product %} {% endif %}
     <a
       href="https://wa.me/6281330864125?text={{ wa_text | url_encode }}"
       target="_blank"
@@ -202,6 +197,9 @@
       }
     </script>
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ></script>
   </body>
 </html>
