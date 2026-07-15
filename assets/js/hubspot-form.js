@@ -705,15 +705,33 @@
             status: res.status,
             body: errorText,
           });
-          throw new Error("HubSpot rejected the enquiry submission.");
+          
+          let specificError = "HubSpot rejected the enquiry submission.";
+          try {
+            const errorObj = JSON.parse(errorText);
+            if (errorObj.errors && errorObj.errors.length > 0) {
+              specificError = errorObj.errors[0].message;
+            } else if (errorObj.message) {
+              specificError = errorObj.message;
+            }
+          } catch(e) {}
+          
+          throw new Error(specificError);
         }
 
         showThanks();
       } catch (err) {
         console.error("HubSpot submission error", err);
-        setStatus(
-          "Sorry, the enquiry could not be submitted. Please try again or contact us directly.",
-        );
+        
+        let msg = "Sorry, the enquiry could not be submitted. Please try again or contact us directly.";
+        
+        if (err instanceof TypeError) {
+          msg = "Network error. If you are using an ad-blocker or strict privacy shields, it may be blocking the submission. Please temporarily disable it and try again.";
+        } else if (err.message && err.message !== "HubSpot rejected the enquiry submission.") {
+          msg = "Submission issue: " + err.message + " Please try again or contact us directly.";
+        }
+        
+        setStatus(msg);
       } finally {
         setLoading(false);
       }
