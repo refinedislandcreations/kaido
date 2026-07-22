@@ -12,7 +12,7 @@ oracle-hero:
   button_url: "/contact.html"
   secondary_button_text: "EXPLORE THE BUILD"
   secondary_button_url: "#build"
-  background_image: "/assets/images/oracle.jpeg"
+  background_image: "/assets/images/oracle-main-product.webp"
 
 oracle-stats:
   theme: "light"
@@ -47,7 +47,7 @@ oracle-cta-mid:
   title: "FOR SPACES DESIGNED<br>TO BE <span class='font-bold'>REMEMBERED.</span>"
   button_text: "ANY QUESTIONS?"
   button_url: "https://wa.me/6281330864125?text=Hi%20Kaido%2C%20I%E2%80%99d%20like%20to%20know%20more%20about%20Oracle"
-  background_image: "/assets/images/oracle.jpeg"
+  background_image: "/assets/images/oracle-main-product.webp"
 
 oracle-specs:
   theme: "light"
@@ -97,28 +97,6 @@ oracle-specs:
           value: "3 YEARS"
           icon: "recycle"
 
-oracle-gallery:
-  theme: "light"
-  eyebrow: "IN PLACE"
-  title: "A CENTERPIECE<br>OF <span class='text-oracleDark'>DESIGN.</span>"
-  images:
-    - url: "/assets/images/oracle.jpeg"
-      eyebrow: "RETREAT"
-      title: "ROCCA UBUD"
-      description: "Set into the volcanic stone of the Ayung valley."
-    - url: "/assets/images/oracle.jpeg"
-      eyebrow: "POOL CLUB"
-      title: "LE BAJO"
-      description: "Anchoring the sunset edge of the Komodo waterline."
-    - url: "/assets/images/oracle.jpeg"
-      eyebrow: "PRIVATE VILLA"
-      title: "DANS VILLA"
-      description: "Drawn into the architecture, not added to it."
-    - url: "/assets/images/oracle.jpeg"
-      eyebrow: "POOL CLUB"
-      title: "LE BAJO"
-      description: "Anchoring the sunset edge of the Komodo waterline."
-
 oracle-maintenance:
   theme: "light"
   left:
@@ -150,7 +128,7 @@ oracle-cta-end:
   title: "MAKE ORACLE<br><span class='text-oracleDark'>YOURS.</span>"
   button_text: "ORDER NOW"
   button_url: "/contact.html"
-  background_image: "/assets/images/oracle.jpeg"
+  background_image: "/assets/images/oracle-main-product.webp"
 ---
 
 <div class="h-[100svh] w-full flex flex-col">
@@ -162,6 +140,6 @@ homepage/cta-hero.html section=page.oracle-cta-mid %}
 <div id="build">
   {% include product/specs-block.html section=page.oracle-specs %}
 </div>
-{% include product/image-grid.html section=page.oracle-gallery %} {% include
+{% include
 product/includes-maintenance.html section=page.oracle-maintenance %} {% include
 homepage/cta-hero.html section=page.oracle-cta-end %}

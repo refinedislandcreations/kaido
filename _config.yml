@@ -2,12 +2,12 @@ url: "https://kaido-recovery.com"
 baseurl: ""
 title: "Kaido - Premium Recovery Instruments"
 description: "Handmade SS316 Marine-Grade recovery instruments designed for permanence. The Phantom collection featuring luxury cold plunge therapy systems."
-logo: "https://kaido-recovery.com/assets/images/logo-2.png"
+logo: "https://kaido-recovery.com/assets/images/index-kaido-logo.webp"
 author: "Kaido"
 locale: "en_US"
 twitter:
   username: "@kaido_recovery"
 og:
-  image: "https://kaido-recovery.com/assets/images/phantom-hero.png"
+  image: "https://kaido-recovery.com/assets/images/phantom-hero-banner.webp"
   image_width: 1200
   image_height: 630
