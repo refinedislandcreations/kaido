@@ -190,32 +190,34 @@
             </div>
 
             <!-- Location -->
-            <div class="text-left select-with-arrow">
+            <div class="text-left">
               <label
                 class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
               >
                 Location
               </label>
 
-              <select
-                id="locationSelect"
-                name="location"
-                data-hs-name="location"
-                data-validation-field="location"
-                required
-                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
-              >
-                <option class="bg-black" value="">Select</option>
-                <option class="bg-black" value="Bali">Bali</option>
-                <option class="bg-black" value="Lombok">Lombok</option>
-                <option class="bg-black" value="Jakarta">Jakarta</option>
-                <option class="bg-black" value="Elsewhere in Indonesia">
-                  Elsewhere in Indonesia
-                </option>
-                <option class="bg-black" value="Outside Indonesia">
-                  Outside Indonesia
-                </option>
-              </select>
+              <div class="mt-2 w-full select-with-arrow md:mt-3">
+                <select
+                  id="locationSelect"
+                  name="location"
+                  data-hs-name="location"
+                  data-validation-field="location"
+                  required
+                  class="w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-oracle transition-colors md:pb-2 md:text-sm"
+                >
+                  <option class="bg-black" value="">Select</option>
+                  <option class="bg-black" value="Bali">Bali</option>
+                  <option class="bg-black" value="Lombok">Lombok</option>
+                  <option class="bg-black" value="Jakarta">Jakarta</option>
+                  <option class="bg-black" value="Elsewhere in Indonesia">
+                    Elsewhere in Indonesia
+                  </option>
+                  <option class="bg-black" value="Outside Indonesia">
+                    Outside Indonesia
+                  </option>
+                </select>
+              </div>
               <p
                 data-error-for="location"
                 class="mt-1 hidden text-[10px] leading-4 text-red-400"
@@ -247,37 +249,39 @@
             </div>
 
             <!-- Intended Use -->
-            <div class="text-left select-with-arrow">
+            <div class="text-left">
               <label
                 class="font-title text-[10px] uppercase tracking-[0.15em] text-white/60 sm:text-[9px] md:text-xs"
               >
                 Intended Use
               </label>
 
-              <select
-                id="intendedUseSelect"
-                name="intended_use"
-                data-hs-name="intended_use"
-                data-validation-field="intended_use"
-                required
-                class="mt-2 w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-oracle transition-colors md:mt-3 md:pb-2 md:text-sm"
-              >
-                <option class="bg-black" value="">Select</option>
-                <option class="bg-black" value="Private Residence">
-                  Private Residence
-                </option>
-                <option class="bg-black" value="Gym">Gym</option>
-                <option class="bg-black" value="Hospitality/Resort">
-                  Hospitality / Resort
-                </option>
-                <option class="bg-black" value="Wellness Operator">
-                  Wellness Operator
-                </option>
-                <option class="bg-black" value="Luxury Yacht">
-                  Luxury Yacht
-                </option>
-                <option class="bg-black" value="Others">Others</option>
-              </select>
+              <div class="mt-2 w-full select-with-arrow md:mt-3">
+                <select
+                  id="intendedUseSelect"
+                  name="intended_use"
+                  data-hs-name="intended_use"
+                  data-validation-field="intended_use"
+                  required
+                  class="w-full border-b border-white/10 bg-transparent pb-1 text-xs text-white outline-none focus:border-oracle transition-colors md:pb-2 md:text-sm"
+                >
+                  <option class="bg-black" value="">Select</option>
+                  <option class="bg-black" value="Private Residence">
+                    Private Residence
+                  </option>
+                  <option class="bg-black" value="Gym">Gym</option>
+                  <option class="bg-black" value="Hospitality/Resort">
+                    Hospitality / Resort
+                  </option>
+                  <option class="bg-black" value="Wellness Operator">
+                    Wellness Operator
+                  </option>
+                  <option class="bg-black" value="Luxury Yacht">
+                    Luxury Yacht
+                  </option>
+                  <option class="bg-black" value="Others">Others</option>
+                </select>
+              </div>
               <p
                 data-error-for="intended_use"
                 class="mt-1 hidden text-[10px] leading-4 text-red-400"
