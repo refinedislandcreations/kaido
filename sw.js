@@ -55,6 +55,20 @@ if (workbox) {
     }),
   );
 
+  // Cache-first for fonts – they are versioned by filename so safe to cache indefinitely
+  workbox.routing.registerRoute(
+    ({ request }) => request.destination === "font",
+    new workbox.strategies.CacheFirst({
+      cacheName: ASSETS_CACHE,
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 30,
+          maxAgeSeconds: 60 * 60 * 24 * 365,
+        }),
+      ],
+    }),
+  );
+
   // Network-first for navigation requests with offline fallback
   const navigationHandler = new workbox.strategies.NetworkFirst({
     cacheName: PAGES_CACHE,
