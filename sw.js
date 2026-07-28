@@ -18,10 +18,8 @@ if (workbox) {
   workbox.core.clientsClaim();
   workbox.precaching.cleanupOutdatedCaches();
 
-  // Precache core assets
+  // Precache offline page only, let NetworkFirst handle other navigations
   workbox.precaching.precacheAndRoute([
-    { url: "/", revision: null },
-    { url: "/index.html", revision: null },
     { url: "/offline.html", revision: null },
   ]);
 
@@ -41,10 +39,10 @@ if (workbox) {
     }),
   );
 
-  // Cache-first for images
+  // NetworkFirst for images so they are always up to date
   workbox.routing.registerRoute(
     ({ request }) => request.destination === "image",
-    new workbox.strategies.CacheFirst({
+    new workbox.strategies.NetworkFirst({
       cacheName: IMAGES_CACHE,
       plugins: [
         new workbox.expiration.ExpirationPlugin({
