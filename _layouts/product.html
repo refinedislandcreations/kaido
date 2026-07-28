@@ -142,6 +142,27 @@
         window.addEventListener("scroll", updateHeaderState, { passive: true });
       })();
     </script>
+    <script>
+      // Register the service worker for caching and offline support
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register('{{ "/sw.js" | relative_url }}', {
+              updateViaCache: "none",
+            })
+            .then(function (registration) {
+              // Registration successful
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope,
+              );
+            })
+            .catch(function (err) {
+              console.warn("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+    </script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   </body>
 </html>
