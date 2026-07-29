@@ -8,7 +8,7 @@
       class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden relative"
     >
       <img
-        src="{{ section.background_image }}"
+        src="{{ section.background_image | relative_url }}"
         alt="Product preview - {{ section.title }} collection"
         role="presentation"
         loading="lazy"

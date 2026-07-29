@@ -21,7 +21,7 @@ focus:ring-white focus:ring-offset-black" %} {% endif %}
       <img
         src="{{ section.background_image | relative_url }}"
         alt="{{ section.title | strip_html }}"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-[70%_center] lg:object-center"
       />
       <div class="absolute inset-0 {{ overlay_class }}"></div>
     </div>

@@ -27,7 +27,7 @@
   <div class="absolute inset-0 flex justify-center">
     <div class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden">
       <img
-        src="{{ section.background_image }}"
+        src="{{ section.background_image | relative_url }}"
         alt="Hero background - {{ section.title }}"
         role="presentation"
         class="h-full w-full object-cover"

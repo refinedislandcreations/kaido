@@ -19,7 +19,7 @@ focus:ring-white focus:ring-offset-black" %} {% endif %}
       class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden relative"
     >
       <img
-        src="{{ section.background_image }}"
+        src="{{ section.background_image | relative_url }}"
         alt="{{ section.title | strip_html }}"
         class="w-full h-full object-cover"
       />

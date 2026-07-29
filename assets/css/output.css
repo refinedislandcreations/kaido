@@ -1020,11 +1020,23 @@
   .object-cover {
     object-fit: cover;
   }
+  .object-\[20\%_center\] {
+    object-position: 20% center;
+  }
   .object-\[40\%_center\] {
     object-position: 40% center;
   }
+  .object-\[70\%_center\] {
+    object-position: 70% center;
+  }
   .object-center {
     object-position: center;
+  }
+  .object-left {
+    object-position: left;
+  }
+  .object-right {
+    object-position: right;
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
