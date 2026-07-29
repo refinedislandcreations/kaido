@@ -243,6 +243,9 @@
   .top-6 {
     top: calc(var(--spacing) * 6);
   }
+  .top-8 {
+    top: calc(var(--spacing) * 8);
+  }
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
@@ -323,6 +326,15 @@
   }
   .my-6 {
     margin-block: calc(var(--spacing) * 6);
+  }
+  .-mt-16 {
+    margin-top: calc(var(--spacing) * -16);
+  }
+  .-mt-24 {
+    margin-top: calc(var(--spacing) * -24);
+  }
+  .-mt-40 {
+    margin-top: calc(var(--spacing) * -40);
   }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
@@ -972,6 +984,14 @@
     }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .via-black\/20 {
+    --tw-gradient-via: color-mix(in srgb, #000 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-via: color-mix(in oklab, var(--color-black) 20%, transparent);
+    }
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
   .via-black\/40 {
     --tw-gradient-via: color-mix(in srgb, #000 40%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -987,6 +1007,13 @@
     }
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-black\/60 {
+    --tw-gradient-to: color-mix(in srgb, #000 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-to: color-mix(in oklab, var(--color-black) 60%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-black\/80 {
     --tw-gradient-to: color-mix(in srgb, #000 80%, transparent);
@@ -1065,6 +1092,9 @@
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
   }
+  .py-16 {
+    padding-block: calc(var(--spacing) * 16);
+  }
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
   }
@@ -1076,6 +1106,9 @@
   }
   .pt-12 {
     padding-top: calc(var(--spacing) * 12);
+  }
+  .pt-24 {
+    padding-top: calc(var(--spacing) * 24);
   }
   .pr-8 {
     padding-right: calc(var(--spacing) * 8);
@@ -1963,6 +1996,11 @@
       top: calc(var(--spacing) * 10);
     }
   }
+  .md\:top-auto {
+    @media (width >= 48rem) {
+      top: auto;
+    }
+  }
   .md\:right-8 {
     @media (width >= 48rem) {
       right: calc(var(--spacing) * 8);
@@ -1971,6 +2009,11 @@
   .md\:right-10 {
     @media (width >= 48rem) {
       right: calc(var(--spacing) * 10);
+    }
+  }
+  .md\:bottom-8 {
+    @media (width >= 48rem) {
+      bottom: calc(var(--spacing) * 8);
     }
   }
   .md\:bottom-10 {
@@ -1996,6 +2039,11 @@
   .md\:my-8 {
     @media (width >= 48rem) {
       margin-block: calc(var(--spacing) * 8);
+    }
+  }
+  .md\:mt-0 {
+    @media (width >= 48rem) {
+      margin-top: calc(var(--spacing) * 0);
     }
   }
   .md\:mt-3 {
@@ -2315,6 +2363,11 @@
       padding-inline: calc(var(--spacing) * 12);
     }
   }
+  .md\:py-0 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 0);
+    }
+  }
   .md\:py-3 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 3);
@@ -2333,6 +2386,11 @@
   .md\:py-10 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 10);
+    }
+  }
+  .md\:pt-0 {
+    @media (width >= 48rem) {
+      padding-top: calc(var(--spacing) * 0);
     }
   }
   .md\:pt-10 {
@@ -2509,9 +2567,19 @@
       letter-spacing: 0.3em;
     }
   }
+  .lg\:top-auto {
+    @media (width >= 64rem) {
+      top: auto;
+    }
+  }
   .lg\:right-10 {
     @media (width >= 64rem) {
       right: calc(var(--spacing) * 10);
+    }
+  }
+  .lg\:bottom-8 {
+    @media (width >= 64rem) {
+      bottom: calc(var(--spacing) * 8);
     }
   }
   .lg\:my-0 {
@@ -2594,6 +2662,11 @@
       flex-direction: row;
     }
   }
+  .lg\:items-center {
+    @media (width >= 64rem) {
+      align-items: center;
+    }
+  }
   .lg\:items-end {
     @media (width >= 64rem) {
       align-items: flex-end;
@@ -2671,6 +2744,11 @@
   .lg\:py-0 {
     @media (width >= 64rem) {
       padding-block: calc(var(--spacing) * 0);
+    }
+  }
+  .lg\:pt-0 {
+    @media (width >= 64rem) {
+      padding-top: calc(var(--spacing) * 0);
     }
   }
   .lg\:text-left {
