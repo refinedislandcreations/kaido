@@ -8,6 +8,6 @@ locale: "en_US"
 twitter:
   username: "@kaido_recovery"
 og:
-  image: "https://kaido-recovery.com/assets/images/phantom-hero-banner.webp"
+  image: "/assets/images/phantom-detail-1.webp"
   image_width: 1200
   image_height: 630
