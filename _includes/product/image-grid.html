@@ -36,6 +36,8 @@ assign img_eyebrow_class = "text-white/60" %} {% assign img_title_class =
           src="{{ img.url | relative_url }}"
           alt="{{ img.title }}"
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60"></div>
         <div class="absolute top-8 lg:top-auto lg:bottom-8 left-8 right-8">

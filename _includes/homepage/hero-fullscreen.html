@@ -24,13 +24,29 @@
   <!-- Background -->
   <div class="absolute inset-0 flex justify-center">
     <div class="mx-auto w-full max-w-screen-2xl h-full overflow-hidden">
+      {% if include.heading_level == 'h2' %}
+      <!-- Below-fold hero: lazy load to avoid competing with LCP image above -->
       <img
         src="{{ section.background_image | relative_url }}"
         alt="Hero background - {{ section.title | strip_html | escape }}"
         role="presentation"
         class="h-full w-full object-cover"
-        fetchpriority="high"
+        loading="lazy"
+        fetchpriority="auto"
+        decoding="async"
       />
+      {% else %}
+      <!-- Above-fold hero (LCP element): eager + high priority -->
+      <img
+        src="{{ section.background_image | relative_url }}"
+        alt="Hero background - {{ section.title | strip_html | escape }}"
+        role="presentation"
+        class="h-full w-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+      />
+      {% endif %}
     </div>
 
     <div class="absolute inset-0 {{ overlay_class }}"></div>
@@ -48,7 +64,7 @@
             class="hero-eyebrow mb-3 flex items-center gap-2 sm:mb-4 sm:gap-3 md:mb-6 md:gap-4"
           >
             <span
-              class="font-title text-[9px] uppercase tracking-[0.25em] {{ eyebrow_class }} sm:text-[10px] md:text-[11px]"
+              class="hero-animate-css hero-delay-1 font-title text-[9px] uppercase tracking-[0.25em] {{ eyebrow_class }} sm:text-[10px] md:text-[11px]"
             >
               {{ section.eyebrow }}
             </span>
@@ -59,21 +75,21 @@
           <!-- Title -->
           {% assign h_tag = include.heading_level | default: 'h1' %}
           <{{ h_tag }}
-            class="hero-title font-title text-[2rem] font-bold leading-[0.95] tracking-[-0.06em] md:text-[3.5rem] lg:text-[4rem]"
+            class="hero-animate-css hero-delay-2 font-title text-[2rem] font-bold leading-[0.95] tracking-[-0.06em] md:text-[3.5rem] lg:text-[4rem]"
           >
             {{ section.title }}
           </{{ h_tag }}>
 
           <!-- Subtitle -->
           <div
-            class="hero-subtitle mt-4 text-sm font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-lg"
+            class="hero-animate-css hero-delay-3 mt-4 text-sm font-bold uppercase leading-tight sm:mt-5 md:mt-6 md:text-lg"
           >
             {{ section.subtitle }}
           </div>
 
           <!-- Description -->
           <div
-            class="hero-description mt-6 text-[10px] leading-[1.8] {{ desc_class }} sm:mt-8 md:text-xs md:mt-10 max-w-xl"
+            class="hero-animate-css hero-delay-4 mt-6 text-[10px] leading-[1.8] {{ desc_class }} sm:mt-8 md:text-xs md:mt-10 max-w-xl"
           >
             {% for item in section.description %}
             <p>{{ item }}</p>
@@ -81,7 +97,7 @@
           </div>
 
           <!-- Buttons -->
-          <div class="hero-button mt-8 sm:mt-10 md:mt-12">
+          <div class="hero-animate-css hero-delay-5 mt-8 sm:mt-10 md:mt-12">
             <div class="mt-8 sm:mt-10 md:mt-12 flex flex-wrap items-center gap-6">
               <a
                 href="{{ section.button_url }}"
@@ -137,31 +153,3 @@
   </div>
 </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Set initial states (hidden) - slightly subtler translate
-    gsap.set(".hero-eyebrow", { opacity: 0, y: 10 });
-    gsap.set(".hero-title", { opacity: 0, y: 10 });
-    gsap.set(".hero-subtitle", { opacity: 0, y: 10 });
-    gsap.set(".hero-description", { opacity: 0, y: 10 });
-    gsap.set(".hero-button", { opacity: 0, y: 10 });
-
-    // Create timeline with softer easing, longer durations and gentle overlaps
-    const heroTl = gsap.timeline({
-      defaults: {
-        duration: 0.55,
-        ease: "power3.out",
-      },
-      onComplete: () => {
-        window.dispatchEvent(new CustomEvent("heroAnimationComplete"));
-      },
-    });
-
-    heroTl
-      .to(".hero-eyebrow", { opacity: 1, y: 0, duration: 0.45 })
-      .to(".hero-title", { opacity: 1, y: 0 }, "-=0.35")
-      .to(".hero-subtitle", { opacity: 1, y: 0 }, "-=0.32")
-      .to(".hero-description", { opacity: 1, y: 0 }, "-=0.28")
-      .to(".hero-button", { opacity: 1, y: 0 }, "-=0.25");
-  });
-</script>

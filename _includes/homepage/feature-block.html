@@ -16,6 +16,8 @@ md:flex-row" %} {% if section.image_position == 'right' %} {% assign flex_dir =
               src="{{ section.image }}"
               alt="{{ section.title | strip_html }}"
               class="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 

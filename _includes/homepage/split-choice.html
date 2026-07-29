@@ -27,7 +27,7 @@
     <div class="w-1/2 h-[85svh] md:h-screen relative group overflow-hidden flex items-end">
       <img src="{{ section.left.image }}"
         class="absolute inset-0 w-full h-full object-cover object-[40%_center] lg:object-center transition-transform duration-1000 group-hover:scale-105"
-        alt="{{ section.left.title }}" loading="lazy">
+        alt="{{ section.left.title }}" loading="lazy" decoding="async">
       <!-- Stronger bottom gradient to protect text readability -->
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none"></div>
 
@@ -59,7 +59,7 @@
     <div class="w-1/2 h-[85svh] md:h-screen relative group overflow-hidden flex items-end">
       <img src="{{ section.right.image }}"
         class="absolute inset-0 w-full h-full object-cover object-[40%_center] lg:object-center transition-transform duration-1000 group-hover:scale-105"
-        alt="{{ section.right.title }}" loading="lazy">
+        alt="{{ section.right.title }}" loading="lazy" decoding="async">
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none"></div>
 
       <!-- Right Content -->

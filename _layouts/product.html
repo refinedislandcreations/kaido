@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Preconnect: establish early connections to critical third-party origins -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <!-- LCP Preload: fetch the above-the-fold hero image ASAP (homepage only) -->
+    {% if page['hero-phantom'] %}
+    <link
+      rel="preload"
+      as="image"
+      href="{{ page['hero-phantom'].background_image | relative_url }}"
+      fetchpriority="high"
+    />
+    {% endif %}
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -106,8 +121,12 @@
     />
     <!-- Meta Pixel Code -->
     <script>
-      fbq('init', '2197525264025521');
-      fbq('track', 'PageView');
+      window.addEventListener('load', function() {
+        if(typeof fbq === 'function') {
+          fbq('init', '2197525264025521');
+          fbq('track', 'PageView');
+        }
+      });
     </script>
   </head>
 

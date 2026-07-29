@@ -236,6 +236,29 @@ textarea[aria-invalid="true"] {
   top: 0;
 }
 
+/* Hero CSS Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate-css {
+  opacity: 0;
+  animation: fadeInUp 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.hero-delay-1 { animation-delay: 0.1s; }
+.hero-delay-2 { animation-delay: 0.2s; }
+.hero-delay-3 { animation-delay: 0.23s; }
+.hero-delay-4 { animation-delay: 0.27s; }
+.hero-delay-5 { animation-delay: 0.3s; }
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   *,
