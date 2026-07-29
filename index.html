@@ -149,6 +149,7 @@ og_image: "/assets/images/phantom-hero-banner.webp"
 
       <form
         data-waitlist-form
+        data-page-name="Coming Soon"
         class="mt-6 space-y-5 md:mt-7 md:space-y-6"
         novalidate
       >
@@ -829,6 +830,8 @@ og_image: "/assets/images/phantom-hero-banner.webp"
         const HUBSPOT_PORTAL_ID = "242242619";
         const HUBSPOT_FORM_GUID = "d917ed7f-f0be-4392-b081-f5012f1edb17";
 
+        const pageNameAttr = form.getAttribute("data-page-name");
+
         const body = {
           fields: [
             { name: "firstname", value: firstName },
@@ -836,7 +839,7 @@ og_image: "/assets/images/phantom-hero-banner.webp"
             { name: "phone", value: phone },
           ],
           submittedAt: Date.now().toString(),
-          context: { pageUri: window.location.href, pageName: document.title },
+          context: { pageUri: window.location.href, pageName: pageNameAttr || document.title },
         };
 
         try {

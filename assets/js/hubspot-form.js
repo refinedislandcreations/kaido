@@ -666,12 +666,14 @@
         });
       }
 
+      const pageNameAttr = form.getAttribute("data-page-name");
+
       const body = {
         fields,
         submittedAt: Date.now().toString(),
         context: {
           pageUri: window.location.href,
-          pageName: document.title,
+          pageName: pageNameAttr || document.title,
         },
       };
 
