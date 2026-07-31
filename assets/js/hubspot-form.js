@@ -620,9 +620,9 @@
       if (lastNameInput && lastNameInput.value)
         fields.push({ name: "lastname", value: lastNameInput.value });
       
-      const instrumentInput = form.querySelector('input[name="instrument"]:checked');
+      const instrumentInput = form.querySelector('input[name="interested_in"]:checked');
       if (instrumentInput && instrumentInput.value) {
-        fields.push({ name: "instrument_of_interest", value: instrumentInput.value });
+        fields.push({ name: "interested_in", value: instrumentInput.value });
       }
       if (emailInput && emailInput.value)
         fields.push({ name: "email", value: emailInput.value });
@@ -678,7 +678,7 @@
       };
 
       try {
-        console.log("Enquiry: submitting to HubSpot", body);
+        console.log("Enquiry: submitting to HubSpot. Payload fields:", JSON.stringify(fields, null, 2));
         setLoading(true);
 
         // persist throttle timestamp
