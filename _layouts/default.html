@@ -1,6 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Preconnect: establish early connections to critical third-party origins -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <!-- LCP Preload: fetch the above-the-fold hero image ASAP -->
+    {% if page['hero-phantom'] %}
+    <link
+      rel="preload"
+      as="image"
+      href="{{ page['hero-phantom'].background_image | relative_url }}"
+      fetchpriority="high"
+    />
+    {% elsif page.phantom-hero %}
+    <link
+      rel="preload"
+      as="image"
+      href="{{ page.phantom-hero.background_image | relative_url }}"
+      fetchpriority="high"
+    />
+    {% elsif page.oracle-hero %}
+    <link
+      rel="preload"
+      as="image"
+      href="{{ page.oracle-hero.background_image | relative_url }}"
+      fetchpriority="high"
+    />
+    {% endif %}
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="{{ '/assets/fonts/montserrat-normal-700.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin />
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
