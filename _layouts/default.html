@@ -185,10 +185,7 @@
     {% assign product_name = page.title | split: " / " | last %} {% if
     product_name == "Oracle" or product_name == "Phantom" %} {% assign
     target_product = product_name %} {% else %} {% assign target_product =
-    "Phantom/Oracle" %} {% endif %} {% if page.url == "/presale.html" %} {%
-    assign wa_text = "Hi Kaido, I'd like to know more about Phantom" %} {% else
-    %} {% assign wa_text = "Hi Kaido, I'd like to know more about " | append:
-    target_product %} {% endif %}
+    "Phantom/Oracle" %} {% endif %} {% assign wa_text = "Hi Kaido, I'd like to know more about " | append: target_product %}
     <a
       href="https://wa.me/6281330864125?text={{ wa_text | url_encode }}"
       target="_blank"
