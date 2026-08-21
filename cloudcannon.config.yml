@@ -3,10 +3,9 @@
 _inputs:
   title:
     type: text
-    label: Page Title
+    label: Title
   description:
     type: textarea
-    label: Meta Description
   og_image:
     type: image
     label: Social Preview Image
@@ -21,33 +20,62 @@ _inputs:
     label: Button URL
   eyebrow:
     type: text
-    label: Section Eyebrow
+    label: Eyebrow
   subtitle:
-    type: object
+    type: text
     label: Subtitle
-  value:
+  url:
+    type: image
+    label: Image URL
+  icon:
     type: text
-  label:
+    label: Icon Name
+  theme:
+    type: select
+    options:
+      values:
+        - dark
+        - light
+  footer_quote:
     type: text
+    label: Footer Quote
+  paragraphs:
+    type: array
 
 _structures:
-  stat_item:
+  stats:
     values:
-      - label: label
-        input:
-          type: text
-      - label: value
-        input:
-          type: text
-
-  spec_item:
+      - value:
+          eyebrow: ""
+          title: ""
+  categories:
     values:
-      - label: label
-        input:
-          type: text
-      - label: value
-        input:
-          type: text
+      - value:
+          title: ""
+          items: []
+  spec_items:
+    values:
+      - value:
+          title: ""
+          value: ""
+          icon: ""
+  side_specs:
+    values:
+      - value:
+          label: ""
+          value: ""
+  gallery_images:
+    values:
+      - value:
+          url: ""
+          eyebrow: ""
+          title: ""
+          description: ""
+  maintenance_right_items:
+    values:
+      - value:
+          title: ""
+          frequency: ""
 
 collections_config:
   data:
@@ -67,43 +95,3 @@ paths:
 _outputs:
   subtitle: html
   description: html
-
-_array_structures:
-  items:
-    values:
-      - label: Label
-        input:
-          key: label
-          type: text
-      - label: Value
-        input:
-          key: value
-          type: text
-
-  descriptions:
-    values:
-      - input:
-          type: textarea
-          key: "0"
-
-  specifications:
-    values:
-      - label: Label
-        input:
-          key: label
-          type: text
-      - label: Value
-        input:
-          key: value
-          type: text
-
-  order:
-    values:
-      - label: Label
-        input:
-          key: label
-          type: text
-      - label: Value
-        input:
-          key: value
-          type: text
